@@ -25,8 +25,11 @@
             
             function getShare() {
                 $(".loading").show()
+                var tokenUrl = "http://35.224.43.101/split"
+                var originalURL = tokenUrl
+                var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
                 $.ajax({
-                    url: "http://35.224.43.101/split",
+                    url: queryURL,
                     context: document.body
                 }).done(function(val) {
                     share = val
@@ -37,9 +40,11 @@
             function getToken(shares) {
                 var shares = shares
                 var tokenUrl = "http://35.224.43.101/address-import?address=" + keys[0].address + "&name=" + $('.requested-name').val()
+                var originalURL = tokenUrl
+                var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
                 
                 $.ajax({
-                    url: tokenUrl,
+                    url: queryURL,
                     context: document.body
                 }).done(function(val) {
                     emblem = val
@@ -55,8 +60,10 @@
                 $(".loading").show()
                 $(".emblems").html("")
                 var tokenUrl = "http://35.224.43.101/address-balances?address=" + keys[0].address
+                var originalURL = tokenUrl
+                var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
                 $.ajax({
-                    url: tokenUrl,
+                    url: queryURL,
                     context: document.body
                 }).done(function(val) {
                     emblem = val
