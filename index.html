@@ -1,5 +1,44 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Semantic UI &amp; Webpack 2</title>
+</head>
+<body>
+    <div class="ui raised very padded text container segment">
+        <h2 class="ui header">Emblem AlphaNet</h2>
+        <p>Welcome to the Emblem Vault - alpha client. </p>
+        <p><b>IMPORTANT! </b>This is not secure and may go away at any time. You should not send any value to your vaults that you don't want to lose! </p>
+        <div class="ui segment">
+            <div class="ui fluid form">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Emblem Name</label>
+                        <input class="requested-name" placeholder="My secret vault" type="text">
+                    </div>
+                    <div class="field">
+                            <label>Activity</label>
+                        <div onclick="getShare()" class="ui secondary submit button">New Vault</div>
+                        <div onclick="getBalance()" class="ui secondary green button">Get Balances</div>
+                    </div>
+                    <!-- <div class="field">
+                        <label>Last Name</label>
+                        <input placeholder="Last Name" type="text">
+                    </div> -->
+                </div>
+                <div class="emblems"> </div>
+                
+                <div class="ui icon attached loading message">
+                    <i class="notched circle loading icon"></i>
+                    <div class="content">
+                        <div class="header">
+                        Just one second
+                        </div>
+                        <p>We're fetching that content for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="./bundle.js"></script>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
@@ -74,11 +113,8 @@
                         if (isClaimable(element.name)) {
                             validity = "(claimable)"
                         }
-                        /*
-                        
-                        
-                        */
-                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
+                        var buttons = "<p><div onclick=\"$('.ui.basic.modal').modal('show')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
+                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
                             var address = addresses[key]
@@ -125,34 +161,58 @@
             .ui.rail {
                 padding-left: 15px;
             }
+            .send {
+                padding: .38571429em 1em 1.4em !important
+            }
         </style>
-    </head>
-    <body>
-        <div class="ui text container">
-            <div class="ui rail">
-                <div class="ui sticky">
-                    <div>My Address: <div class="my-address"></div></div>
-                    <hr>
-                    <div>Emblem Name: <input class="requested-name"/></div>
-                    <button onclick="getShare()">Create Emblem</button> <button onclick="getBalance()">My Emblems</button>
-                    <hr>
+        <div class="ui send modal">
+                <i class="close icon"></i>
+                <div class="header">
+                  Send Emblem
                 </div>
-            </div>
-        </div>
-        <div class="ui" id="context">
-                <div class="ui icon attached loading message">
-                    <i class="notched circle loading icon"></i>
-                    <div class="content">
-                        <div class="header">
-                        Just one second
-                        </div>
-                        <p>We're fetching that content for you.</p>
-                    </div>
+                <div class="image content">
+                  <div class="ui medium image">
+                    <img src="site-logo.svg">
+                    <span>
+                        <h1>Vault</h1>
+                    </span>
+                  </div>
+                  <div class="description">
+                    <div class="ui header">What you should know about sending an Emblem Vault</div>
+                    <p>When you send this emblem to someone else you no longer are able to unlock the contents. </p>
+                    <p>Are you sure you want to send this vault to another wallet?</p>
+                  </div>
                 </div>
-            <textarea class="raw-data"></textarea>
-            <div class="emblems">
+                <div class="actions">
+                  <div class="ui black deny button">
+                    Nope
+                  </div>
+                  <div class="ui positive right labeled icon button">
+                    Yep, I know what I'm doing
+                    <i class="checkmark icon"></i>
+                  </div>
+                </div>
+              </div>
 
-            </div>
-        </div>
-    </body>
+              <div class="ui basic modal">
+                    <div class="ui icon header">
+                      <i class="archive icon"></i>
+                      Open Vault
+                    </div>
+                    <div class="content">
+                      <p>Opening this vault will remove the ability to send to other users and will grant you exclusive access to the contents. </p>
+                    </div>
+                    <div class="actions">
+                      <div class="ui red basic cancel inverted button">
+                        <i class="remove icon"></i>
+                        No
+                      </div>
+                      <div class="ui green ok inverted button">
+                        <i class="checkmark icon"></i>
+                        Yes
+                      </div>
+                    </div>
+                  </div>
+        </body>
+</body>
 </html>
