@@ -64,9 +64,8 @@
             
             function getShare() {
                 $(".loading").show()
-                var tokenUrl = "http://35.224.43.101/split"
-                var originalURL = tokenUrl
-                var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
+                var queryURL = "https://www.synrgtech.net/split"
+                
                 $.ajax({
                     url: queryURL,
                     context: document.body
@@ -78,9 +77,8 @@
             }
             function getToken(shares) {
                 var shares = shares
-                var tokenUrl = "http://35.224.43.101/address-import?address=" + keys[0].address + "&name=" + $('.requested-name').val()
-                var originalURL = tokenUrl
-                var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
+                var queryURL = "https://www.synrgtech.net/address-import?address=" + keys[0].address + "&name=" + $('.requested-name').val()
+                
                 
                 $.ajax({
                     url: queryURL,
@@ -98,9 +96,8 @@
             function getBalance() {
                 $(".loading").show()
                 $(".emblems").html("")
-                var tokenUrl = "http://35.224.43.101/address-balances?address=" + keys[0].address
-                var originalURL = tokenUrl
-                var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
+                var queryURL = "https://www.synrgtech.net/address-balances?address=" + keys[0].address
+                
                 $.ajax({
                     url: queryURL,
                     context: document.body
