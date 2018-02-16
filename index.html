@@ -3,43 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Semantic UI &amp; Webpack 2</title>
-</head>
-<body>
-    <div class="ui raised very padded text container segment">
-        <h2 class="ui header">Emblem AlphaNet</h2>
-        <p>Welcome to the Emblem Vault - alpha client. </p>
-        <p><b>IMPORTANT! </b>This is not secure and may go away at any time. You should not send any value to your vaults that you don't want to lose! </p>
-        <div class="ui segment">
-            <div class="ui fluid form">
-                <div class="two fields">
-                    <div class="field">
-                        <label>Emblem Name</label>
-                        <input class="requested-name" placeholder="My secret vault" type="text">
-                    </div>
-                    <div class="field">
-                            <label>Activity</label>
-                        <div onclick="getShare()" class="ui secondary submit button">New Vault</div>
-                        <div onclick="getBalance()" class="ui secondary green button">Get Balances</div>
-                    </div>
-                    <!-- <div class="field">
-                        <label>Last Name</label>
-                        <input placeholder="Last Name" type="text">
-                    </div> -->
-                </div>
-                <div class="emblems"> </div>
-                
-                <div class="ui icon attached loading message">
-                    <i class="notched circle loading icon"></i>
-                    <div class="content">
-                        <div class="header">
-                        Just one second
-                        </div>
-                        <p>We're fetching that content for you.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script src="./bundle.js"></script>
+<script src="./bundle.js"></script>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -61,7 +25,10 @@
                 $(".my-address").text(keys[0].address)
                 getBalance()
             }
-            
+            function reset() {
+                localStorage.clear()
+                getWallet()
+            }
             function getShare() {
                 $(".loading").show()
                 var queryURL = "https://www.synrgtech.net/split"
@@ -71,6 +38,7 @@
                     context: document.body
                 }).done(function(val) {
                     share = val
+                    //var html = '<img src=""/>' + val
                     $('.raw-data').html($('.raw-data').html() + JSON.stringify(val, null, 4))
                     getToken(val)
                 })
@@ -114,8 +82,9 @@
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
-                            var address = addresses[key]
-                            emblemHtml = emblemHtml + "<div>" + key + " : " + address + "</div>"
+                            var address = addresses[key].address
+                            var unit = addresses[key].unit
+                            emblemHtml = emblemHtml + "<div><img width='16px' onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit+".png'/>" + key + " : " + address + "</div>"
                             if (i == Object.keys(addresses).length -1) {
                                 emblemHtml = emblemHtml + "</p></div>"
                                 
@@ -161,7 +130,51 @@
             .send {
                 padding: .38571429em 1em 1.4em !important
             }
+            .reset {
+                float: right;
+            }
         </style>
+</head>
+<body>
+    <div class="ui raised very padded text container segment">
+        
+        <h2 class="ui header">Emblem AlphaNet</h2>
+        <div class="my-address"></div>
+        <hr>
+        <div class="reset"><div onclick="reset()" class="ui red label submit button transition visible">Reset Wallet!</div></div>
+        <p>Welcome to the Emblem Vault - alpha client. </p> 
+        <p><b>IMPORTANT! </b>This is not secure and may go away at any time. You should not send any value to your vaults that you don't want to lose! </p>
+        <div class="ui segment">
+            <div class="ui fluid form">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Emblem Name</label>
+                        <input class="requested-name" placeholder="My secret vault" type="text">
+                    </div>
+                    <div class="field">
+                            <label>Activity</label>
+                        <div onclick="getShare()" class="ui secondary submit button">New Vault</div>
+                        <div onclick="getBalance()" class="ui secondary green button">Get Balances</div>
+                    </div>
+                    <!-- <div class="field">
+                        <label>Last Name</label>
+                        <input placeholder="Last Name" type="text">
+                    </div> -->
+                </div>
+                <div class="emblems"> </div>
+                
+                <div class="ui icon attached loading message">
+                    <i class="notched circle loading icon"></i>
+                    <div class="content">
+                        <div class="header">
+                        Just one second
+                        </div>
+                        <p>We're fetching that content for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="ui send modal">
                 <i class="close icon"></i>
                 <div class="header">
