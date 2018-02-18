@@ -15,19 +15,29 @@
             var share, emblem
             function getWallet() {
                 if (!localStorage.getItem('coval-testnet')) {
-                    keys[0] = hdkey.StandardHDKey('0', function(address, key){
-                        localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key: key }]))
-                        return {address: address, key: key }
-                    })
+                    if (window.location.hash === "#register") {
+                        $('.ui.register.modal').modal('show')
+                    } else {
+                        $('.ui.login.modal').modal('show')
+                    }                    
                 } else {
-                    keys = JSON.parse(localStorage.getItem('coval-testnet'))
-                }
-                $(".my-address").text(keys[0].address)
-                getBalance()
+                    if (!JSON.parse(localStorage.getItem('coval-testnet'))[0].address) {
+                        keys[0] = hdkey.StandardHDKey('0', function(address, key){
+                            localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key:key }]))
+                            return {address: address, key: key }
+                        })
+                        $(".my-address").text(keys[0].address)
+                        getBalance()
+                    } else {
+                        keys = JSON.parse(localStorage.getItem('coval-testnet'))
+                        $(".my-address").text(keys[0].address)
+                        getBalance()
+                    }
+                }                
             }
             function reset() {
                 localStorage.clear()
-                getWallet()
+                window.location.reload()
             }
             function getShare() {
                 $(".loading").show()
@@ -110,10 +120,49 @@
             function getEmblemInternalAddresses(name) {
                 return keys[0].emblems.filter(function(emblem){return emblem.name == name})[0].shares.payload.addresses
             }
+            
+            /* UNLOQ LOGIN */
+            function handleLoginSuccess(accessToken) {
+                var storage
+                if (!localStorage.getItem('coval-testnet')) {
+                    storage = [{accessToken: null}]
+                    
+                } else {
+                    storage = JSON.parse(localStorage.getItem('coval-testnet'))
+                }
+                storage[0].accessToken = accessToken
+                localStorage.setItem('coval-testnet', JSON.stringify(storage))
+                $('.ui.login.modal').modal('hide')
+                getWallet()
+            }
 
             $( document ).ready(function() {
                 getWallet()                
-            });
+            })
+
+            /* UNLOQ AUTOEXEC */
+            var accessToken, coval
+            (function () {
+                function onTokenReceived(accessToken) {
+                    // Call your API with the user's access token
+                    console.log("UNLOQ access token", accessToken);
+                    handleLoginSuccess(accessToken)
+                    //postBackToCovalApiViaZap(accessToken)
+
+                }
+                window.onUnloqInit = function OnUNLOQInit() {
+                    /* UNLOQ.onRegister(function(identity){
+                        postBackToCovalApiViaZap(identity)
+                    }) */
+                    return {
+                        callback: onTokenReceived, // Once a user logs in and an UNLOQ access token is generated,
+                        // call this function in stead of performing the browser redirect.
+                        public_key: "PEM-encoded public key" // Optionally, include a public key when requesting the
+                        // user's personal encryption key.
+                    }
+                }
+            })()
+
         </script>
         <style>
             .raw-data {
@@ -174,35 +223,90 @@
                 </div>
             </div>
         </div>
-        
-        <div class="ui send modal">
+        <div class="ui login modal">
                 <i class="close icon"></i>
                 <div class="header">
-                  Send Emblem
+                    Login to Emblem Vault
                 </div>
                 <div class="image content">
-                  <div class="ui medium image">
+                    <div class="ui medium image">
                     <img src="site-logo.svg">
                     <span>
                         <h1>Vault</h1>
                     </span>
-                  </div>
-                  <div class="description">
-                    <div class="ui header">What you should know about sending an Emblem Vault</div>
-                    <p>When you send this emblem to someone else you no longer are able to unlock the contents. </p>
-                    <p>Are you sure you want to send this vault to another wallet?</p>
-                  </div>
+                    </div>
+                    <div class="description">
+                            <div class="unloq-login">
+                                <script type="text/javascript" src="https://plugin.unloq.io/login.js" data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
+                            </div>
+                    </div>
                 </div>
-                <div class="actions">
-                  <div class="ui black deny button">
+                <!-- <div class="actions">
+                    <div class="ui black deny button">
                     Nope
-                  </div>
-                  <div class="ui positive right labeled icon button">
+                    </div>
+                    <div class="ui positive right labeled icon button">
                     Yep, I know what I'm doing
                     <i class="checkmark icon"></i>
-                  </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="ui register modal">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Register with Emblem Vault
+                    </div>
+                    <div class="image content">
+                        <div class="ui medium image">
+                        <img src="site-logo.svg">
+                        <span>
+                            <h1>Vault</h1>
+                        </span>
+                        </div>
+                        <div class="description">
+                                <div class="unloq-register">
+                                        <script src="https://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
+                                    </div>
+                        </div>
+                    </div>
+                    <!-- <div class="actions">
+                        <div class="ui black deny button">
+                        Nope
+                        </div>
+                        <div class="ui positive right labeled icon button">
+                        Yep, I know what I'm doing
+                        <i class="checkmark icon"></i>
+                        </div>
+                    </div> -->
                 </div>
-              </div>
+        <div class="ui send modal">
+            <i class="close icon"></i>
+            <div class="header">
+                Send Emblem
+            </div>
+            <div class="image content">
+                <div class="ui medium image">
+                <img src="site-logo.svg">
+                <span>
+                    <h1>Vault</h1>
+                </span>
+                </div>
+                <div class="description">
+                <div class="ui header">What you should know about sending an Emblem Vault</div>
+                <p>When you send this emblem to someone else you no longer are able to unlock the contents. </p>
+                <p>Are you sure you want to send this vault to another wallet?</p>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                Nope
+                </div>
+                <div class="ui positive right labeled icon button">
+                Yep, I know what I'm doing
+                <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
 
               <div class="ui basic modal">
                     <div class="ui icon header">
