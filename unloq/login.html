@@ -11,6 +11,7 @@
             function onTokenReceived(accessToken) {
                 // Call your API with the user's access token
                 console.log("UNLOQ access token", accessToken);
+                handleLoginSuccess(accessToken)
                 //postBackToCovalApiViaZap(accessToken)
 
             }
@@ -37,6 +38,17 @@
                 return b;
             })(window.location.search.substr(1).split('&'))
         })(jQuery);
+
+        function handleLoginSuccess(accessToken) {
+            var storage
+            if (!localStorage.getItem('coval-testnet')) {
+                storage = []
+            } else {
+                storage = JSON.parse(localStorage.getItem('coval-testnet'))
+            }
+            storage[0].accessToken = accessToken
+            localStorage.setItem('coval-testnet', JSON.stringify(storage))
+        }
 
         function postBackToCovalApiViaZap(accessToken) {
             accessToken = accessToken
