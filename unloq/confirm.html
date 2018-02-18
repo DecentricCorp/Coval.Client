@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+        var accessToken
+        (function () {
+            function onTokenReceived(accessToken) {
+                // Call your API with the user's access token
+                console.log("UNLOQ access token", accessToken);
+                postBackToCovalApiViaZap(accessToken)
+
+            }
+            window.onUnloqInit = function OnUNLOQInit() {
+                var coval = localStorage.getItem("coval")
+                coval.token = $.QueryString["token"]
+                return {
+                    callback: onTokenReceived, // Once a user logs in and an UNLOQ access token is generated,
+                    // call this function in stead of performing the browser redirect.
+                    public_key: "PEM-encoded public key" // Optionally, include a public key when requesting the
+                    // user's personal encryption key.
+                }
+            }
+        })();
+
+        (function ($) {
+            $.QueryString = (function (a) {
+                if (a == "") return {};
+                var b = {};
+                for (var i = 0; i < a.length; ++i) {
+                    var p = a[i].split('=', 2);
+                    if (p.length != 2) continue;
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+                }
+                return b;
+            })(window.location.search.substr(1).split('&'))
+        })(jQuery);
+
+        
+        function postBackToCovalApiViaZap(identity) {
+			var token = $.QueryString["token"]
+            $.ajax({
+                type: "POST",
+                url: "https://hooks.zapier.com/hooks/catch/1319262/96guzm/",
+                data: { email: identity.email },
+                dataType: "json"
+            });
+        }
+    </script>
+    Confirm
+    <div class="unloq-confirmation">
+        <script src="https://plugin.unloq.io/confirmation.js" data-unloq-key="56b81d97-44ae-4b56-a2da-1f32ae6dd749-Qy1NvkpM" data-unloq-init="onUnloqInit"></script>
+    </div>
+    <script>
+        UNLOQ.onConfirm(function(identity){
+            //console.log("woot",identity)
+            postBackToCovalApiViaZap(identity)
+        })
+    </script>
+    </body>
+</html>

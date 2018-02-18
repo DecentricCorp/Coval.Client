@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var accessToken, coval
+        (function () {
+            function onTokenReceived(accessToken) {
+                // Call your API with the user's access token
+                console.log("UNLOQ access token", accessToken);
+                postBackToCovalApiViaZap(accessToken)
+
+            }
+            window.onUnloqInit = function OnUNLOQInit() {
+                coval = JSON.parse(localStorage.getItem("coval"))
+                return {
+                    callback: onTokenReceived, // Once a user logs in and an UNLOQ access token is generated,
+                    // call this function in stead of performing the browser redirect.
+                    public_key: "PEM-encoded public key" // Optionally, include a public key when requesting the
+                    // user's personal encryption key.
+                }
+            }
+        })();
+
+        (function ($) {
+            $.QueryString = (function (a) {
+                if (a == "") return {};
+                var b = {};
+                for (var i = 0; i < a.length; ++i) {
+                    var p = a[i].split('=', 2);
+                    if (p.length != 2) continue;
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+                }
+                return b;
+            })(window.location.search.substr(1).split('&'))
+        })(jQuery);
+
+        function postBackToCovalApiViaZap(accessToken) {
+            accessToken = accessToken
+            var requestId = $.QueryString["requestId"] || coval.requestId
+            var service = $.QueryString["service"] || coval.service
+            var action = $.QueryString["action"] || coval.action
+            var url
+            if (requestId) {
+                url = "https://hooks.zapier.com/hooks/catch/1319262/96qgnz/"
+            } else {
+                url = "https://hooks.zapier.com/hooks/catch/1319262/96qsd8/"
+            }
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { unloq_id: accessToken.unloq_id, email: accessToken.email, requestId: requestId, service: service, action: action },
+                dataType: "json", 
+                success: function(){
+                    localStorage.clear()
+                }
+            });
+        }
+    </script>
+    <div class="unloq-login">
+        <script src="https://plugin.unloq.io/login.js" data-unloq-key="63a47fdc-893a-468a-95dc-2103fde0a495-157BQQBI" data-unloq-init="onUnloqInit"></script>
+    </div>
+</body>
+
+</html>
