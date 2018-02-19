@@ -15,8 +15,10 @@
             var share, emblem
             function getWallet() {
                 if (!localStorage.getItem('coval-testnet')) {
-                    if (window.location.hash === "#register") {
+                    if (window.location.hash.split('?')[0] === "#register") {
                         $('.ui.register.modal').modal('show')
+                    } else if(window.location.hash.split('?')[0] === "#confirm") {
+                        $('.ui.confirm.modal').modal('show')
                     } else {
                         $('.ui.login.modal').modal('show')
                     }                    
@@ -279,6 +281,34 @@
                         </div>
                     </div> -->
                 </div>
+                <div class="ui confirm basic modal">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Confirm with Emblem Vault
+                        </div>
+                        <div class=" content">
+                            <!-- <div class="ui medium image">
+                            <img src="site-logo.svg">
+                            <span>
+                                <h1>Vault</h1>
+                            </span>
+                            </div> -->
+                            <div class="description">
+                                <div class="unloq-confirmation">
+                                    <script src="https://plugin.unloq.io/confirmation.js" data-unloq-key="7a544afc-9a86-4f56-beff-07f533ca6c50-08kOJ8Oy" data-unloq-init="onUnloqInit"></script>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="actions">
+                            <div class="ui black deny button">
+                            Nope
+                            </div>
+                            <div class="ui positive right labeled icon button">
+                            Yep, I know what I'm doing
+                            <i class="checkmark icon"></i>
+                            </div>
+                        </div> -->
+                    </div>
         <div class="ui send modal">
             <i class="close icon"></i>
             <div class="header">
