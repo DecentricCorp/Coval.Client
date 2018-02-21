@@ -8,7 +8,8 @@
         (function () {
             function onTokenReceived(accessToken) {
                 // Call your API with the user's access token
-                console.log("UNLOQ access token", accessToken);
+                console.log("UNLOQ access token", accessToken)
+                window.location.href = window.location.origin
                 //postBackToCovalApiViaZap(accessToken)
 
             }
@@ -48,7 +49,6 @@
             });
         }
     </script>
-    Confirm
     <div class="unloq-confirmation">
         <script src="https://plugin.unloq.io/confirmation.js" data-unloq-key="7a544afc-9a86-4f56-beff-07f533ca6c50-08kOJ8Oy" data-unloq-init="onUnloqInit"></script>
     </div>

@@ -2,40 +2,69 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Semantic UI &amp; Webpack 2</title>
+<title>Emblem Alpha Client</title>
 <script src="./bundle.js"></script>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="semantic/dist/semantic.min.js"></script>
         <script src="semantic/dist/components/accordion.min.js"></script>
+        <script src="bower_components/handlebars/handlebars.js"></script>
         <script>
             var hdkey = new new Coval.Coval().Secure.HDKey()
             var keys = []
             var share, emblem
             function getWallet() {
                 if (!localStorage.getItem('coval-testnet')) {
+                    checkForAuth(getWallet)                  
+                } else {
+                    if (!JSON.parse(localStorage.getItem('coval-testnet'))[0].address) {
+                        checkForAuth(function(){
+                            keys[0] = hdkey.StandardHDKey('0', function(address, key){
+                                localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key:key}]))
+                                return {address: address, key: key}
+                            })
+                            $(".my-address").text(keys[0].address)
+                            getBalance()
+                        })                        
+                    } else {
+                        checkForAuth(function(){
+                            keys = JSON.parse(localStorage.getItem('coval-testnet'))
+                            $(".my-address").text(keys[0].address)
+                            getBalance()
+                        })
+                    }
+                }                
+            }
+            function checkForAuth(callback){
+                var storage = JSON.parse(localStorage.getItem('coval-testnet'))
+                if (!storage || !storage[0].accessToken) {
                     if (window.location.hash.split('?')[0] === "#register") {
                         $('.ui.register.modal').modal('show')
                     } else if(window.location.hash.split('?')[0] === "#confirm") {
-                        $('.ui.confirm.modal').modal('show')
+                        /* var s = document.createElement('script')
+                        s.type = 'text/javascript' */
+                        /* var att1 = document.createAttribute("data-unloq-key")
+                        att1.value = '7a544afc-9a86-4f56-beff-07f533ca6c50-08kOJ8Oy'
+                        var att2 = document.createAttribute("data-unloq-init")
+                        att2.value = 'onUnloqInit'
+                        s.setAttributeNode(att1)
+                        s.setAttributeNode(att2) */
+                        /* setTimeout(function(){
+                            //s.src = 'https://plugin.unloq.io/confirmation.js'
+                            $('.unloq-confirmation').append(s)
+                        }, 100) */
+                        // -- var source   = document.getElementById("confirmation-panel").innerHTML
+                        // -- var template = Handlebars.compile(source)
+                        //$(".confirm-content").html(template())
+                        //$('.ui.confirm.modal').modal('show')
+                        
                     } else {
                         $('.ui.login.modal').modal('show')
-                    }                    
-                } else {
-                    if (!JSON.parse(localStorage.getItem('coval-testnet'))[0].address) {
-                        keys[0] = hdkey.StandardHDKey('0', function(address, key){
-                            localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key:key }]))
-                            return {address: address, key: key }
-                        })
-                        $(".my-address").text(keys[0].address)
-                        getBalance()
-                    } else {
-                        keys = JSON.parse(localStorage.getItem('coval-testnet'))
-                        $(".my-address").text(keys[0].address)
-                        getBalance()
                     }
-                }                
+                } else {
+                    return callback()
+                }  
             }
             function reset() {
                 localStorage.clear()
@@ -156,6 +185,7 @@
                     /* UNLOQ.onRegister(function(identity){
                         postBackToCovalApiViaZap(identity)
                     }) */
+                    //$.QueryString["token"]
                     return {
                         callback: onTokenReceived, // Once a user logs in and an UNLOQ access token is generated,
                         // call this function in stead of performing the browser redirect.
@@ -166,6 +196,7 @@
             })()
 
         </script>
+        
         <style>
             .raw-data {
                 width: 100%;
@@ -187,6 +218,7 @@
         </style>
 </head>
 <body>
+    <div></div>
     <div class="ui raised very padded text container segment">
         
         <h2 class="ui header">Emblem AlphaNet</h2>
@@ -238,9 +270,9 @@
                     </span>
                     </div> -->
                     <div class="description">
-                            <div class="unloq-login">
-                                <script type="text/javascript" src="https://plugin.unloq.io/login.js" data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
-                            </div>
+                        <div class="unloq-login">
+                            <script type="text/javascript" src="https://plugin.unloq.io/login.js" data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="actions">
@@ -254,37 +286,9 @@
                 </div> -->
             </div>
             <div class="ui register basic modal">
-                    <i class="close icon"></i>
-                    <div class="header">
-                        Register with Emblem Vault
-                    </div>
-                    <div class=" content">
-                        <!-- <div class="ui medium image">
-                        <img src="site-logo.svg">
-                        <span>
-                            <h1>Vault</h1>
-                        </span>
-                        </div> -->
-                        <div class="description">
-                                <div class="unloq-register">
-                                        <script src="https://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
-                                    </div>
-                        </div>
-                    </div>
-                    <!-- <div class="actions">
-                        <div class="ui black deny button">
-                        Nope
-                        </div>
-                        <div class="ui positive right labeled icon button">
-                        Yep, I know what I'm doing
-                        <i class="checkmark icon"></i>
-                        </div>
-                    </div> -->
-                </div>
-                <div class="ui confirm basic modal">
                         <i class="close icon"></i>
                         <div class="header">
-                            Confirm with Emblem Vault
+                            Register with Emblem Vault
                         </div>
                         <div class=" content">
                             <!-- <div class="ui medium image">
@@ -294,69 +298,76 @@
                             </span>
                             </div> -->
                             <div class="description">
+                                    <div class="unloq-register">
+                                            <script src="https://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+            <div class="ui send modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    Send Emblem
+                </div>
+                <div class="image content">
+                    <div class="ui medium image">
+                    <img src="site-logo.svg">
+                    <span>
+                        <h1>Vault</h1>
+                    </span>
+                    </div>
+                    <div class="description">
+                    <div class="ui header">What you should know about sending an Emblem Vault</div>
+                    <p>When you send this emblem to someone else you no longer are able to unlock the contents. </p>
+                    <p>Are you sure you want to send this vault to another wallet?</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="ui black deny button">
+                    Nope
+                    </div>
+                    <div class="ui positive right labeled icon button">
+                    Yep, I know what I'm doing
+                    <i class="checkmark icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ui basic modal">
+                <div class="ui icon header">
+                    <i class="archive icon"></i>
+                    Open Vault
+                </div>
+                <div class="content">
+                    <p>Opening this vault will remove the ability to send to other users and will grant you exclusive access to the contents. </p>
+                </div>
+                <div class="actions">
+                    <div class="ui red basic cancel inverted button">
+                    <i class="remove icon"></i>
+                    No
+                    </div>
+                    <div class="ui green ok inverted button">
+                    <i class="checkmark icon"></i>
+                    Yes
+                    </div>
+                </div>
+            </div>
+            <div class="confirm-content"></div>
+            <!-- <script id="confirmation-panel" type="text/x-handlebars-template"> -->
+                <!-- <div class="ui confirm basic modal">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Confirm with Emblem Vault
+                        </div>
+                        <div class=" content">
+                            <div class="description">
                                 <div class="unloq-confirmation">
                                     <script src="https://plugin.unloq.io/confirmation.js" data-unloq-key="7a544afc-9a86-4f56-beff-07f533ca6c50-08kOJ8Oy" data-unloq-init="onUnloqInit"></script>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="actions">
-                            <div class="ui black deny button">
-                            Nope
-                            </div>
-                            <div class="ui positive right labeled icon button">
-                            Yep, I know what I'm doing
-                            <i class="checkmark icon"></i>
-                            </div>
-                        </div> -->
-                    </div>
-        <div class="ui send modal">
-            <i class="close icon"></i>
-            <div class="header">
-                Send Emblem
-            </div>
-            <div class="image content">
-                <div class="ui medium image">
-                <img src="site-logo.svg">
-                <span>
-                    <h1>Vault</h1>
-                </span>
-                </div>
-                <div class="description">
-                <div class="ui header">What you should know about sending an Emblem Vault</div>
-                <p>When you send this emblem to someone else you no longer are able to unlock the contents. </p>
-                <p>Are you sure you want to send this vault to another wallet?</p>
-                </div>
-            </div>
-            <div class="actions">
-                <div class="ui black deny button">
-                Nope
-                </div>
-                <div class="ui positive right labeled icon button">
-                Yep, I know what I'm doing
-                <i class="checkmark icon"></i>
-                </div>
-            </div>
-        </div>
-
-              <div class="ui basic modal">
-                    <div class="ui icon header">
-                      <i class="archive icon"></i>
-                      Open Vault
-                    </div>
-                    <div class="content">
-                      <p>Opening this vault will remove the ability to send to other users and will grant you exclusive access to the contents. </p>
-                    </div>
-                    <div class="actions">
-                      <div class="ui red basic cancel inverted button">
-                        <i class="remove icon"></i>
-                        No
-                      </div>
-                      <div class="ui green ok inverted button">
-                        <i class="checkmark icon"></i>
-                        Yes
-                      </div>
-                    </div>
-                  </div>
+                    </div> -->
+                <!-- </script> -->
         </body>
 </body>
 </html>

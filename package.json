@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "browserify": "browserify index.js -o bundle.js"
+    "browserify": "browserify index.js -o bundle.js",
+    "host": "sudo http-serve -p 80 ."
   },
   "author": "Shannon Code",
   "license": "MIT",
@@ -14,5 +15,16 @@
     "constants": "0.0.2",
     "coval.js": "git+https://github.com/DecentricCorp/Coval.js.git",
     "semantic-ui": "^2.2.14"
-  }
+  },
+  "devDependencies": {
+    "bower": "^1.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DecentricCorp/Coval.Client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DecentricCorp/Coval.Client/issues"
+  },
+  "homepage": "https://github.com/DecentricCorp/Coval.Client#readme"
 }
