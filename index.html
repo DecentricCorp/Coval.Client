@@ -72,31 +72,17 @@
             }
             function getShare() {
                 $(".loading").show()
-                var queryURL = "https://www.synrgtech.net/split"
+                var shares = shares
+                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val()
                 
                 $.ajax({
                     url: queryURL,
                     context: document.body
                 }).done(function(val) {
                     share = val
-                    //var html = '<img src=""/>' + val
-                    $('.raw-data').html($('.raw-data').html() + JSON.stringify(val, null, 4))
-                    getToken(val)
-                })
-            }
-            function getToken(shares) {
-                var shares = shares
-                var queryURL = "https://www.synrgtech.net/address-import?address=" + keys[0].address + "&name=" + $('.requested-name').val()
-                
-                
-                $.ajax({
-                    url: queryURL,
-                    context: document.body
-                }).done(function(val) {
-                    emblem = val
                     $('.raw-data').html($('.raw-data').html() + JSON.stringify(val, null, 4))
                     if (!keys[0].emblems) {keys[0].emblems = []}
-                    keys[0].emblems[keys[0].emblems.length] = {name: val.name, shares: shares}
+                    keys[0].emblems[keys[0].emblems.length] = {name: val.payload.import_response.name, shares: val}
                     localStorage.setItem('coval-testnet', JSON.stringify(keys))
                     getBalance()
                 })
@@ -149,7 +135,13 @@
             }
 
             function getEmblemInternalAddresses(name) {
-                return keys[0].emblems.filter(function(emblem){return emblem.name == name})[0].shares.payload.addresses
+                var filteredKeys = keys[0].emblems.filter(function(emblem){return emblem.name == name})
+                if (filteredKeys.length > 0) {
+                    return filteredKeys[0].shares.payload.addresses
+                } else {
+                    return []
+                }
+                
             }
             
             /* UNLOQ LOGIN */
