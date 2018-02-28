@@ -73,7 +73,11 @@
             function getShare() {
                 $(".loading").show()
                 var shares = shares
-                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val()
+                var isPrivate = ""
+                if($('.ui.checkbox input').is(":checked")) {
+                    isPrivate = "&unloq_id="+keys[0].accessToken.unloq_id
+                }
+                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + isPrivate
                 
                 $.ajax({
                     url: queryURL,
@@ -160,7 +164,8 @@
             }
 
             $( document ).ready(function() {
-                getWallet()                
+                getWallet()
+                $('.ui.checkbox').checkbox()              
             })
 
             /* UNLOQ AUTOEXEC */
@@ -221,12 +226,18 @@
         <p><b>IMPORTANT! </b>This is not secure and may go away at any time. You should not send any value to your vaults that you don't want to lose! </p>
         <div class="ui segment">
             <div class="ui fluid form">
-                <div class="two fields">
+                <div class="three fields">
                     <div class="field">
                         <label>Emblem Name</label>
                         <input class="requested-name" placeholder="My secret vault" type="text">
                     </div>
-                    <div class="field">
+                    <div class="four wide field">
+                        <label>Private</label>
+                        <div class="ui toggle checkbox">                           
+                            <input type="checkbox" name="private" tabindex="0" class="hidden">                          
+                        </div>
+                      </div>
+                    <div class="eight wide field">
                             <label>Activity</label>
                         <div onclick="getShare()" class="ui secondary submit button">New Vault</div>
                         <div onclick="getBalance()" class="ui secondary green button">Get Balances</div>
