@@ -57,11 +57,11 @@
             function getShare() {
                 $(".loading").show()
                 var shares = shares
-                var isPrivate = ""
+                var ifPrivate = ""
                 if($('.ui.checkbox input').is(":checked")) {
-                    isPrivate = "&unloq_id="+keys[0].accessToken.unloq_id
+                    ifPrivate = "&unloq_id="+keys[0].accessToken.unloq_id
                 }
-                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + isPrivate
+                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + ifPrivate
                 
                 $.ajax({
                     url: queryURL,
