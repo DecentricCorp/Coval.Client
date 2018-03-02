@@ -19,11 +19,13 @@
                     checkForAuth(getWallet)                  
                 } else {
                     if (!JSON.parse(localStorage.getItem('coval-testnet'))[0].address) {
+                        var token = JSON.parse(localStorage.getItem('coval-testnet'))[0].accessToken
                         checkForAuth(function(){
                             keys[0] = hdkey.StandardHDKey('0', function(address, key){
                                 localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key:key}]))
                                 return {address: address, key: key}
                             })
+                            keys[0].accessToken = token
                             $(".my-address").text(keys[0].address)
                             getBalance()
                         })                        
@@ -59,9 +61,9 @@
                 var shares = shares
                 var ifPrivate = ""
                 if($('.ui.checkbox input').is(":checked")) {
-                    ifPrivate = "&unloq_id="+keys[0].accessToken.unloq_id
+                    ifPrivate = "&pvt=true"
                 }
-                var queryURL = "http://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + ifPrivate
+                var queryURL = "http://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + "&unloq_id="+keys[0].accessToken.unloq_id + ifPrivate
                 
                 $.ajax({
                     url: queryURL,
@@ -98,7 +100,7 @@
                             visibility = '<i class="lock icon"></i>'
                         }
                         var buttons = "<p><div onclick=\"$('.ui.open.modal').modal('show')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
-                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
+                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
                             var address = addresses[key].address
@@ -126,9 +128,16 @@
                     $('.emblem.ui.accordion').accordion()
                 })
             }
-
-            function isClaimable(name) {
-                return keys[0].emblems.filter(function(emblem){return emblem.name == name}).length > 0
+            function getProvidedName(name) {
+                var emblem = keys[0].emblems.filter(function(emblem){return emblem.name == name})[0]
+                var _name
+                if (emblem.shares.payload.emblem_type === "private" && emblem.shares.payload.provided_name !== undefined) {
+                    _name = "Name Hidden"
+                }
+                return _name || emblem.shares.payload.provided_name || ""
+            }
+            function isClaimable(name) {                
+                return keys[0].emblems.filter(function(emblem){return emblem.name == name})[0].shares.my_share !== undefined
             }
             function isPrivate(name) {
                 return (keys[0].emblems.filter(function(emblem){return emblem.name == name})[0]).shares.payload.emblem_type === "private"
@@ -242,10 +251,6 @@
                         <div onclick="getShare()" class="ui secondary submit button">New Vault</div>
                         <div onclick="getBalance()" class="ui secondary green button">Get Balances</div>
                     </div>
-                    <!-- <div class="field">
-                        <label>Last Name</label>
-                        <input placeholder="Last Name" type="text">
-                    </div> -->
                 </div>
                 <div class="emblems"> </div>
                 
@@ -266,27 +271,12 @@
                     Login to Emblem Vault
                 </div>
                 <div class=" content">
-                    <!-- <div class="ui medium image">
-                    <img src="site-logo.svg">
-                    <span>
-                        <h1>Vault</h1>
-                    </span>
-                    </div> -->
                     <div class="description">
                         <div class="unloq-login">
-                            <script type="text/javascript" src="http://plugin.unloq.io/login.js" data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
+                            <script type="text/javascript" src="https://plugin.unloq.io/login.js" data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
                         </div>
                     </div>
-                </div>
-                <!-- <div class="actions">
-                    <div class="ui black deny button">
-                    Nope
-                    </div>
-                    <div class="ui positive right labeled icon button">
-                    Yep, I know what I'm doing
-                    <i class="checkmark icon"></i>
-                    </div>
-                </div> -->
+                </div>                
             </div>
             <div class="ui register basic modal">
                         <i class="close icon"></i>
@@ -294,15 +284,9 @@
                             Register with Emblem Vault
                         </div>
                         <div class=" content">
-                            <!-- <div class="ui medium image">
-                            <img src="site-logo.svg">
-                            <span>
-                                <h1>Vault</h1>
-                            </span>
-                            </div> -->
                             <div class="description">
                                     <div class="unloq-register">
-                                            <script src="http://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
+                                            <script src="https://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
                                         </div>
                             </div>
                         </div>
@@ -356,21 +340,6 @@
                 </div>
             </div>
             <div class="confirm-content"></div>
-            <!-- <script id="confirmation-panel" type="text/x-handlebars-template"> -->
-                <!-- <div class="ui confirm basic modal">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            Confirm with Emblem Vault
-                        </div>
-                        <div class=" content">
-                            <div class="description">
-                                <div class="unloq-confirmation">
-                                    <script src="https://plugin.unloq.io/confirmation.js" data-unloq-key="7a544afc-9a86-4f56-beff-07f533ca6c50-08kOJ8Oy" data-unloq-init="onUnloqInit"></script>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                <!-- </script> -->
         </body>
 </body>
 </html>
