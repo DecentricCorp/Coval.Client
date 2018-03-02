@@ -42,22 +42,6 @@
                     if (window.location.hash.split('?')[0] === "#register") {
                         $('.ui.register.modal').modal('show')
                     } else if(window.location.hash.split('?')[0] === "#confirm") {
-                        /* var s = document.createElement('script')
-                        s.type = 'text/javascript' */
-                        /* var att1 = document.createAttribute("data-unloq-key")
-                        att1.value = '7a544afc-9a86-4f56-beff-07f533ca6c50-08kOJ8Oy'
-                        var att2 = document.createAttribute("data-unloq-init")
-                        att2.value = 'onUnloqInit'
-                        s.setAttributeNode(att1)
-                        s.setAttributeNode(att2) */
-                        /* setTimeout(function(){
-                            //s.src = 'https://plugin.unloq.io/confirmation.js'
-                            $('.unloq-confirmation').append(s)
-                        }, 100) */
-                        // -- var source   = document.getElementById("confirmation-panel").innerHTML
-                        // -- var template = Handlebars.compile(source)
-                        //$(".confirm-content").html(template())
-                        //$('.ui.confirm.modal').modal('show')
                         
                     } else {
                         $('.ui.login.modal').modal('show')
@@ -109,13 +93,22 @@
                         if (isClaimable(element.name)) {
                             validity = "(claimable)"
                         }
+                        var visibility = '<i class="unlock icon"></i>'
+                        if (isPrivate(element.name)) {
+                            visibility = '<i class="lock icon"></i>'
+                        }
                         var buttons = "<p><div onclick=\"$('.ui.basic.modal').modal('show')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
-                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
+                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
                             var address = addresses[key].address
+                            var address_visibility = ""
+                            if (isPrivate(element.name)) {
+                                address = "Private"
+                                address_visibility = visibility
+                            }
                             var unit = addresses[key].unit
-                            emblemHtml = emblemHtml + "<div><img width='16px' onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit+".png'/>" + key + " : " + address + "</div>"
+                            emblemHtml = emblemHtml + "<div><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit+".png'/>" + address_visibility + key + " : " + address + "</div>"
                             if (i == Object.keys(addresses).length -1) {
                                 emblemHtml = emblemHtml + "</p></div>"
                                 
@@ -136,6 +129,9 @@
 
             function isClaimable(name) {
                 return keys[0].emblems.filter(function(emblem){return emblem.name == name}).length > 0
+            }
+            function isPrivate(name) {
+                return (keys[0].emblems.filter(function(emblem){return emblem.name == name})[0]).shares.payload.emblem_type === "private"
             }
 
             function getEmblemInternalAddresses(name) {
@@ -207,10 +203,14 @@
                 padding-left: 15px;
             }
             .send {
-                padding: .38571429em 1em 1.4em !important
+                padding: .38571429em 1em 1.4em !important;
             }
             .reset {
                 float: right;
+            }
+            .unit {
+                margin-right: 2px;
+                margin-bottom: -2px;
             }
         </style>
 </head>
