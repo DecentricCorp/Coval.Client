@@ -6,7 +6,7 @@
 <script src="./bundle.js"></script>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="semantic/dist/semantic.min.js"></script>
         <script src="semantic/dist/components/accordion.min.js"></script>
         <script src="bower_components/handlebars/handlebars.js"></script>
@@ -61,7 +61,7 @@
                 if($('.ui.checkbox input').is(":checked")) {
                     ifPrivate = "&unloq_id="+keys[0].accessToken.unloq_id
                 }
-                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + ifPrivate
+                var queryURL = "http://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + ifPrivate
                 
                 $.ajax({
                     url: queryURL,
@@ -79,7 +79,7 @@
             function getBalance() {
                 $(".loading").show()
                 $(".emblems").html("")
-                var queryURL = "https://www.synrgtech.net/address-balances?address=" + keys[0].address
+                var queryURL = "http://www.synrgtech.net/address-balances?address=" + keys[0].address
                 
                 $.ajax({
                     url: queryURL,
@@ -97,7 +97,7 @@
                         if (isPrivate(element.name)) {
                             visibility = '<i class="lock icon"></i>'
                         }
-                        var buttons = "<p><div onclick=\"$('.ui.basic.modal').modal('show')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
+                        var buttons = "<p><div onclick=\"$('.ui.open.modal').modal('show')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
@@ -274,7 +274,7 @@
                     </div> -->
                     <div class="description">
                         <div class="unloq-login">
-                            <script type="text/javascript" src="https://plugin.unloq.io/login.js" data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
+                            <script type="text/javascript" src="http://plugin.unloq.io/login.js" data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
                         </div>
                     </div>
                 </div>
@@ -302,7 +302,7 @@
                             </div> -->
                             <div class="description">
                                     <div class="unloq-register">
-                                            <script src="https://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
+                                            <script src="http://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
                                         </div>
                             </div>
                         </div>
@@ -336,7 +336,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ui basic modal">
+            <div class="ui open basic modal">
                 <div class="ui icon header">
                     <i class="archive icon"></i>
                     Open Vault
