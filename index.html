@@ -77,7 +77,40 @@
                     getBalance()
                 })
             }
+            function claimEmblem(emblem_name) {
+                $(".loading").show()
+                $(".emblems").html("")
+                //https://www.synrgtech.net/claim?name=EMB377379&address=12vJVPZdjfUwGzXs6BB5gFd5uxTtLx6iew&unloq_id=4135&my_share=
+                var queryURL = "http://www.synrgtech.net/claim?name="+emblem_name+"&address=" + keys[0].address +  "&unloq_id=" + keys[0].accessToken.unloq_id + "&my_share=" + getEmblemByName(emblem_name).shares.my_share
+                console.log(queryURL)
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(val) {
+                    var seed = val                    
+                    var emblem = getEmblemByName(emblem_name)
+                    emblem.claimed = emblem.shares
+                    emblem.shares = { emblem_seed: val.emblem_seed }  
+                    emblem.shares.payload = emblem.claimed.payload
+                    emblem.claimed.payload = {}                  
+                    localStorage.setItem('coval-testnet', JSON.stringify(keys))
+                    getBalance()
+                })
+            }
 
+            function openClaimModal(emblem) {
+                    var claim_modal = $('.ui.open.modal').modal('setting', {
+                        closable: false,
+                        onDeny: function () {
+                            claim_modal.modal('hide')
+                            return false;
+                        }, onApprove: function(){
+                            //alert("Opening " + emblem)
+                            claimEmblem(emblem)
+                        }
+                    })
+                    claim_modal.modal('show')
+                }
             function getBalance() {
                 $(".loading").show()
                 $(".emblems").html("")
@@ -91,7 +124,7 @@
                     $('.raw-data').html($('.raw-data').html() + JSON.stringify(val, null, 4))
                     var emblemHtml = "<div class='emblem ui styled accordion'>"
                     val.forEach((element, index) => {
-                        var validity = "(no shares stored)"
+                        var validity = "(claimed)"
                         if (isClaimable(element.name)) {
                             validity = "(claimable)"
                         }
@@ -99,14 +132,19 @@
                         if (isPrivate(element.name)) {
                             visibility = '<i class="lock icon"></i>'
                         }
-                        var buttons = "<p><div onclick=\"$('.ui.open.modal').modal('show')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
-                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>" + buttons//)//"<div class='ui header'>"+element.name+" "+validity+"</div>"
+                        var buttons = "<p><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
+                        emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
+                        if (isClaimable(element.name)) {
+                            emblemHtml = emblemHtml + buttons
+                        } else {
+                            emblemHtml = emblemHtml + "<p>Claimed Seed: " + getEmblemByName(element.name).shares.emblem_seed + "</p>"
+                        }
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
                             var address = addresses[key].address
                             var address_visibility = ""
                             if (isPrivate(element.name)) {
-                                address = "Private"
+                                address = "<i class=\"user secret icon\"></i>"
                                 address_visibility = visibility
                             }
                             var unit = addresses[key].unit
@@ -128,8 +166,11 @@
                     $('.emblem.ui.accordion').accordion()
                 })
             }
+            function getEmblemByName(name){
+                return keys[0].emblems.filter(function(emblem){return emblem.name == name})[0]
+            }
             function getProvidedName(name) {
-                var emblem = keys[0].emblems.filter(function(emblem){return emblem.name == name})[0]
+                var emblem = getEmblemByName(name)
                 var _name
                 if (emblem.shares.payload.emblem_type === "private" && emblem.shares.payload.provided_name !== undefined) {
                     _name = "Name Hidden"
