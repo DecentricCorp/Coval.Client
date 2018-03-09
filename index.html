@@ -130,7 +130,8 @@
                         }
                         var visibility = '<i class="unlock icon"></i>'
                         if (isPrivate(element.name)) {
-                            visibility = '<i class="lock icon"></i>'
+                            var _emblem = getEmblemByName(element.name)
+                            visibility = '<i data-content="Emblem Name: '+_emblem.shares.payload.provided_name+'" class="lock icon"></i>'
                         }
                         var buttons = "<p><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
@@ -144,7 +145,7 @@
                             var address = addresses[key].address
                             var address_visibility = ""
                             if (isPrivate(element.name)) {
-                                address = "<i class=\"user secret icon\"></i>"
+                                address = "<i data-content=\" "+addresses[key].address+" \" class=\"user secret icon\"></i>"
                                 address_visibility = visibility
                             }
                             var unit = addresses[key].unit
@@ -164,6 +165,8 @@
                     })
                     $(".loading").hide()
                     $('.emblem.ui.accordion').accordion()
+                    $('.title .lock').popup({ inline: true })
+                    $('i.user').popup({ inline: true })
                 })
             }
             function getEmblemByName(name){
@@ -211,7 +214,7 @@
 
             $( document ).ready(function() {
                 getWallet()
-                $('.ui.checkbox').checkbox()              
+                $('.ui.checkbox').checkbox()
             })
 
             /* UNLOQ AUTOEXEC */
