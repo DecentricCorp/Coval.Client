@@ -6,7 +6,7 @@
 <script src="./bundle.js"></script>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
-        <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="semantic/dist/semantic.min.js"></script>
         <script src="semantic/dist/components/accordion.min.js"></script>
         <script src="bower_components/handlebars/handlebars.js"></script>
@@ -63,7 +63,7 @@
                 if($('.ui.checkbox input').is(":checked")) {
                     ifPrivate = "&pvt=true"
                 }
-                var queryURL = "http://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + "&unloq_id="+keys[0].accessToken.unloq_id + ifPrivate
+                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + "&unloq_id="+keys[0].accessToken.unloq_id + ifPrivate
                 
                 $.ajax({
                     url: queryURL,
@@ -81,7 +81,7 @@
                 $(".loading").show()
                 $(".emblems").html("")
                 //https://www.synrgtech.net/claim?name=EMB377379&address=12vJVPZdjfUwGzXs6BB5gFd5uxTtLx6iew&unloq_id=4135&my_share=
-                var queryURL = "http://www.synrgtech.net/claim?name="+emblem_name+"&address=" + keys[0].address +  "&unloq_id=" + keys[0].accessToken.unloq_id + "&my_share=" + getEmblemByName(emblem_name).shares.my_share
+                var queryURL = "https://www.synrgtech.net/claim?name="+emblem_name+"&address=" + keys[0].address +  "&unloq_id=" + keys[0].accessToken.unloq_id + "&my_share=" + getEmblemByName(emblem_name).shares.my_share
                 console.log(queryURL)
                 $.ajax({
                     url: queryURL,
@@ -114,7 +114,7 @@
             function getBalance() {
                 $(".loading").show()
                 $(".emblems").html("")
-                var queryURL = "http://www.synrgtech.net/address-balances?address=" + keys[0].address
+                var queryURL = "https://www.synrgtech.net/address-balances?address=" + keys[0].address
                 
                 $.ajax({
                     url: queryURL,

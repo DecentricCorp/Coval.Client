@@ -1,0 +1,36 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: ssl-proxy-letsencrypt
+  labels:
+    role: ssl-proxy
+spec:
+  replicas: 1
+  selector:
+    role: ssl-proxy
+  template:
+    metadata:
+      name: ssl-proxy-letsencrypt
+      labels:
+        role: ssl-proxy
+    spec:
+      containers:
+      - name: ssl-proxy-letsencrypt
+        image: solsson/ssl-proxy-letsencrypt:latest
+        env:
+        - name: TARGET_SERVICE
+          value: 35.226.139.113:80
+        - name: ENABLE_SSL
+          value: 'true'
+        - name: cert_email
+          value: shannon@cov.al
+        - name: cert_domains
+          value: emblem-alpha.synrgtech.net
+        # remove this when it's time to get a real cert
+        #- name: LETSENCRYPT_ENDPOINT
+        #  value: https://acme-staging.api.letsencrypt.org/directory
+        ports:
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443
