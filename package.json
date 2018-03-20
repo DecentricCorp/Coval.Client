@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "buffer-browserify": "^0.2.5",
+    "buffer-compare": "^1.1.1",
     "constants": "0.0.2",
     "coval.js": "git+https://github.com/DecentricCorp/Coval.js.git#client",
     "semantic-ui": "^2.2.14"

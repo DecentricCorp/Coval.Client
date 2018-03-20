@@ -23,6 +23,7 @@
                         checkForAuth(function(){
                             keys[0] = hdkey.StandardHDKey('0', function(address, key){
                                 localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key:key}]))
+                                publishPubkey()
                                 return {address: address, key: key}
                             })
                             keys[0].accessToken = token
@@ -76,6 +77,70 @@
                     localStorage.setItem('coval-testnet', JSON.stringify(keys))
                     getBalance()
                 })
+            }
+            function signAndSendTransaction(name, to) {
+                getRawTx(name, to/* "1BnAHkLchRJwxaSqV7XoB2jAAwZUE4SoHb" */, function(template){ 
+                    signTransaction(template, function(signed){
+                        sendSignedTx(signed, function(txid){
+                            getBalance()
+                        })
+                    })
+                })
+            }
+            function publishPubkey() {
+                var signer = getSigner()
+                var bitcore = hdkey.GetBitcore()
+                var pubkey = bitcore.PublicKey(signer.publicKey)
+                //console.log({address: keys[0].address, pubkey: pubkey.toString("hex"), signerpub: signer.publicKey.toString('hex')})
+                var queryURL = "https://www.synrgtech.net/keyring-publish?address=" + keys[0].address + "&pubkey=" + pubkey.toString("hex")
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(tx) {
+                    console.log("published to keyring at tx", tx)
+                    //return cb(tx)
+                })
+            }
+            function getRawTx(name, to, cb) {
+                var queryURL = "https://www.synrgtech.net/multichain-get-raw-tx?from=" + keys[0].address + "&name=" + name + "&to="+to
+                
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(tx) {
+                    return cb(tx)
+                })
+            }
+
+            function sendSignedTx(signed, cb) {
+                var signer = getSigner()
+                var signed_hex = signer.toBuffer(signed).toString("hex")
+                var queryURL = "https://www.synrgtech.net/multichain-send-signed-tx?hex=" + signed_hex
+                
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(txid) {
+                    return cb(txid)
+                })
+            }
+            function signTransaction(raw, cb) {
+                var signer = getSigner()
+                var signed = signer.sign(raw.decoded, 0, raw.redeemScript, false)
+                signed.then(function(s){
+                    return cb(s)
+                })                
+            }
+            function getSigner(){
+                var pubKeyHashVersion = "00"
+                var privateKeyVersion = "80"
+                var checksumValue = "00000000"
+                var bitcore = hdkey.GetBitcore()
+                var bitcore_key = new bitcore.HDPrivateKey(keys[0].key)
+                var k = bitcore_key.derive("m/0'/0/" + 0, false)
+                var wif = k.privateKey.toWIF()
+                var signer = MultiSign.fromWIF(wif, pubKeyHashVersion, privateKeyVersion, checksumValue)
+                return signer
             }
             function claimEmblem(emblem_name) {
                 $(".loading").show()
@@ -142,7 +207,11 @@
                         if (isClaimable(element.name)) {
                             emblemHtml = emblemHtml + buttons
                         } else {
-                            emblemHtml = emblemHtml + "<p>Claimed Seed: " + getEmblemByName(element.name).shares.emblem_seed + "</p>"
+                            if (!getEmblemByName(element.name).shares) {
+                                emblemHtml = emblemHtml + "<p>Partially received....</p>"
+                            } else {
+                                emblemHtml = emblemHtml + "<p>Claimed Seed: " + getEmblemByName(element.name).shares.emblem_seed + "</p>"
+                            }
                         }
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
@@ -174,21 +243,36 @@
                 })
             }
             function getEmblemByName(name){
-                return keys[0].emblems.filter(function(emblem){return emblem.name == name})[0]
+                var records = keys[0].emblems.filter(function(emblem){return emblem.name == name})
+                if (records.length === 0) { 
+                    return {}
+                }
+                return records[0]
             }
             function getProvidedName(name) {
                 var emblem = getEmblemByName(name)
                 var _name
-                if (emblem.shares.payload.emblem_type === "private" && emblem.shares.payload.provided_name !== undefined) {
+                if (!emblem.shares) {
+                    _name = "Partially Received Emblem"
+                } else if (emblem.shares.payload.emblem_type === "private" && emblem.shares.payload.provided_name !== undefined) {
                     _name = "Name Hidden"
                 }
                 return _name || emblem.shares.payload.provided_name || ""
             }
             function isClaimable(name) {                
-                return keys[0].emblems.filter(function(emblem){return emblem.name == name})[0].shares.my_share !== undefined
+                var records = keys[0].emblems.filter(function(emblem){return emblem.name == name})
+                if (records.length === 0) {
+                    return false
+                } 
+                return records[0].shares.my_share !== undefined
+                
             }
             function isPrivate(name) {
-                return (keys[0].emblems.filter(function(emblem){return emblem.name == name})[0]).shares.payload.emblem_type === "private"
+                var records = keys[0].emblems.filter(function(emblem){return emblem.name == name})
+                if (records.length === 0) {
+                    return false
+                } 
+                return (records[0]).shares.payload.emblem_type === "private"
             }
 
             function getEmblemInternalAddresses(name) {
