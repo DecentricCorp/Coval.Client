@@ -13,7 +13,7 @@
   "dependencies": {
     "buffer-browserify": "^0.2.5",
     "constants": "0.0.2",
-    "coval.js": "git+https://github.com/DecentricCorp/Coval.js.git",
+    "coval.js": "git+https://github.com/DecentricCorp/Coval.js.git#client",
     "semantic-ui": "^2.2.14"
   },
   "devDependencies": {

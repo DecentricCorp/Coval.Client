@@ -131,7 +131,11 @@
                         var visibility = '<i class="unlock icon"></i>'
                         if (isPrivate(element.name)) {
                             var _emblem = getEmblemByName(element.name)
-                            visibility = '<i data-content="Emblem Name: '+_emblem.shares.payload.provided_name+'" class="lock icon"></i>'
+                            var hidden_name = ""
+                            if (_emblem.shares.payload.provided_name) {
+                                hidden_name = 'data-content="Emblem Name: '+_emblem.shares.payload.provided_name+'"'
+                            }
+                            visibility = '<i '+hidden_name+' class="lock icon"></i>'
                         }
                         var buttons = "<p><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
@@ -149,7 +153,7 @@
                                 address_visibility = visibility
                             }
                             var unit = addresses[key].unit
-                            emblemHtml = emblemHtml + "<div><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit+".png'/>" + address_visibility + key + " : " + address + "</div>"
+                            emblemHtml = emblemHtml + "<div><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit.toLowerCase()+".png'/>" + address_visibility + key + " : " + address + "</div>"
                             if (i == Object.keys(addresses).length -1) {
                                 emblemHtml = emblemHtml + "</p></div>"
                                 
@@ -165,7 +169,7 @@
                     })
                     $(".loading").hide()
                     $('.emblem.ui.accordion').accordion()
-                    $('.title .lock').popup({ inline: true })
+                    $('.title .lock[data-content]').popup({ inline: true })
                     $('i.user').popup({ inline: true })
                 })
             }
