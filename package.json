@@ -15,7 +15,6 @@
     "buffer-compare": "^1.1.1",
     "constants": "0.0.2",
     "coval.js": "git+https://github.com/DecentricCorp/Coval.js.git#client",
-    "electron": "^1.8.4",
     "semantic-ui": "^2.2.14"
   },
   "devDependencies": {
