@@ -145,6 +145,29 @@
                     </div>
                 </div>
             </div>
+            <!-- Trophy Case -->
+            <div class="ui trophy modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    Emblem Trophy Case
+                </div>
+                <div class="content">
+                    
+                    <div class="description">
+                    <div class="ui header">You are viewing the collectable trophy case for Emblem: <span class="name"></span></div>
+                    <div class="ui three column doubling grid container cats"></div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <!-- <div class="ui black deny button">
+                    Nope
+                    </div> -->
+                    <div class="ui positive right labeled icon button">
+                    Share
+                    <i class="share icon"></i>
+                    </div>
+                </div>
+            </div>
             <div class="confirm-content"></div>
             <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
             <script src="bower_components/jquery/dist/jquery.min.js" crossorigin="anonymous"></script>
@@ -259,7 +282,7 @@
             function signAndSendTransaction(name, to) {
                 getRawTx(name, to/* "1BnAHkLchRJwxaSqV7XoB2jAAwZUE4SoHb" */, function(template){ 
                     signTransaction(template, function(signed){
-                        sendSignedTx(signed, function(txid){
+                        sendSignedTx(signed, name, function(txid){
                             getBalance()
                         })
                     })
@@ -290,10 +313,11 @@
                 })
             }
 
-            function sendSignedTx(signed, cb) {
+            function sendSignedTx(signed, name, cb) {
                 var signer = getSigner()
                 var signed_hex = signer.toBuffer(signed).toString("hex")
-                var queryURL = "https://www.synrgtech.net/multichain-send-signed-tx?hex=" + signed_hex
+                var my_share = getEmblemByName(emblem_name).shares.my_share
+                var queryURL = "https://www.synrgtech.net/emblem-send?my_share="+my_share+"&signed_tx=" + signed_hex + "&unloq_id=" + keys[0].accessToken.unloq_id + "&address=" + keys[0].address
                 
                 $.ajax({
                     url: queryURL,
@@ -380,7 +404,7 @@
                             }
                             visibility = '<i '+hidden_name+' class="lock icon"></i>'
                         }
-                        var buttons = "<p><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
+                        var buttons = "<p><div onclick=\"openTrophyCase('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
                         if (isClaimable(element.name)) {
                             emblemHtml = emblemHtml + buttons
@@ -462,7 +486,37 @@
                 }
                 
             }
-            
+            function openTrophyCase(name){
+                var kitties = ""
+                $(".ui.trophy.modal .name").html(name)
+                var emb = getEmblemByName(name)
+                    /* var addy
+                    if (name === "EMB619393") { 
+                        addy = "0x5a63264914a1ecb626e32e8ad683704ba7b0621f"
+                    } else {
+                        addy = "0x09c3299528707f531d6ff16c362ca8ecbdc9a05a"
+                    }
+                    emb.shares.payload.addresses.ethereum = {address: addy, unit: "eth"} */
+                    //console.log("address", emb.shares.payload.addresses.ethereum.address)
+                    ck.getUserKitties(emb.shares.payload.addresses.ethereum.address).then((resp)=>{
+                        resp.forEach((cat)=>{
+                            console.log(cat)
+                            var cat_name
+                            if (cat.name) {
+                                cat_name = cat.name
+                            } else {
+                                cat_name = cat.id
+                            }
+                            //console.log(cat_name)
+                            kitties = kitties + "<div class=\"column\"><div class=\"ui segment\"><img style=\"display:block;margin:auto;\" width=\"50%\"src=\""+cat.image_url_cdn+"\"><span style=\"text-align:center;\"><h3>" + cat_name + "</h3></span></div></div>"
+                            $(".ui.trophy.modal .cats").html(kitties)
+                        })
+                        
+                        $('.ui.trophy.modal').modal('show')
+                        
+                    })
+                    
+            }
             /* UNLOQ LOGIN */
             function handleLoginSuccess(accessToken) {
                 var storage
