@@ -24,8 +24,8 @@
                 float: right;
             }
             .unit {
-                margin-right: 2px;
-                margin-bottom: -2px;
+                margin-right: 5px;
+                margin-bottom: -4px;
             }
         </style>
 </head>
@@ -326,6 +326,7 @@
                     return cb(txid)
                 })
             }
+        
             function signTransaction(raw, cb) {
                 var signer = getSigner()
                 var signed = signer.sign(raw.decoded, 0, raw.redeemScript, false)
@@ -378,6 +379,41 @@
                     })
                     claim_modal.modal('show')
                 }
+            function getBitcoinBalance(emblem_name, address) {
+                var queryURL = "https://blockchain.info/balance?active="+address+"&cors=true"
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(val) {
+                    var balance_selector = "div:contains(bitcoin : "+address+")"
+                    var container_selector = ".accordion:contains("+emblem_name+")"
+                    $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+val[address].final_balance + "</b>")
+                })
+            }
+            function getXcpBalance(emblem_name, address) {
+                var queryURL = "https://xchain.io/api/balances/"+address+"&cors=true"
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(val) {
+                    var balance_selector = "div:contains(coval : "+address+")"
+                    var container_selector = ".accordion:contains("+emblem_name+")"
+                    var coval_data = val.data.filter(coin=>{return coin.asset === "COVAL"})[0] || {quantity: 0}
+                    $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+coval_data.quantity + "</b>")
+                })
+            }
+            function getEthereumBalance(emblem_name, address) {
+                var queryURL = "https://api.etherscan.io/api?module=account&action=balance&address="+address+"&tag=latest"
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(val) {
+                    var balance_selector = "div:contains(ethereum : "+address+")"
+                    var container_selector = ".accordion:contains("+emblem_name+")"
+                    //var coval_data = val.data.filter(coin=>{return coin.asset === "COVAL"})[0] || {quantity: 0}
+                    $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+val.result + "</b>")
+                })
+            }
             function getBalance() {
                 $(".loading").show()
                 $(".emblems").html("")
@@ -417,17 +453,29 @@
                         }
                         var addresses = getEmblemInternalAddresses(element.name)
                         Object.keys(addresses).forEach((key, i) => {
-                            var address = addresses[key].address
-                            var address_visibility = ""
-                            if (isPrivate(element.name)) {
-                                address = "<i data-content=\" "+addresses[key].address+" \" class=\"user secret icon\"></i>"
-                                address_visibility = visibility
-                            }
-                            var unit = addresses[key].unit
-                            emblemHtml = emblemHtml + "<div><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit.toLowerCase()+".png'/>" + address_visibility + key + " : " + address + "</div>"
-                            if (i == Object.keys(addresses).length -1) {
-                                emblemHtml = emblemHtml + "</p></div>"
-                                
+                            
+                            if (key === "bitcoin" || key === "coval" || key === "ethereum") {
+                                if (key === "bitcoin") {
+                                    getBitcoinBalance(element.name, addresses[key].address)
+                                }
+                                if (key === "coval") {
+                                    getXcpBalance(element.name, addresses[key].address)
+                                }
+                                if (key === "ethereum") {
+                                    getEthereumBalance(element.name, addresses[key].address)
+                                }
+                                var address = addresses[key].address
+                                var address_visibility = ""
+                                if (isPrivate(element.name)) {
+                                    address = "<i style=\""+display_address+"\" data-content=\" "+addresses[key].address+" \" class=\"user secret icon\"></i>"
+                                    address_visibility = visibility
+                                }
+                                var unit = addresses[key].unit
+                                emblemHtml = emblemHtml + "<div style=\"line-height:28px;\"><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit.toLowerCase()+".png'/>" + address_visibility + key + " : " + address + "<span class=\"balance\"></span></div>"
+                                if (i == Object.keys(addresses).length -1) {
+                                    emblemHtml = emblemHtml + "</p></div>"
+                                    
+                                }
                             }
                         })
                         if (index == val.length -1) {
