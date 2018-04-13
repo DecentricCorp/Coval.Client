@@ -398,7 +398,7 @@
                 }).done(function(val) {
                     var balance_selector = "div:contains(coval : "+address+")"
                     var container_selector = ".accordion:contains("+emblem_name+")"
-                    var coval_data = val.data.filter(coin=>{return coin.asset === "COVAL"})[0] || {quantity: 0}
+                    var coval_data = val.data.filter(coin=>{return coin.asset === "COVALC"})[0] || {quantity: 0}
                     $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+coval_data.quantity + "</b>")
                 })
             }
@@ -411,7 +411,7 @@
                     var balance_selector = "div:contains(ethereum : "+address+")"
                     var container_selector = ".accordion:contains("+emblem_name+")"
                     //var coval_data = val.data.filter(coin=>{return coin.asset === "COVAL"})[0] || {quantity: 0}
-                    $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+val.result + "</b>")
+                    $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+val.result * .000000000000000001 + "</b>")
                 })
             }
             function getBalance() {
