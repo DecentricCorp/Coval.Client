@@ -22,6 +22,7 @@
             }
             .reset {
                 float: right;
+                padding-right: 5px;
             }
             .unit {
                 margin-right: 5px;
@@ -31,12 +32,16 @@
 </head>
 <body>
     <div></div>
+    <input class="myFile" style="display:none" name="myFile" type="file">
     <div class="ui raised very padded text container segment">
         
         <h2 class="ui header">Emblem AlphaNet</h2>
         <div class="my-address"></div>
         <hr>
+        <div class="reset"><div onclick="export_wallet()" class="ui green label submit button transition visible">Export Wallet!</div></div>
+        <div class="reset"><div onclick="import_wallet()" class="ui orange label upload button transition visible">Import Wallet</div></div>
         <div class="reset"><div onclick="reset()" class="ui red label submit button transition visible">Reset Wallet!</div></div>
+        
         <p>Welcome to the Emblem Vault - alpha client. </p> 
         <p><b>IMPORTANT! </b>This is not secure and may go away at any time. You should not send any value to your vaults that you don't want to lose! </p>
         <div class="ui segment">
@@ -155,7 +160,7 @@
                     
                     <div class="description">
                     <div class="ui header">You are viewing the collectable trophy case for Emblem: <span class="name"></span></div>
-                    <div class="ui three column doubling grid container cats"></div>
+                    <div class="ui three column doubling grid container cats link cards"></div>
                     </div>
                 </div>
                 <div class="actions">
@@ -257,6 +262,54 @@
             function reset() {
                 localStorage.clear()
                 window.location.reload()
+            }
+            function export_wallet() {
+                var exp = localStorage.getItem('coval-testnet')
+                saveTextAsFile(exp)
+            }
+            function import_wallet() {
+                var files = $(".myFile")[0]
+                $(files).one("change", function (ev) {
+                    //if (files.files.length > 10) {
+                        console.log("loaded")
+                        loadFileAsText()
+                        //return;
+                    //}
+                })
+                $(".myFile")[0].click()
+            }
+            function saveTextAsFile(content) {
+                var textToSave = content
+                var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"})
+                var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob)
+                var fileNameToSaveAs = "Emblem-Backup.txt"
+            
+                var downloadLink = document.createElement("a")
+                downloadLink.download = fileNameToSaveAs
+                downloadLink.innerHTML = "Download File"
+                downloadLink.href = textToSaveAsURL;
+                downloadLink.onclick = destroyClickedElement
+                downloadLink.style.display = "none"
+                document.body.appendChild(downloadLink)
+            
+                downloadLink.click()
+            }
+            
+            function destroyClickedElement(event) {
+                document.body.removeChild(event.target);
+            }
+            
+            function loadFileAsText() {
+                var fileToLoad = $(".myFile")[0].files[0]
+            
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoadedEvent) 
+                {
+                    var textFromFileLoaded = JSON.parse(fileLoadedEvent.target.result);
+                    localStorage.setItem('coval-testnet', JSON.stringify(textFromFileLoaded))
+                    getWallet()
+                };
+                fileReader.readAsText(fileToLoad, "UTF-8");
             }
             function getShare() {
                 $(".loading").show()
@@ -546,6 +599,9 @@
                     }
                     emb.shares.payload.addresses.ethereum = {address: addy, unit: "eth"} */
                     //console.log("address", emb.shares.payload.addresses.ethereum.address)
+                    /*
+                    *   Draw connections between parents and children
+                    */
                     ck.getUserKitties(emb.shares.payload.addresses.ethereum.address).then((resp)=>{
                         resp.forEach((cat)=>{
                             console.log(cat)
@@ -556,7 +612,7 @@
                                 cat_name = cat.id
                             }
                             //console.log(cat_name)
-                            kitties = kitties + "<div class=\"column\"><div class=\"ui segment\"><img style=\"display:block;margin:auto;\" width=\"50%\"src=\""+cat.image_url_cdn+"\"><span style=\"text-align:center;\"><h3>" + cat_name + "</h3></span></div></div>"
+                            kitties = kitties + "<div class=\"column\"><div class=\"ui segment card\"><img style=\"display:block;margin:auto;\" width=\"50%\"src=\""+cat.image_url_cdn+"\"><span style=\"text-align:center;\"><h3>" + cat_name + "</h3></span></div></div>"
                             $(".ui.trophy.modal .cats").html(kitties)
                         })
                         
