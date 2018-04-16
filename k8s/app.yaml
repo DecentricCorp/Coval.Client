@@ -31,7 +31,7 @@ items:
           io.kompose.service: covalclient
       spec:
         containers:
-        - image: us.gcr.io/newagent-9575d/covalclient:v1
+        - image: us.gcr.io/newagent-9575d/covalclient:v2
           imagePullPolicy: Always
           name: covalclient
           ports:

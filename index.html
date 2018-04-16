@@ -366,7 +366,7 @@
                 })
             }
 
-            function sendSignedTx(signed, name, cb) {
+            function sendSignedTx(signed, emblem_name, cb) {
                 var signer = getSigner()
                 var signed_hex = signer.toBuffer(signed).toString("hex")
                 var my_share = getEmblemByName(emblem_name).shares.my_share
@@ -467,6 +467,35 @@
                     $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+val.result * .000000000000000001 + "</b>")
                 })
             }
+            function getOpenSeaBalance(emblem_name) {
+                var emb = getEmblemByName(emblem_name)
+                $(".ui.trophy.modal .name").html(emblem_name)
+                $(".ui.trophy.modal .cats").html("")
+                //var address = "0x09c3299528707f531d6ff16c362ca8ecbdc9a05a"
+                var address = emb.shares.payload.addresses.ethereum.address
+                var queryURL = "https://1h6pof1izw-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%20(lite)%203.24.9%3Breact-instantsearch%205.0.0-beta.1%3BJS%20Helper%202.24.0&x-algolia-application-id=1H6POF1IZW&x-algolia-api-key=4df9c579a49b1ec507d7224052598f42"
+                var data = {
+                        "requests": [
+                            {
+                                "indexName": "assets_prod_main",
+                                "params": "query=&maxValuesPerFacet=50&page=0&highlightPreTag=%3Cais-highlight-0000000000%3E&highlightPostTag=%3C%2Fais-highlight-0000000000%3E&facets=%5B%22_tags%22%2C%22owner.address%22%2C%22asset_contract.address%22%5D&tagFilters=&facetFilters=%5B%5B%22owner.address%3A"+address+"%22%5D%5D"
+                            }
+                        ]
+                    }
+                $.ajax({
+                    type: "POST",
+                    url: queryURL,
+                    data: JSON.stringify(data)
+                }).done(function(val){
+                    var assets = ""
+                    val.results[0].hits.forEach(asset=>{
+                        console.log(asset.asset_contract.name, asset.name, asset.image_url)
+                        assets = assets + "<div class=\"column\"><div class=\"ui segment card\"><img style=\"display:block;margin:auto;\" width=\"50%\"src=\""+asset.image_url+"\"><div class=\"content\"><div class=\"header\">" + asset.name + "<div class=\"meta\"><span class=\"date\">" + asset.asset_contract.name + "</span></div></div></div><div class=\"extra content\"><span><a target=\"_blank\" href=\"" + asset.external_link + "\">View on " + asset.asset_contract.name + " <i class=\"external alternate icon\"></i></a></span></div></div></div>"
+                        $(".ui.trophy.modal .cats").html(assets)
+                    })
+                    $('.ui.trophy.modal').modal('show')
+                })
+            }
             function getBalance() {
                 $(".loading").show()
                 $(".emblems").html("")
@@ -493,13 +522,13 @@
                             }
                             visibility = '<i '+hidden_name+' class="lock icon"></i>'
                         }
-                        var buttons = "<p><div onclick=\"openTrophyCase('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
+                        var buttons = "<p><div onclick=\"getOpenSeaBalance('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
                         if (isClaimable(element.name)) {
                             emblemHtml = emblemHtml + buttons
                         } else {
                             if (!getEmblemByName(element.name).shares) {
-                                emblemHtml = emblemHtml + "<p>Partially received....</p>"
+                                emblemHtml = emblemHtml + "<p>Partially received....</p></div>"
                             } else {
                                 emblemHtml = emblemHtml + "<p>Claimed Seed: " + getEmblemByName(element.name).shares.emblem_seed + "</p>"
                             }
@@ -519,6 +548,7 @@
                                 }
                                 var address = addresses[key].address
                                 var address_visibility = ""
+                                var display_address = ""
                                 if (isPrivate(element.name)) {
                                     address = "<i style=\""+display_address+"\" data-content=\" "+addresses[key].address+" \" class=\"user secret icon\"></i>"
                                     address_visibility = visibility
