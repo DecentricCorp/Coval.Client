@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="ui login basic modal">
+        <!-- <div class="ui login basic modal">
                 <i class="close icon"></i>
                 <div class="header">
                     Login to Emblem Vault
@@ -88,8 +88,8 @@
                         </div>
                     </div>
                 </div>                
-            </div>
-            <div class="ui register basic modal">
+        </div> -->
+        <!-- <div class="ui register basic modal">
                         <i class="close icon"></i>
                         <div class="header">
                             Register with Emblem Vault
@@ -101,7 +101,7 @@
                                         </div>
                             </div>
                         </div>
-                    </div>
+        </div> -->
                     
             <div class="ui send modal">
                 <i class="close icon"></i>
@@ -226,15 +226,13 @@
                     if (!JSON.parse(localStorage.getItem('coval-testnet'))[0].address) {
                         var token = JSON.parse(localStorage.getItem('coval-testnet'))[0].accessToken
                         checkForAuth(function(){
-                            keys[0] = hdkey.StandardHDKey('0', function(address, key){
-                                localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key:key}]))
-                                
-                                return {address: address, key: key}
-                            })
-                            keys[0].accessToken = token
-                            publishPubkey()
-                            $(".my-address").text(keys[0].address)
-                            getBalance()
+                            hdkey.StandardHDKey('0', function(address, key){
+                                localStorage.setItem('coval-testnet', JSON.stringify([{address: address, key:key, accessToken: token}]))
+                                keys[0] = {address: address, key: key, accessToken: token}
+                                publishPubkey()
+                                $(".my-address").text(address)
+                                getBalance()
+                            })                            
                         })                        
                     } else {
                         checkForAuth(function(){
@@ -253,11 +251,34 @@
                     } else if(window.location.hash.split('?')[0] === "#confirm") {
                         
                     } else {
-                        $('.ui.login.modal').modal('show')
+                        /* Disable UNLOQ */ //$('.ui.login.modal').modal('show')
+                        generateEncryptionKey()
                     }
                 } else {
                     return callback()
                 }  
+            }
+            function generateEncryptionKey() {
+                var bitcore = hdkey.GetBitcore()
+                var id = Math.floor(Math.random() * (1000000 - 1) + 1)
+                hdkey.StandardHDKey(id, function(address, key){
+                    var keysha = bitcore.crypto.Hash.sha256(new Buffer(key.xprivkey)).toString('hex')
+                    //console.log("keyz", address, key.xprivkey, unloq_key)
+                    var accessToken = mockUnloq(id, keysha, key.xprivkey)
+                    handleLoginSuccess(accessToken)
+                })                
+            }
+            function mockUnloq(id, key, pk){
+                var mock = { 
+                    "method": "MOCK", 
+                    "email": "", 
+                    "unloq_id": id.toString(),
+                    "unloq_key": key,
+                    "token": "", 
+                    "url": "",
+                    "pk": pk
+                }
+                return mock
             }
             function reset() {
                 localStorage.clear()
@@ -318,7 +339,7 @@
                 if($('.ui.checkbox input').is(":checked")) {
                     ifPrivate = "&pvt=true"
                 }
-                var queryURL = "https://www.synrgtech.net/split?address=" + keys[0].address + "&name=" + $('.requested-name').val() + "&unloq_id="+keys[0].accessToken.unloq_id + ifPrivate
+                var queryURL = "https://www.synrgtech.net/split?skip_unloq=true&unloq_key="+keys[0].accessToken.unloq_key+"&address=" + keys[0].address + "&name=" + $('.requested-name').val() + "&unloq_id="+keys[0].accessToken.unloq_id + ifPrivate
                 
                 $.ajax({
                     url: queryURL,
@@ -473,7 +494,7 @@
                 $(".ui.trophy.modal .cats").html("")
                 //var address = "0x09c3299528707f531d6ff16c362ca8ecbdc9a05a"
                 var address = emb.shares.payload.addresses.ethereum.address
-                var queryURL = "https://1h6pof1izw-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%20(lite)%203.24.9%3Breact-instantsearch%205.0.0-beta.1%3BJS%20Helper%202.24.0&x-algolia-application-id=1H6POF1IZW&x-algolia-api-key=4df9c579a49b1ec507d7224052598f42"
+                var queryURL = "https://1h6pof1izw-2.algolianet.com/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%20(lite)%203.24.9%3Breact-instantsearch%205.0.0-beta.1%3BJS%20Helper%202.24.0&x-algolia-application-id=1H6POF1IZW&x-algolia-api-key=4df9c579a49b1ec507d7224052598f42"
                 var data = {
                         "requests": [
                             {
@@ -534,7 +555,40 @@
                             }
                         }
                         var addresses = getEmblemInternalAddresses(element.name)
-                        Object.keys(addresses).forEach((key, i) => {
+                        var generateHtml = function(index, addresses){
+                            var keys = Object.keys(addresses)
+                            var key = keys[index]
+                            if (key === "bitcoin" || key === "coval" || key === "ethereum") {
+                                if (key === "bitcoin") {
+                                    getBitcoinBalance(element.name, addresses[key].address)
+                                }
+                                if (key === "coval") {
+                                    getXcpBalance(element.name, addresses[key].address)
+                                }
+                                if (key === "ethereum") {
+                                    getEthereumBalance(element.name, addresses[key].address)
+                                }
+                                var address = addresses[key].address
+                                var address_visibility = ""
+                                var display_address = ""
+                                if (isPrivate(element.name)) {
+                                    address = "<i style=\""+display_address+"\" data-content=\" "+addresses[key].address+" \" class=\"user secret icon\"></i>"
+                                    address_visibility = visibility
+                                }
+                                var unit = addresses[key].unit
+                                emblemHtml = emblemHtml + "<div style=\"line-height:28px;\"><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit.toLowerCase()+".png'/>" + address_visibility + key + " : " + address + "<span class=\"balance\"></span></div>"
+                                /* if (i == Object.keys(addresses).length -1) {
+                                    emblemHtml = emblemHtml + "</p></div>"
+                                    
+                                } */
+                            }
+                            if (index === keys.length -1) {
+                                emblemHtml = emblemHtml + "</p></div>"
+                            } else {
+                                generateHtml(index + 1, addresses)
+                            }
+                        }
+                        /* Object.keys(addresses).forEach((key, i) => {
                             
                             if (key === "bitcoin" || key === "coval" || key === "ethereum") {
                                 if (key === "bitcoin") {
@@ -559,13 +613,16 @@
                                     emblemHtml = emblemHtml + "</p></div>"
                                     
                                 }
-                            }
-                        })
+                            } */
+                        //})
+                        generateHtml(0, addresses)
                         if (index == val.length -1) {
                             //emblemHtml = emblemHtml + "</div>"
                             $(".emblems").append(emblemHtml)
                         }
+                        
                     })
+                    
                     $('.ui.sticky').sticky({
                         context: '#context'
                     })
@@ -656,7 +713,6 @@
                 var storage
                 if (!localStorage.getItem('coval-testnet')) {
                     storage = [{accessToken: null}]
-                    
                 } else {
                     storage = JSON.parse(localStorage.getItem('coval-testnet'))
                 }
@@ -669,32 +725,40 @@
             $( document ).ready(function() {
                 getWallet()
                 $('.ui.checkbox').checkbox()
+                
             })
+
+            /* function write(){
+                hdkey.StandardHDKey('0', function(address, key){
+                    $($(".ui.header")[0]).html(address)
+                })
+                
+            } */
 
             /* UNLOQ AUTOEXEC */
             var accessToken, coval
             (function () {
-                function onTokenReceived(accessToken) {
+                /* function onTokenReceived(accessToken) {
                     // Call your API with the user's access token
                     console.log("UNLOQ access token", accessToken);
                     handleLoginSuccess(accessToken)
                     //postBackToCovalApiViaZap(accessToken)
 
-                }
-                UNLOQ.onLogin(handleLoginSuccess)
-                window.onUnloqInit = function OnUNLOQInit() {
+                } */
+                //UNLOQ.onLogin(handleLoginSuccess)
+                //window.onUnloqInit = function OnUNLOQInit() {
                     /* UNLOQ.onRegister(function(identity){
                         postBackToCovalApiViaZap(identity)
                     }) */
                     //$.QueryString["token"]
-                    return {
-                        callback: onTokenReceived, // Once a user logs in and an UNLOQ access token is generated,
+                    //return {
+                        //callback: onTokenReceived, // Once a user logs in and an UNLOQ access token is generated,
                         // call this function in stead of performing the browser redirect.
-                        public_key: "PEM-encoded public key" // Optionally, include a public key when requesting the
+                        //public_key: "PEM-encoded public key" // Optionally, include a public key when requesting the
                         // user's personal encryption key.
-                    }
-                }
-                window.onUnloqLogin = function(){
+                    //}
+                //}
+                /* window.onUnloqLogin = function(){
                     console.log("Logged in!!!")
                     return {
                         callback: onTokenReceived, // Once a user logs in and an UNLOQ access token is generated,
@@ -702,7 +766,7 @@
                         public_key: "PEM-encoded public key" // Optionally, include a public key when requesting the
                         // user's personal encryption key.
                     }
-                }
+                } */
             })()
 
         </script>

@@ -12,7 +12,7 @@ items:
   spec:
     ports:
     - name: "80"
-      nodePort: 31019
+      nodePort: 31519
       port: 80
       protocol: TCP
       targetPort: 80
