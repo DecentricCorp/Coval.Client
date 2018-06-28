@@ -424,7 +424,9 @@
                 $(".emblems").html("")
                 //https://www.synrgtech.net/claim?name=EMB377379&address=12vJVPZdjfUwGzXs6BB5gFd5uxTtLx6iew&unloq_id=4135&my_share=
                 var queryURL = "https://www.synrgtech.net/claim?name="+emblem_name+"&address=" + keys[0].address +  "&unloq_id=" + keys[0].accessToken.unloq_id + "&my_share=" + getEmblemByName(emblem_name).shares.my_share
-                console.log(queryURL)
+                if (keys[0].accessToken.unloq_key) {
+                    queryURL = queryURL + "&key="+keys[0].accessToken.unloq_key
+                }
                 $.ajax({
                     url: queryURL,
                     context: document.body
