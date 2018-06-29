@@ -6,6 +6,37 @@
 
         
         <style>
+            body {
+                /* background: #25273e !important; */
+                background-image: url('https://emblemvault.com/img/body-bg.jpg') !important;
+                color: #cdae59 !important ;
+            }
+            .field label,
+            .my-address {
+                color: #cdae59 !important;
+            }
+            p,
+            .emblem .title {
+                color: rgb(255, 255, 255) !important;
+            }
+            .emblem .title:hover,
+            .emblem .title.active,
+            .text.menu .dropdown {
+                color: white !important;
+            }
+            .emblem.accordion,
+            .loading.message {
+                background-color: #7f86ad !important ;
+            }
+            h2 {
+                color: white !important;
+            }
+            .emblem-container {
+                background: #25273e !important;
+            }
+            .emblem-group {
+                background: #2e324e !important;
+            }
             .raw-data {
                 width: 100%;
                 /* height: -webkit-fill-available; */
@@ -33,18 +64,32 @@
 <body>
     <div></div>
     <input class="myFile" style="display:none" name="myFile" type="file">
-    <div class="ui raised very padded text container segment">
+    <div class="ui raised very padded text container segment emblem-container">
         
-        <h2 class="ui header">Emblem AlphaNet</h2>
-        <div class="my-address"></div>
+        <h2 class="ui header">Emblem Vault</h2>
         <hr>
-        <div class="reset"><div onclick="export_wallet()" class="ui green label submit button transition visible">Export Wallet!</div></div>
+        <div class="ui text menu">
+            <div class="ui left item">
+                <p class="my-address"></p>
+            </div>
+            <div class="ui right dropdown item">
+                Wallet Actions
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                <div onclick="import_wallet()" class="item">Import Wallet</div>
+                <div onclick="export_wallet()" class="item">Export Wallet</div>
+                <div onclick="reset()" class="item">Reset Wallet</div>
+                </div>
+            </div>
+        </div>
+              
+        <!-- <div class="reset"><div onclick="export_wallet()" class="ui green label submit button transition visible">Export Wallet!</div></div>
         <div class="reset"><div onclick="import_wallet()" class="ui orange label upload button transition visible">Import Wallet</div></div>
-        <div class="reset"><div onclick="reset()" class="ui red label submit button transition visible">Reset Wallet!</div></div>
+        <div class="reset"><div onclick="reset()" class="ui red label submit button transition visible">Reset Wallet!</div></div> -->
         
         <p>Welcome to the Emblem Vault - alpha client. </p> 
         <p><b>IMPORTANT! </b>This is not secure and may go away at any time. You should not send any value to your vaults that you don't want to lose! </p>
-        <div class="ui segment">
+        <div class="ui segment emblem-group">
             <div class="ui fluid form">
                 <div class="three fields">
                     <div class="field">
@@ -727,6 +772,7 @@
             $( document ).ready(function() {
                 getWallet()
                 $('.ui.checkbox').checkbox()
+                $('.ui.dropdown').dropdown();
                 
             })
 
