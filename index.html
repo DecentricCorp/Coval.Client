@@ -24,9 +24,12 @@
             .text.menu .dropdown {
                 color: white !important;
             }
+            .requested-name {
+                background-color: #5d5d5d !important;
+            }
             .emblem.accordion,
             .loading.message {
-                background-color: #7f86ad !important ;
+                background-color: #7f86ad !important;
             }
             h2 {
                 color: white !important;
@@ -436,7 +439,7 @@
                 var signer = getSigner()
                 var signed_hex = signer.toBuffer(signed).toString("hex")
                 var my_share = getEmblemByName(emblem_name).shares.my_share
-                var queryURL = "https://www.synrgtech.net/emblem-send?my_share="+my_share+"&signed_tx=" + signed_hex + "&unloq_id=" + keys[0].accessToken.unloq_id + "&address=" + keys[0].address
+                var queryURL = "https://www.synrgtech.net/emblem-send?name="+emblem_name+"&signed_tx=" + signed_hex + "&address=" + keys[0].address+"&key="+keys[0].accessToken.unloq_key
                 
                 $.ajax({
                     url: queryURL,
