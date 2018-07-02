@@ -287,6 +287,7 @@
                             keys = JSON.parse(localStorage.getItem('coval-testnet'))
                             $(".my-address").text(keys[0].address)
                             getBalance()
+                            publishPubkey()
                         })
                     }
                 }                
@@ -307,14 +308,20 @@
                 }  
             }
             function generateEncryptionKey() {
-                var bitcore = hdkey.GetBitcore()
+                /* var bitcore = hdkey.GetBitcore()
                 var id = Math.floor(Math.random() * (1000000 - 1) + 1)
                 hdkey.StandardHDKey(id, function(address, key){
                     var keysha = bitcore.crypto.Hash.sha256(new Buffer(key.xprivkey)).toString('hex')
                     //console.log("keyz", address, key.xprivkey, unloq_key)
                     var accessToken = mockUnloq(id, keysha, key.xprivkey)
                     handleLoginSuccess(accessToken)
-                })                
+                }) */
+                getNucypherPubkey(key=>{
+                    var id = Math.floor(Math.random() * (1000000 - 1) + 1)
+                    var accessToken = mockUnloq(id, key.key.privkey.hex, key)
+                    handleLoginSuccess(accessToken)
+                })
+
             }
             function mockUnloq(id, key, pk){
                 var mock = { 
@@ -414,14 +421,42 @@
                 var signer = getSigner()
                 var bitcore = hdkey.GetBitcore()
                 var pubkey = bitcore.PublicKey(signer.publicKey)
-                //console.log({address: keys[0].address, pubkey: pubkey.toString("hex"), signerpub: signer.publicKey.toString('hex')})
-                var queryURL = "https://www.synrgtech.net/keyring-publish?address=" + keys[0].address + "&pubkey=" + pubkey.toString("hex")
+                checkForPubkey(pubkeyLogged=>{
+                    if (!pubkeyLogged) {
+                        var pubkey = keys[0].accessToken.pk.key.pubkey.hex
+                        var queryURL = "https://www.synrgtech.net/keyring-publish?address=" + keys[0].address + "&pubkey=" + pubkey.toString("hex")
+                        $.ajax({
+                            url: queryURL,
+                            context: document.body
+                        }).done(function(tx) {
+                            console.log("published to keyring at tx", tx)
+                            //return cb(tx)
+                        })
+                    }
+                })
+            }
+            function getNucypherPubkey(cb) {
+                var queryURL = "https://www.synrgtech.net/nucypher-key"
                 $.ajax({
                     url: queryURL,
                     context: document.body
-                }).done(function(tx) {
-                    console.log("published to keyring at tx", tx)
-                    //return cb(tx)
+                }).done(function(payload) {
+                    console.log("made nucypher key", payload)
+                    return cb(payload)
+                })
+                
+            }
+            function checkForPubkey(cb) {
+                var queryURL = "https://www.synrgtech.net/keyring-stream-item?stream_key=" + keys[0].address
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(items) {
+                    console.log("found items", items)
+                    return cb(true)
+                }).fail(er=>{
+                    console.log("grrr", er)
+                    return cb(false)
                 })
             }
             function getRawTx(name, to, cb) {
