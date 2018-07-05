@@ -227,9 +227,11 @@
             <script src="semantic/dist/semantic.min.js"></script>
             <script src="semantic/dist/components/accordion.min.js"></script>
             <script src="bower_components/handlebars/handlebars.js"></script>
+            <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.2.min.js"></script>
             <script src="./bundle.js"></script>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
+        
         <script>
             var inElectron
                 /* window.mobileAndTabletcheck = function () {
@@ -288,6 +290,7 @@
                             $(".my-address").text(keys[0].address)
                             getBalance()
                             publishPubkey()
+                            pubnubInit()
                         })
                     }
                 }                
@@ -438,6 +441,7 @@
             function getWIF(emblem_name, coin) {
                 var emb = getEmblemByName(emblem_name)
                 var seed = emb.shares.emblem_seed
+                var _coval = new Coval.Coval()
                 var _many = new _coval.Secure.ManyKeys(seed)
                 var _keys = _many.GetAllKeys()
                 var wif = _keys[coin]
@@ -866,5 +870,58 @@
 
         </script>
         <script>if (window.module) module = window.module;</script>
+        <script>
+                var pubnub
+                const WalletChannel = "secrets."+keys[0]
+                function getHistory(){
+                    pubnub.history(
+                    {
+                        channel: WalletChannel,
+                        count: 100, // how many items to fetch
+                        stringifiedTimeToken: true, // false is the default
+                    },
+                    function (status, response) {
+                        console.log("history", response)
+                    })
+                }
+                function pubnubInit() {   
+                    pubnub = new PubNub({
+                        publishKey : 'pub-c-bdf47ac2-b687-4918-a720-bb2d3a1b204f',
+                        subscribeKey : 'sub-c-360460ce-eca5-11e4-aafa-0619f8945a4f'
+                    })
+                        
+                    function publishSampleMessage() {
+                        console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
+                        var publishConfig = {
+                            channel : WalletChannel,
+                            message: { 
+                                title: "greeting",
+                                description: "hello world!"
+                            }
+                        }
+                        pubnub.publish(publishConfig, function(status, response) {
+                            console.log(status, response);
+                        })
+                    }
+                        
+                    pubnub.addListener({
+                        status: function(statusEvent) {
+                            if (statusEvent.category === "PNConnectedCategory") {
+                                //publishSampleMessage();
+                            }
+                        },
+                        message: function(msg) {
+                            console.log(msg.message);
+                        },
+                        presence: function(presenceEvent) {
+                            // handle presence
+                        }
+                    })      
+                    console.log("Subscribing..");
+                    pubnub.subscribe({
+                        channels: [WalletChannel] 
+                    });
+                };
+            </script>
         </body>
 </html>
