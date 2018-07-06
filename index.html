@@ -519,8 +519,7 @@
             function claimEmblem(emblem_name) {
                 $(".loading").show()
                 $(".emblems").html("")
-                //https://www.synrgtech.net/claim?name=EMB377379&address=12vJVPZdjfUwGzXs6BB5gFd5uxTtLx6iew&unloq_id=4135&my_share=
-                var queryURL = "https://www.synrgtech.net/claim?name="+emblem_name+"&address=" + keys[0].address +  "&unloq_id=" + keys[0].accessToken.unloq_id + "&my_share=" + getEmblemByName(emblem_name).shares.my_share
+                var queryURL = "https://www.synrgtech.net/claim?name="+emblem_name+"&address=" + keys[0].address
                 if (keys[0].accessToken.unloq_key) {
                     queryURL = queryURL + "&key="+keys[0].accessToken.unloq_key
                 }
@@ -874,18 +873,8 @@
         <script>
                 var WalletChannel 
                 var pubnub
+                var getHistory
                 
-                function getHistory(){
-                    pubnub.history(
-                    {
-                        channel: WalletChannel,
-                        count: 100, // how many items to fetch
-                        stringifiedTimeToken: true, // false is the default
-                    },
-                    function (status, response) {
-                        console.log("history", response)
-                    })
-                }
                 function pubnubInit() {   
                     WalletChannel = "secrets."+keys[0].address
                     pubnub = new PubNub({
@@ -919,7 +908,18 @@
                         presence: function(presenceEvent) {
                             // handle presence
                         }
-                    })      
+                    })
+                    getHistory = function(){
+                    pubnub.history(
+                    {
+                        channel: WalletChannel,
+                        count: 100, // how many items to fetch
+                        stringifiedTimeToken: true, // false is the default
+                    },
+                    function (status, response) {
+                        console.log("history", response)
+                    })
+                }
                     console.log("Subscribing..");
                     pubnub.subscribe({
                         channels: [WalletChannel] 
