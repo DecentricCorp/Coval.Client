@@ -633,6 +633,7 @@
                     $('.ui.trophy.modal').modal('show')
                 })
             }
+            //var validity
             function getBalance() {
                 $(".loading").show()
                 $(".emblems").html("")
@@ -646,7 +647,7 @@
                     $('.raw-data').html($('.raw-data').html() + JSON.stringify(val, null, 4))
                     var emblemHtml = "<div class='emblem ui styled accordion'>"
                     val.forEach((element, index) => {
-                        var validity = "(claimed)"
+                        
                         if (!isStored(element.name)) {                            
                             storeEmblem(element.name, function(){
                                 if (index == val.length -1) {
@@ -662,6 +663,7 @@
                         }
                     })
                     function doHtmlWork(element, cb){
+                        var validity = "(claimed)"
                         if (isClaimable(element.name)) {
                             validity = "(claimable)"
                         }
@@ -749,8 +751,8 @@
                 if (records.length === 0) {
                     return false
                 } 
-                //return records[0].shares.my_share !== undefined
-                return true
+                return records[0].claimed === undefined
+                //return true
             }
             function isStored(name) {
                 if (!keys[0].emblems) {
