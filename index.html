@@ -586,6 +586,24 @@
                     $(container_selector).find(balance_selector).last().find(".balance").html(" <b>Balance: "+val.result * .000000000000000001 + "</b>")
                 })
             }
+            function getEmblemType(emblem_name, cb){
+                var queryURL = "https://www.synrgtech.net/stream-retrieve?stream_key="+emblem_name+":emblem_type"
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(val) {
+                    return cb(val[0].decoded)
+                })
+            }
+            function getEmblemAddresses(emblem_name, cb){
+                var queryURL = "https://www.synrgtech.net/stream-retrieve?stream_key="+emblem_name+":contents"
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(val) {
+                    return cb(val[0].decoded)
+                })
+            }
             function getOpenSeaBalance(emblem_name) {
                 var emb = getEmblemByName(emblem_name)
                 $(".ui.trophy.modal .name").html(emblem_name)
@@ -629,6 +647,21 @@
                     var emblemHtml = "<div class='emblem ui styled accordion'>"
                     val.forEach((element, index) => {
                         var validity = "(claimed)"
+                        if (!isStored(element.name)) {                            
+                            storeEmblem(element.name, function(){
+                                if (index == val.length -1) {
+                                    getBalance()
+                                }
+                            })
+                        } else {
+                            doHtmlWork(element, function(){
+                                if (index == val.length -1) {
+                                    $(".emblems").append(emblemHtml)
+                                }
+                            })
+                        }
+                    })
+                    function doHtmlWork(element, cb){
                         if (isClaimable(element.name)) {
                             validity = "(claimable)"
                         }
@@ -675,10 +708,6 @@
                                 }
                                 var unit = addresses[key].unit
                                 emblemHtml = emblemHtml + "<div style=\"line-height:28px;\"><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit.toLowerCase()+".png'/>" + address_visibility + key + " : " + address + "<span class=\"balance\"></span></div>"
-                                /* if (i == Object.keys(addresses).length -1) {
-                                    emblemHtml = emblemHtml + "</p></div>"
-                                    
-                                } */
                             }
                             if (index === keys.length -1) {
                                 emblemHtml = emblemHtml + "</p></div>"
@@ -686,41 +715,9 @@
                                 generateHtml(index + 1, addresses)
                             }
                         }
-                        /* Object.keys(addresses).forEach((key, i) => {
-                            
-                            if (key === "bitcoin" || key === "coval" || key === "ethereum") {
-                                if (key === "bitcoin") {
-                                    getBitcoinBalance(element.name, addresses[key].address)
-                                }
-                                if (key === "coval") {
-                                    getXcpBalance(element.name, addresses[key].address)
-                                }
-                                if (key === "ethereum") {
-                                    getEthereumBalance(element.name, addresses[key].address)
-                                }
-                                var address = addresses[key].address
-                                var address_visibility = ""
-                                var display_address = ""
-                                if (isPrivate(element.name)) {
-                                    address = "<i style=\""+display_address+"\" data-content=\" "+addresses[key].address+" \" class=\"user secret icon\"></i>"
-                                    address_visibility = visibility
-                                }
-                                var unit = addresses[key].unit
-                                emblemHtml = emblemHtml + "<div style=\"line-height:28px;\"><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit.toLowerCase()+".png'/>" + address_visibility + key + " : " + address + "<span class=\"balance\"></span></div>"
-                                if (i == Object.keys(addresses).length -1) {
-                                    emblemHtml = emblemHtml + "</p></div>"
-                                    
-                                }
-                            } */
-                        //})
                         generateHtml(0, addresses)
-                        if (index == val.length -1) {
-                            //emblemHtml = emblemHtml + "</div>"
-                            $(".emblems").append(emblemHtml)
-                        }
-                        
-                    })
-                    
+                        return cb()
+                    }
                     $('.ui.sticky').sticky({
                         context: '#context'
                     })
@@ -752,8 +749,24 @@
                 if (records.length === 0) {
                     return false
                 } 
-                return records[0].shares.my_share !== undefined
-                
+                //return records[0].shares.my_share !== undefined
+                return true
+            }
+            function isStored(name) {
+                if (!keys[0].emblems) {
+                    keys[0].emblems = []
+                }
+                var emblem = getEmblemByName(name)
+                return !!emblem.name
+            }
+            function storeEmblem(name, cb) {
+                getEmblemType(name, function(emblem_type){
+                    getEmblemAddresses(name, function(addresses){
+                        keys[0].emblems[keys[0].emblems.length] = {name: name, shares:{payload: {emblem_type: emblem_type, addresses: JSON.parse(addresses)}}}
+                        localStorage.setItem('coval-testnet', JSON.stringify(keys))
+                        return cb()
+                    })                    
+                })
             }
             function isPrivate(name) {
                 var records = keys[0].emblems.filter(function(emblem){return emblem.name == name})
