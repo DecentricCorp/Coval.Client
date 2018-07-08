@@ -165,8 +165,12 @@
                     </div>
                     <div class="description">
                     <div class="ui header">What you should know about sending an Emblem Vault</div>
-                    <p>When you send this emblem to someone else you no longer are able to unlock the contents. </p>
+                    <p style="color:black !important;">When you send this emblem to someone else you no longer are able to unlock the contents. </p>
                     <p>Are you sure you want to send this vault to another wallet?</p>
+                    <div class="field">
+                        <label>Destination Address</label><br>
+                        <input class="destination-address" placeholder="Address goes here" type="text">
+                    </div>
                     </div>
                 </div>
                 <div class="actions">
@@ -550,7 +554,21 @@
                         }
                     })
                     claim_modal.modal('show')
-                }
+            }
+            function openSendModal(emblem){
+                var send_modal = $('.ui.send.modal').modal('setting', {
+                    onDeny: function () {
+                        send_modal.modal('hide')
+                            return false;
+                        }, onApprove: function(){
+                            var toAddress = $(".destination-address").val()
+                            signAndSendTransaction(emblem, toAddress)
+                            send_modal.modal('close')
+                            return false;
+                        }
+                })
+                send_modal.modal('show')
+            }
             function getBitcoinBalance(emblem_name, address) {
                 var queryURL = "https://blockchain.info/balance?active="+address+"&cors=true"
                 $.ajax({
@@ -676,7 +694,7 @@
                             }
                             visibility = '<i '+hidden_name+' class="lock icon"></i>'
                         }
-                        var buttons = "<p><div onclick=\"getOpenSeaBalance('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"$('.ui.send.modal').modal('show')\" class=\"ui label green button\">Send</div></p>"
+                        var buttons = "<p><div onclick=\"getOpenSeaBalance('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"openSendModal('"+element.name+"')\" class=\"ui label green button\">Send</div></p>"
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
                         if (isClaimable(element.name)) {
                             emblemHtml = emblemHtml + buttons
