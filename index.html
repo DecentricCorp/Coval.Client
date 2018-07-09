@@ -420,7 +420,7 @@
                 $(".loading").show()
                 getRawTx(name, to/* "1BnAHkLchRJwxaSqV7XoB2jAAwZUE4SoHb" */, function(template){ 
                     signTransaction(template, function(signed){
-                        sendSignedTx(signed, name, function(txid){
+                        sendSignedTx(signed, name, to, function(txid){
                             $(".loading").hide()
                             getBalance()
                         })
@@ -490,11 +490,11 @@
                 })
             }
 
-            function sendSignedTx(signed, emblem_name, cb) {
+            function sendSignedTx(signed, emblem_name, to, cb) {
                 var signer = getSigner()
                 var signed_hex = signer.toBuffer(signed).toString("hex")
                 var my_share = getEmblemByName(emblem_name).shares.my_share
-                var queryURL = "https://www.synrgtech.net/emblem-send?name="+emblem_name+"&signed_tx=" + signed_hex + "&address=" + keys[0].address+"&key="+keys[0].accessToken.unloq_key
+                var queryURL = "https://www.synrgtech.net/emblem-send?name="+emblem_name+"&signed_tx=" + signed_hex + "&address=" + to +"&key="+keys[0].accessToken.unloq_key
                 
                 $.ajax({
                     url: queryURL,
