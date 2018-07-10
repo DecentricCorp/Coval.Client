@@ -525,7 +525,7 @@
             function claimEmblem(emblem_name) {
                 $(".loading").show()
                 $(".emblems").html("")
-                var queryURL = "https://www.synrgtech.net/claim?name="+emblem_name+"&address=" + keys[0].address
+                var queryURL = "https://www.synrgtech.net/claim-nucypher?name="+emblem_name+"&address=" + keys[0].address
                 if (keys[0].accessToken.unloq_key) {
                     queryURL = queryURL + "&key="+keys[0].accessToken.unloq_key
                 }
@@ -613,6 +613,19 @@
                     context: document.body
                 }).done(function(val) {
                     return cb(val[0].decoded)
+                })
+            }
+            function getEmblemName(emblem_name, cb){
+                var queryURL = "https://www.synrgtech.net/stream-retrieve?stream_key="+emblem_name+":name"
+                $.ajax({
+                    url: queryURL,
+                    context: document.body
+                }).done(function(val) {
+                    if (val.length > 0){
+                        return cb(val[0].decoded)
+                    } else {
+                        return cb()
+                    }
                 })
             }
             function getEmblemAddresses(emblem_name, cb){
@@ -786,11 +799,24 @@
             }
             function storeEmblem(name, cb) {
                 getEmblemType(name, function(emblem_type){
-                    getEmblemAddresses(name, function(addresses){
-                        keys[0].emblems[keys[0].emblems.length] = {name: name, shares:{payload: {emblem_type: emblem_type, addresses: JSON.parse(addresses)}}}
-                        localStorage.setItem('coval-testnet', JSON.stringify(keys))
-                        return cb()
-                    })                    
+                    getEmblemName(name, function(emblem_name){
+                        getEmblemAddresses(name, function(addresses){
+                            
+                            keys[0].emblems[keys[0].emblems.length] = {
+                                name: name,
+                                shares:{
+                                    payload: {
+                                        emblem_type: emblem_type,
+                                        addresses: JSON.parse(addresses),
+                                        provided_name: emblem_name
+                                    }
+                                }
+                            }
+                            
+                            localStorage.setItem('coval-testnet', JSON.stringify(keys))
+                            return cb()
+                        })
+                    })
                 })
             }
             function isPrivate(name) {
