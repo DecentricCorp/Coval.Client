@@ -124,33 +124,33 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="ui login basic modal">
-                <i class="close icon"></i>
-                <div class="header">
-                    Login to Emblem Vault
+        <div class="ui wif modal">
+            <i class="close icon"></i>
+            <div class="header">
+                Wallet Import Format
+            </div>
+            <div class="image content">
+                <div class="ui medium image">
+                <img src="site-logo.svg">
+                <span>
+                    <h1>Vault</h1>
+                </span>
                 </div>
-                <div class=" content">
-                    <div class="description">
-                        <div class="unloq-login">
-                            <script type="text/javascript" src="https://plugin.unloq.io/login.js"  data-unloq-key="53ffb528-eb38-40d3-a5e0-4f5bb90f1d32-iwC9XejJ" data-unloq-init="onUnloqInit"></script>
-                        </div>
-                    </div>
-                </div>                
-        </div> -->
-        <!-- <div class="ui register basic modal">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            Register with Emblem Vault
-                        </div>
-                        <div class=" content">
-                            <div class="description">
-                                    <div class="unloq-register">
-                                            <script src="https://plugin.unloq.io/register.js" data-unloq-key="41e83ef7-52d0-44f1-918f-b16028ce5a78-iaOs7g0l" data-unloq-init="onUnloqInit"></script>
-                                        </div>
-                            </div>
-                        </div>
-        </div> -->
-                    
+                <div class="description">
+                <div class="ui header">This is the key you can import into your coin client</div>
+                <p style="color:black !important;">Info: A data interchange format designed to allow exporting and importing a single private key with a flag indicating whether or not it uses a compressed public key. </p>
+                <a href="https://en.bitcoin.it/wiki/Wallet_import_format">More information about WIF format here</a>
+                <div class="show_wif"></div>
+                <i class="copy icon"></i>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                Done
+                <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>        
             <div class="ui send modal">
                 <i class="close icon"></i>
                 <div class="header">
@@ -451,7 +451,7 @@
                 var _coval = new Coval.Coval()
                 var _many = new _coval.Secure.ManyKeys(seed)
                 var _keys = _many.GetAllKeys()
-                var wif = _keys[coin]
+                var wif = _keys[coin].wif
                 return wif
 
             }
@@ -570,6 +570,17 @@
                         }
                 })
                 send_modal.modal('show')
+            }
+            function openWIFModal(emblem_name, coin){
+                var wif = getWIF(emblem_name, coin)
+                $(".show_wif").html(wif)
+                var wif_modal = $('.ui.wif.modal').modal('setting', {
+                    onDeny: function () {
+                        wif_modal.modal('hide')
+                            return false;
+                        }
+                })
+                wif_modal.modal('show')
             }
             function getBitcoinBalance(emblem_name, address) {
                 var queryURL = "https://blockchain.info/balance?active="+address+"&cors=true"
@@ -712,9 +723,10 @@
                             }
                             visibility = '<i '+hidden_name+' class="lock icon"></i>'
                         }
-                        var buttons = "<p><div onclick=\"getOpenSeaBalance('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"openSendModal('"+element.name+"')\" class=\"ui label green button\">Send</div></p>"
+                        
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
                         if (isClaimable(element.name)) {
+                            var buttons = "<p><div onclick=\"getOpenSeaBalance('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"openSendModal('"+element.name+"')\" class=\"ui label green button\">Send</div></p>"
                             emblemHtml = emblemHtml + buttons
                         } else {
                             if (!getEmblemByName(element.name).shares) {
@@ -746,6 +758,10 @@
                                 }
                                 var unit = addresses[key].unit
                                 emblemHtml = emblemHtml + "<div style=\"line-height:28px;\"><img width='16px' class=\"unit\" onerror=\"this.style.display='none'\" src='cryptocurrency-icons/32/color/"+unit.toLowerCase()+".png'/>" + address_visibility + key + " : " + address + "<span class=\"balance\"></span></div>"
+                                if (!isClaimable(element.name)) {
+                                    var claim_buttons = "<p><div onclick=\"openWIFModal('"+element.name+"','"+key+"')\" class=\"ui green label submit button\">Get Wallet Import Format (WIF)</div></p>"
+                                    emblemHtml = emblemHtml + claim_buttons
+                                }
                             }
                             if (index === keys.length -1) {
                                 emblemHtml = emblemHtml + "</p></div>"
