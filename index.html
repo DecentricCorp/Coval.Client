@@ -473,7 +473,7 @@
                     context: document.body
                 }).done(function(items) {
                     console.log("found items", items)
-                    return cb(true)
+                    return cb(!items.error)
                 }).fail(er=>{
                     console.log("grrr", er)
                     return cb(false)
