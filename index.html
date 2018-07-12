@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Emblem Alpha Client</title>
-
-        
         <style>
             body {
                 /* background: #25273e !important; */
@@ -150,7 +148,49 @@
                 <i class="checkmark icon"></i>
                 </div>
             </div>
-        </div>        
+        </div>
+            <div class="ui token modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    Add Token
+                </div>
+                <div class="image content">
+                    <div class="ui medium image">
+                    <img src="site-logo.svg">
+                    <span>
+                        <h1>Vault</h1>
+                    </span>
+                    </div>
+                    <div class="description">
+                    <div class="ui header">Add a token address to your emblem vault</div>
+                    <span>
+                        I want to add
+                        <div class="ui inline dropdown">
+                          <div class="text">
+                            <img class="ui avatar image" onerror="this.style.display='none'" src="">
+                            
+                          </div>
+                          <i class="dropdown icon"></i>
+                          <div class="menu">
+                                <div class="ui icon search input">
+                                    <i class="search icon"></i>
+                                    <input type="text" placeholder="Search tokens...">
+                                </div>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="ui black deny button">
+                    Nope
+                    </div>
+                    <div class="ui positive right labeled icon button">
+                    Yep, Add this token
+                    <i class="checkmark icon"></i>
+                    </div>
+                </div>
+            </div>
             <div class="ui send modal">
                 <i class="close icon"></i>
                 <div class="header">
@@ -233,10 +273,50 @@
             <script src="bower_components/handlebars/handlebars.js"></script>
             <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.2.min.js"></script>
             <script src="./bundle.js"></script>
+            <script src="bower_components/toastr/toastr.js"></script>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
-        
+        <link href="bower_components/toastr/toastr.css" rel="stylesheet"/>
         <script>
+            var tokens = ["bitcoin",
+                    "bitcoincash",
+                    "bitcoindark",
+                    "bitcoingold",
+                    "blackcoin",
+                    "blocknet",
+                    "canadaecoin",
+                    "coval",
+                    "dash",
+                    "digibyte",
+                    "dogecoin",
+                    "dogecoindark",
+                    "emercoin",
+                    "feathercoin",
+                    "florincoin",
+                    "gridcoinresearch",
+                    "gulden",
+                    "litecoin",
+                    "magicoin",
+                    "myriadcoin",
+                    "namecoin",
+                    "navcoin",
+                    "neoscoin",
+                    "paccoin",
+                    "particl",
+                    "peercoin",
+                    "pinkcoin",
+                    "pivx",
+                    "potcoin",
+                    "primecoin",
+                    "reddcoin",
+                    "riecoin",
+                    "stratis",
+                    "syscoin",
+                    "trezarcoin",
+                    "vcash",
+                    "vergecoin",
+                    "vertcoin",
+                    "viacoin"]
             var inElectron
                 /* window.mobileAndTabletcheck = function () {
                     var check = false;
@@ -414,6 +494,7 @@
                     keys[0].emblems[keys[0].emblems.length] = {name: val.payload.import_response.name, shares: val}
                     localStorage.setItem('coval-testnet', JSON.stringify(keys))
                     getBalance()
+                    toastr.info('Created ' + val.payload.import_response.name)
                 })
             }
             function signAndSendTransaction(name, to) {
@@ -541,6 +622,7 @@
                     emblem.claimed.payload = {}                  
                     localStorage.setItem('coval-testnet', JSON.stringify(keys))
                     getBalance()
+                    toastr.info('Claimed '+emblem_name)
                 })
             }
 
@@ -570,6 +652,43 @@
                         }
                 })
                 send_modal.modal('show')
+            }
+            function openAddTokenModal(emblem_name){
+                var emblem = getEmblemByName(emblem_name)
+                var addresses = emblem.shares.payload.addresses
+                if (!emblem.shares.payload.whitelist) {
+                    emblem.shares.payload.whitelist = []
+                }
+                tokens.forEach(token=>{
+                    var token_unit = ""
+                    var token_info = addresses[token]
+                    if (token_info) {
+                        token_unit = token_info.unit
+                    }
+                    $("div").remove("."+token+"_item")
+                    if (token !== "bitcoin" && token !== "coval" && token !== "ethereum" && !emblem.shares.payload.whitelist.includes(token))
+                    $(".token.modal .menu").append('<div data-address="'+token+'" data-unit="'+token_info.unit+'" data-value="'+token+'" class="'+token+'_item item"><img class="ui avatar image" src="/cryptocurrency-icons/32/color/'+token_unit+'.png">'+token+'</div>')
+                })
+                var token_modal = $('.ui.token.modal').modal('setting', {
+                    onDeny: function () {
+                        token_modal.modal('hide')
+                            return false;
+                        }, onApprove: function(){
+                            //var toAddress = $(".destination-address").val()
+                            //signAndSendTransaction(emblem, toAddress)
+                            var token = $(".ui.dropdown").dropdown("get value")[1]
+                            if (!emblem.shares.payload.whitelist) {
+                                emblem.shares.payload.whitelist = []
+                            }
+                            emblem.shares.payload.whitelist.push(token)
+                            localStorage.setItem('coval-testnet', JSON.stringify(keys))
+                            token_modal.modal('hide')
+                            toastr.info('Added '+token +' to '+emblem_name)
+                            getBalance()
+                            return false;
+                        }
+                })
+                token_modal.modal('show')
             }
             function openWIFModal(emblem_name, coin){
                 var wif = getWIF(emblem_name, coin)
@@ -726,20 +845,25 @@
                         
                         emblemHtml = emblemHtml + "<div class='title'><i class='dropdown icon'></i>"+visibility+" "+ getProvidedName(element.name) + " " + element.name+" "+validity+"</div><div class='content'><p class='transition hidden'>"
                         if (isClaimable(element.name)) {
-                            var buttons = "<p><div onclick=\"getOpenSeaBalance('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"openSendModal('"+element.name+"')\" class=\"ui label green button\">Send</div></p>"
+                            var buttons = "<p><div onclick=\"getOpenSeaBalance('"+element.name+"')\" class=\"ui orange label submit button\">View Trophy Case</div><div onclick=\"openClaimModal('"+element.name+"')\" class=\"ui teal label submit button\">Open Vault</div> <div onclick=\"openSendModal('"+element.name+"')\" class=\"ui label green button\">Send</div><div onclick=\"openAddTokenModal('"+element.name+"')\" class=\"ui label grey button\">Add Token To Vault</div></p>"
                             emblemHtml = emblemHtml + buttons
                         } else {
                             if (!getEmblemByName(element.name).shares) {
                                 emblemHtml = emblemHtml + "<p>Partially received....</p></div>"
                             } else {
                                 emblemHtml = emblemHtml + "<p>Claimed Seed: " + getEmblemByName(element.name).shares.emblem_seed + "</p>"
+                                emblemHtml = emblemHtml + "<div onclick=\"openAddTokenModal('"+element.name+"')\" class=\"ui label grey button\">Add Token To Vault</div>"
                             }
                         }
                         var addresses = getEmblemInternalAddresses(element.name)
                         var generateHtml = function(index, addresses){
                             var keys = Object.keys(addresses)
                             var key = keys[index]
-                            if (key === "bitcoin" || key === "coval" || key === "ethereum") {
+                            var emblem = getEmblemByName(element.name)
+                            if (!emblem.shares.payload.whitelist) {
+                                emblem.shares.payload.whitelist = []
+                            }
+                            if (key === "bitcoin" || key === "coval" || key === "ethereum" || emblem.shares.payload.whitelist.includes(key)) {
                                 if (key === "bitcoin") {
                                     getBitcoinBalance(element.name, addresses[key].address)
                                 }
