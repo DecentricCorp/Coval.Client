@@ -277,6 +277,7 @@
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="semantic/dist/components/accordion.min.css">
         <link href="bower_components/toastr/toastr.css" rel="stylesheet"/>
+        <!-- http://codeseven.github.io/toastr/demo.html -->
         <script>
             var tokens = ["bitcoin",
                     "bitcoincash",
@@ -667,7 +668,7 @@
                     }
                     $("div").remove("."+token+"_item")
                     if (token !== "bitcoin" && token !== "coval" && token !== "ethereum" && !emblem.shares.payload.whitelist.includes(token))
-                    $(".token.modal .menu").append('<div data-address="'+token+'" data-unit="'+token_info.unit+'" data-value="'+token+'" class="'+token+'_item item"><img class="ui avatar image" src="cryptocurrency-icons/32/color/'+token_unit+'.png">'+token+'</div>')
+                    $(".token.modal .menu").append('<div data-address="'+token+'" data-unit="'+token_info.unit+'" data-value="'+token+'" class="'+token+'_item item"><img class="ui avatar image" src="cryptocurrency-icons/32/color/'+token_unit.toLowerCase()+'.png">'+token+'</div>')
                 })
                 var token_modal = $('.ui.token.modal').modal('setting', {
                     onDeny: function () {
