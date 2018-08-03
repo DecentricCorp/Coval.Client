@@ -16,7 +16,7 @@ module.exports = {
     MultiSign: MultiSign
 }
 }).call(this,require("buffer").Buffer)
-},{"./lib/address.js":2,"buffer":446,"coval.js":147,"cryptokitties-contrib":215}],2:[function(require,module,exports){
+},{"./lib/address.js":2,"buffer":446,"coval.js":165,"cryptokitties-contrib":214}],2:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -420,7 +420,7 @@ var uint64Buffer = function(number) {
     return buffer;
 };
 }).call(this,require("buffer").Buffer)
-},{"./crypto":3,"./logger":5,"./opcodes":6,"bluebird":131,"bs58":134,"buffer":446,"buffer-compare":135,"buffer-xor":136,"clone":139,"randombytes":309,"secp256k1":346}],3:[function(require,module,exports){
+},{"./crypto":3,"./logger":5,"./opcodes":6,"bluebird":131,"bs58":134,"buffer":446,"buffer-compare":135,"buffer-xor":136,"clone":139,"randombytes":308,"secp256k1":345}],3:[function(require,module,exports){
 'use strict';
 
 var createHash = require('create-hash');
@@ -442,7 +442,7 @@ module.exports = {
     'ripemd160': ripemd160,
     'sha256': sha256
 };
-},{"create-hash":180}],4:[function(require,module,exports){
+},{"create-hash":179}],4:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -1159,7 +1159,7 @@ function setLogger(self) {
 
 function noop() {}
 
-},{"./$data":7,"./cache":9,"./compile":14,"./compile/async":11,"./compile/error_classes":12,"./compile/formats":13,"./compile/resolve":15,"./compile/rules":16,"./compile/schema_obj":17,"./compile/util":19,"./keyword":43,"./patternGroups":44,"./refs/$data.json":45,"./refs/json-schema-draft-06.json":46,"co":140,"fast-json-stable-stringify":240}],9:[function(require,module,exports){
+},{"./$data":7,"./cache":9,"./compile":14,"./compile/async":11,"./compile/error_classes":12,"./compile/formats":13,"./compile/resolve":15,"./compile/rules":16,"./compile/schema_obj":17,"./compile/util":19,"./keyword":43,"./patternGroups":44,"./refs/$data.json":45,"./refs/json-schema-draft-06.json":46,"co":140,"fast-json-stable-stringify":239}],9:[function(require,module,exports){
 'use strict';
 
 
@@ -1867,7 +1867,7 @@ function vars(arr, statement) {
   return code;
 }
 
-},{"../dotjs/validate":42,"./error_classes":12,"./resolve":15,"./util":19,"co":140,"fast-deep-equal":239,"fast-json-stable-stringify":240}],15:[function(require,module,exports){
+},{"../dotjs/validate":42,"./error_classes":12,"./resolve":15,"./util":19,"co":140,"fast-deep-equal":238,"fast-json-stable-stringify":239}],15:[function(require,module,exports){
 'use strict';
 
 var url = require('url')
@@ -2140,7 +2140,7 @@ function resolveIds(schema) {
   return localRefs;
 }
 
-},{"./schema_obj":17,"./util":19,"fast-deep-equal":239,"json-schema-traverse":288,"url":577}],16:[function(require,module,exports){
+},{"./schema_obj":17,"./util":19,"fast-deep-equal":238,"json-schema-traverse":287,"url":577}],16:[function(require,module,exports){
 'use strict';
 
 var ruleModules = require('./_rules')
@@ -2502,7 +2502,7 @@ function unescapeJsonPointer(str) {
   return str.replace(/~1/g, '/').replace(/~0/g, '~');
 }
 
-},{"./ucs2length":18,"fast-deep-equal":239}],20:[function(require,module,exports){
+},{"./ucs2length":18,"fast-deep-equal":238}],20:[function(require,module,exports){
 'use strict';
 module.exports = function generate__limit(it, $keyword, $ruleType) {
   var out = ' ';
@@ -8276,7 +8276,7 @@ module.exports = {
   encode: encode
 }
 
-},{"safe-buffer":345}],59:[function(require,module,exports){
+},{"safe-buffer":344}],59:[function(require,module,exports){
 (function (global,Buffer){
 'use strict';
 
@@ -26765,7 +26765,13 @@ exports.shr64_lo = shr64_lo;
 
 },{"inherits":128}],127:[function(require,module,exports){
 module.exports={
-  "_from": "elliptic@=3.0.3",
+  "_args": [
+    [
+      "elliptic@3.0.3",
+      "/Users/shannoncode/repo/Coval.Client"
+    ]
+  ],
+  "_from": "elliptic@3.0.3",
   "_id": "elliptic@3.0.3",
   "_inBundle": false,
   "_integrity": "sha1-hlybQgv75VAGuflp+XoNLESWZZU=",
@@ -26787,9 +26793,8 @@ module.exports={
     "/bitcore-lib"
   ],
   "_resolved": "http://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
-  "_shasum": "865c9b420bfbe55006b9f969f97a0d2c44966595",
-  "_spec": "elliptic@3.0.3",
-  "_where": "/Users/shannoncode/repo/Coval.Client/node_modules/bitcore-lib",
+  "_spec": "3.0.3",
+  "_where": "/Users/shannoncode/repo/Coval.Client",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -26797,14 +26802,12 @@ module.exports={
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "bn.js": "^2.0.0",
     "brorand": "^1.0.1",
     "hash.js": "^1.0.0",
     "inherits": "^2.0.1"
   },
-  "deprecated": false,
   "description": "EC cryptography",
   "devDependencies": {
     "browserify": "^3.44.2",
@@ -39215,77 +39218,34 @@ if (typeof Object.create === 'function') {
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],130:[function(require,module,exports){
 module.exports={
-  "_from": "bitcore-lib@^0.14.0",
+  "_args": [
+    [
+      "bitcore-lib@0.14.0",
+      "/Users/shannoncode/repo/Coval.Client"
+    ]
+  ],
+  "_from": "bitcore-lib@0.14.0",
   "_id": "bitcore-lib@0.14.0",
   "_inBundle": false,
   "_integrity": "sha1-IcsjWf57mXo7e3c+t9cnWuN9ZE4=",
   "_location": "/bitcore-lib",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "bitcore-lib@^0.14.0",
+    "raw": "bitcore-lib@0.14.0",
     "name": "bitcore-lib",
     "escapedName": "bitcore-lib",
-    "rawSpec": "^0.14.0",
+    "rawSpec": "0.14.0",
     "saveSpec": null,
-    "fetchSpec": "^0.14.0"
+    "fetchSpec": "0.14.0"
   },
   "_requiredBy": [
     "/coval.js"
   ],
   "_resolved": "https://registry.npmjs.org/bitcore-lib/-/bitcore-lib-0.14.0.tgz",
-  "_shasum": "21cb2359fe7b997a3b7b773eb7d7275ae37d644e",
-  "_shrinkwrap": {
-    "name": "bitcore",
-    "version": "0.13.19",
-    "dependencies": {
-      "bn.js": {
-        "version": "2.0.4",
-        "from": "bn.js@=2.0.4",
-        "resolved": "https://registry.npmjs.org/bn.js/-/bn.js-2.0.4.tgz"
-      },
-      "bs58": {
-        "version": "2.0.0",
-        "from": "bs58@=2.0.0",
-        "resolved": "https://registry.npmjs.org/bs58/-/bs58-2.0.0.tgz"
-      },
-      "buffer-compare": {
-        "version": "1.0.0",
-        "from": "buffer-compare@=1.0.0",
-        "resolved": "https://registry.npmjs.org/buffer-compare/-/buffer-compare-1.0.0.tgz"
-      },
-      "elliptic": {
-        "version": "3.0.3",
-        "from": "elliptic@=3.0.3",
-        "resolved": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
-        "dependencies": {
-          "brorand": {
-            "version": "1.0.5",
-            "from": "brorand@^1.0.1",
-            "resolved": "https://registry.npmjs.org/brorand/-/brorand-1.0.5.tgz"
-          },
-          "hash.js": {
-            "version": "1.0.3",
-            "from": "hash.js@=1.0.3",
-            "resolved": "https://registry.npmjs.org/hash.js/-/hash.js-1.0.3.tgz"
-          }
-        }
-      },
-      "inherits": {
-        "version": "2.0.1",
-        "from": "inherits@=2.0.1",
-        "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
-      },
-      "lodash": {
-        "version": "3.10.1",
-        "from": "lodash@=3.10.1",
-        "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz"
-      }
-    }
-  },
-  "_spec": "bitcore-lib@^0.14.0",
-  "_where": "/Users/shannoncode/repo/Coval.Client/node_modules/coval.js",
+  "_spec": "0.14.0",
+  "_where": "/Users/shannoncode/repo/Coval.Client",
   "author": {
     "name": "BitPay",
     "email": "dev@bitpay.com"
@@ -39296,7 +39256,6 @@ module.exports={
   "bugs": {
     "url": "https://github.com/bitpay/bitcore-lib/issues"
   },
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Daniel Cousens",
@@ -39351,7 +39310,6 @@ module.exports={
     "inherits": "=2.0.1",
     "lodash": "=3.10.1"
   },
-  "deprecated": false,
   "description": "A pure and powerful JavaScript Bitcoin library.",
   "devDependencies": {
     "bitcore-build": "github:bitpay/bitcore-build",
@@ -48813,7 +48771,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 
 module.exports = CipherBase
 
-},{"inherits":284,"safe-buffer":345,"stream":570,"string_decoder":575}],139:[function(require,module,exports){
+},{"inherits":283,"safe-buffer":344,"stream":570,"string_decoder":575}],139:[function(require,module,exports){
 (function (Buffer){
 var clone = (function() {
 'use strict';
@@ -49217,6 +49175,1281 @@ function isObject(val) {
 }
 
 },{}],141:[function(require,module,exports){
+var janin = {};
+
+janin.currency = {
+    createCurrency: function (unit, name, networkVersion, privateKeyPrefix, WIF_Start, CWIF_Start, public, private, msg, ethereum) {
+        var currency = {};
+        currency.unit = unit
+        currency.name = name;
+        currency.networkVersion = networkVersion;
+        currency.privateKeyPrefix = privateKeyPrefix;
+        currency.WIF_Start = WIF_Start;
+        currency.CWIF_Start = CWIF_Start;
+        currency.versions = {bip32:{}}
+        currency.versions.bip32.public = public
+        currency.versions.bip32.private = private
+        currency.public = networkVersion
+        currency.private = privateKeyPrefix
+        currency.scripthash = WIF_Start
+        currency.isEthereum = ethereum
+        currency.msgStart = msg
+        return currency;
+    },
+
+    name: function() {
+        return janin.selectedCurrency.name;
+    },
+
+    networkVersion: function() {
+        return janin.selectedCurrency.networkVersion;
+    },
+
+    privateKeyPrefix: function() {
+        return janin.selectedCurrency.privateKeyPrefix;
+    },
+
+    WIF_RegEx: function() {
+        return new RegExp("^" + janin.selectedCurrency.WIF_Start + "[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$");
+    },
+
+    CWIF_RegEx: function() {
+        return new RegExp("^" + janin.selectedCurrency.CWIF_Start + "[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$");
+    },
+};
+
+janin.currencies = [
+    janin.currency.createCurrency("2give","2give",39,167,6,"R",null,null,null,false),
+    janin.currency.createCurrency("42","42coin",8,136,5,"M",null,null,null,false),
+    janin.currency.createCurrency("abncoin","abncoin",25,153,85,null,76067358,76066276,"Abncoin Signed Message",false),
+    janin.currency.createCurrency("acoin","acoin",23,230,8,"b",null,null,null,false),
+    janin.currency.createCurrency("adcoin","adcoin",23,151,5,null,76067358,76066276,"AdCoin Signed Message",false),
+    janin.currency.createCurrency("aga","agacoin",83,211,8,"Y",null,null,null,false),
+    janin.currency.createCurrency("alf","alphacoin",82,210,8,"Y",null,null,null,false),
+    janin.currency.createCurrency("alqo","alqo",23,193,7,"V",null,null,null,false),
+    janin.currency.createCurrency("ani","animecoin",23,151,6,"P",null,null,null,false),
+    janin.currency.createCurrency("anc","anoncoin",23,151,6,"P",null,null,null,false),
+    janin.currency.createCurrency("apex","apexcoin",23,151,6,"P",null,null,null,false),
+    janin.currency.createCurrency("arco","aquariuscoin",23,151,6,"P",null,null,null,false),
+    janin.currency.createCurrency("asiacoin","asiacoin",23,151,8,null,76067358,76066276,"Asiacoin Signed Message",false),
+    janin.currency.createCurrency("aur","auroracoin",23,151,5,"T",76067358,76066276,"Auroracoin Signed Message",false),
+    janin.currency.createCurrency("axe","axe",75,203,7,"X",null,null,null,false),
+    janin.currency.createCurrency("batacoin","batacoin",25,153,5,null,76067358,76066276,"Bata Signed Message",false),
+    janin.currency.createCurrency("bqc","bbqcoin",85,213,6,"T",null,null,null,false),
+    janin.currency.createCurrency("bela","bela",25,153,5,null,76067358,76066276,"Belacoin Signed Message",false),
+    janin.currency.createCurrency("bbp","biblepay",25,182,7,"[TU]",null,null,null,false),
+    janin.currency.createCurrency("brd","birdcoin",47,175,6,"[ST]",null,null,null,false),
+    janin.currency.createCurrency("btc","bitcoin",0,128,5,"[LK]",76067358,76066276,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("bitcoinatom","bitcoinatom",23,128,10,null,76067358,76066276,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("bch","bitcoincash",0,128,5,"[LK]",76067358,76066276,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("btcd","bitcoindark",60,188,7,"U",null,null,null,false),
+    janin.currency.createCurrency("btg","bitcoingold",38,128,23,"[LK]",76067358,76066276,"Bitcoin Gold Signed Message",false),
+    janin.currency.createCurrency("bitcoinplus","bitcoinplus",25,153,85,null,76067358,76066276,"Bitcoinplus Signed Message",false),
+    janin.currency.createCurrency("btcp","bitcoinprivate",4901,128,5039,null,76067358,76066276,"Zcash Signed Message",false),
+    janin.currency.createCurrency("bitcoinz","bitcoinz",7352,128,7357,null,76067358,76066276,"BitcoinZ Signed Message",false),
+    janin.currency.createCurrency("bitcore","bitcore",0,128,5,null,76067358,76066276,"BitCore Signed Message",false),
+    janin.currency.createCurrency("bitsend","bitsend",102,204,5,null,50221816,50221772,"Bitsend Signed Message",false),
+    janin.currency.createCurrency("synq","bitsynq",63,191,7,"V",null,null,null,false),
+    janin.currency.createCurrency("zny","bitzeny",81,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("blk","blackcoin",25,153,85,"P",76067358,76066276,"BlackCoin Signed Message",false),
+    janin.currency.createCurrency("jack","blackjack",21,149,[56],"P",null,null,null,false),
+    janin.currency.createCurrency("block","blocknet",26,154,6,"P",null,null,null,false),
+    janin.currency.createCurrency("boli","bolivarcoin",85,213,8,"Y",null,null,null,false),
+    janin.currency.createCurrency("boxy","boxycoin",75,203,7,"X",null,null,null,false),
+    janin.currency.createCurrency("bridgecoin","bridgecoin",27,176,50,null,76067358,76066276,"bridgecoin Signed Message",false),
+    janin.currency.createCurrency("britcoin","britcoin",25,153,85,null,76067358,76066276,"Britcoin Signed Message",false),
+    janin.currency.createCurrency("bun","bunnycoin",26,154,6,"P",null,null,null,false),
+    janin.currency.createCurrency("c2","c2coin",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("cage","cagecoin",31,159,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("cmpco","campuscoin",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("cdn","canadaecoin",28,156,5,"Q",76067358,76066276,"Canada eCoin Signed Message",false),
+    janin.currency.createCurrency("cann","cannabiscoin",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("cannacoin","cannacoin",28,156,5,null,76067358,76066276,"Cannacoin Signed Message",false),
+    janin.currency.createCurrency("cpc","capricoin",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("cash","cashcoin",34,162,6,"[QR]",null,null,null,false),
+    janin.currency.createCurrency("cdt","cassubiandetk",30,158,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("cat","catcoin",21,149,[56],"P",null,null,null,false),
+    janin.currency.createCurrency("chc","chaincoin",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("clam","clam",137,null,133,null,2831314276,2831251494,null,false),
+    janin.currency.createCurrency("clo","clo",255,255,null,4294967295,4294967295,null,true),
+    janin.currency.createCurrency("clubcoin","clubcoin",28,153,85,null,76067358,76066276,"Clubcoin Signed Message",false),
+    janin.currency.createCurrency("colx","colossuscoinxt",30,212,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("compcoin","compcoin",28,156,5,null,76067358,76066276,"Compcoin Signed Message",false),
+    janin.currency.createCurrency("rain","condensate",60,188,7,"U",null,null,null,false),
+    janin.currency.createCurrency("xcpo","copico",28,144,5,"N",null,null,null,false),
+    janin.currency.createCurrency("copper","coppercoin",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("corg","corgicoin",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("coval","coval",0,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("crave","crave",70,153,85,null,76067358,76066276,"DarkNet Signed Message",false),
+    janin.currency.createCurrency("crown","crown",0,128,28,null,76067358,76066276,"Crown Signed Message",false),
+    janin.currency.createCurrency("cbx","cryptobullion",11,139,5,"M",null,null,null,false),
+    janin.currency.createCurrency("ccb","cryptoclub",35,163,6,"R",null,null,null,false),
+    janin.currency.createCurrency("cesc","cryptoescudo",28,156,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("xcn","cryptonite",28,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("cwis","cryptowisdomcoin",73,135,5,"[LM]",null,null,null,false),
+    janin.currency.createCurrency("dash","dash",76,204,16,"X",50221816,50221772,"DarkCoin Signed Message",false),
+    janin.currency.createCurrency("deaf","deafdollars",48,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("onion","deeponion",31,159,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("defcoin","defcoin",30,158,5,null,76067358,76066276,"defcoin Signed Message",false),
+    janin.currency.createCurrency("denarius","denarius",30,158,90,null,76067358,76066276,"Denarius Signed Message",false),
+    janin.currency.createCurrency("dem","deutsche emark",53,181,7,"T",null,null,null,false),
+    janin.currency.createCurrency("dvc","devcoin",0,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("diamond","diamond",90,218,8,null,76067358,76066276,"Diamond Signed Message",false),
+    janin.currency.createCurrency("dgb","digibyte",30,128,5,"Q",76067358,76066276,"Digibyte Signed Message",false),
+    janin.currency.createCurrency("dgc","digitalcoin",30,158,5,"Q",76067358,76066276,"Digitalcoin Signed Message",false),
+    janin.currency.createCurrency("dime","dimecoin",15,143,5,"N",null,null,null,false),
+    janin.currency.createCurrency("note","dnotes",31,159,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("doge","dogecoin",30,158,22,"Q",49990397,49988504,"Dogecoin Signed Message",false),
+    janin.currency.createCurrency("xvg","dogecoindark",30,158,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("ecoin","ecoin",92,220,20,null,76067358,76066276,"eCoin Signed Message",false),
+    janin.currency.createCurrency("edrcoin","edrcoin",93,221,28,null,76067358,76066276,"EDRcoin Signed Message",false),
+    janin.currency.createCurrency("efl","egulden",48,176,5,"T",76067358,76066276,"e-Gulden Signed Message",false),
+    janin.currency.createCurrency("einsteinium","einsteinium",33,161,5,null,76067358,76066276,"Einsteinium Signed Message",false),
+    janin.currency.createCurrency("krn","ekrona",45,173,6,"S",null,null,null,false),
+    janin.currency.createCurrency("eca","electra",33,161,6,"Q",null,null,null,false),
+    janin.currency.createCurrency("emb","ember",92,50,2,"8",null,null,null,false),
+    janin.currency.createCurrency("emd","emerald",34,162,6,"[QR]",null,null,null,false),
+    janin.currency.createCurrency("emc","emercoin",33,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("enrg","energycoin",92,220,8,"Z",null,null,null,false),
+    janin.currency.createCurrency("esp","espers",33,144,5,"N",null,null,null,false),
+    janin.currency.createCurrency("etc","etc",255,255,null,null,4294967295,4294967295,null,true),
+    janin.currency.createCurrency("eth","eth",255,255,null,null,4294967295,4294967295,null,true),
+    janin.currency.createCurrency("europecoin","europecoin",33,168,5,null,76067358,76066276,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("exclusivecoin","exclusivecoin",33,161,137,null,76067358,76066276,"ExclusiveCoin Signed Message",false),
+    janin.currency.createCurrency("expanse","expanse",255,255,null,4294967295,4294967295,null,true),
+    janin.currency.createCurrency("fst","fastcoin",96,224,8,"a",null,null,null,false),
+    janin.currency.createCurrency("ftc","feathercoin",14,142,5,"N",76067358,76066276,"Feathercoin Signed Message",false),
+    janin.currency.createCurrency("tips","fedoracoin",33,128,5,"[KL]",null,null,null,false),
+    janin.currency.createCurrency("fibre","fibre",35,163,6,"R",null,null,null,false),
+    janin.currency.createCurrency("firstcoin","firstcoin",35,163,5,null,76067358,76066276,"FirstCoin Signed Message",false),
+    janin.currency.createCurrency("flashcoin","flashcoin",68,196,130,null,76067358,76066276,"Flashcoin Signed Message",false),
+    janin.currency.createCurrency("flo","florincoin",35,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("flb","flurbo",35,48,6,"8",null,null,null,false),
+    janin.currency.createCurrency("flt","fluttercoin",35,163,6,"R",null,null,null,false),
+    janin.currency.createCurrency("fraz","frazcoin",35,163,6,"R",null,null,null,false),
+    janin.currency.createCurrency("frc","freicoin",0,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("fud","fudcoin",35,163,6,"R",null,null,null,false),
+    janin.currency.createCurrency("fc2","fuelcoin",36,128,5,"[KL]",null,null,null,false),
+    janin.currency.createCurrency("fjc","fujicoin",36,164,16,"R",76067358,76066276,"Fujicoin Signed Message",false),
+    janin.currency.createCurrency("gbn","gabencoin",16,144,5,"N",null,null,null,false),
+    janin.currency.createCurrency("gamecredits","gamecredits",38,166,5,null,27108450,27106558,"Gamecredits Signed Message",false),
+    janin.currency.createCurrency("grlc","garlicoin",38,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("gcrcoin","gcrcoin",38,154,97,null,76067358,76066276,"GCR Signed Message",false),
+    janin.currency.createCurrency("bsty","globalboost",38,166,6,"R",null,null,null,false),
+    janin.currency.createCurrency("gobyte","gobyte",38,198,10,null,76067358,76066276,"DarkCoin Signed Message",false),
+    janin.currency.createCurrency("good","goodcoin",38,166,6,"R",null,null,null,false),
+    janin.currency.createCurrency("gridcoin","gridcoin",62,190,85,null,76067358,76066276,"Gridcoin Signed Message",false),
+    janin.currency.createCurrency("grc","gridcoinresearch",62,190,7,"V",null,null,null,false),
+    janin.currency.createCurrency("groestlcoin","groestlcoin",36,128,5,null,76067358,76066276,"GroestlCoin Signed Message",false),
+    janin.currency.createCurrency("nlg","gulden",38,166,5,"R",76067358,76066276,"Gulden Signed Message",false),
+    janin.currency.createCurrency("gun","guncoin",39,167,6,"R",null,null,null,false),
+    janin.currency.createCurrency("ham","hamradiocoin",0,128,5,"LK",null,null,null,false),
+    janin.currency.createCurrency("Helleniccoin","Helleniccoin",48,176,5,null,76067358,76066276,"helleniccoin Signed Message",false),
+    janin.currency.createCurrency("hempcoin","hempcoin",40,168,8,null,76067358,76066276,"Hempcoin Signed Message",false),
+    janin.currency.createCurrency("hfr","hfrcoin",16,144,5,"N",null,null,null,false),
+    janin.currency.createCurrency("hodl","hodlcoin",40,168,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("html","htmlcoin",41,169,6,"S",null,null,null,false),
+    janin.currency.createCurrency("hyp","hyperstake",117,245,9,"d",null,null,null,false),
+    janin.currency.createCurrency("icash","icash",102,204,7,"X",null,null,null,false),
+    janin.currency.createCurrency("mprm","imperiumcoin",48,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("nka","incakoin",53,181,7,"T",null,null,null,false),
+    janin.currency.createCurrency("icg","incognitocoin",0,128,5,"LK",null,null,null,false),
+    janin.currency.createCurrency("infx","influxcoin",102,230,8,"b",null,null,null,false),
+    janin.currency.createCurrency("insane","insane",102,55,57,null,76067358,76066276,"Insanecoin Signed Message",false),
+    janin.currency.createCurrency("iop","iop",117,49,174,null,662737247,2922649334,"Internet of People Signed Message",false),
+    janin.currency.createCurrency("ird","iridiumcoin",48,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("ixc","ixcoin",138,128,5,"[LK]",76067358,76066276,"Ixcoin Signed Message",false),
+    janin.currency.createCurrency("judge","judgecoin",43,171,6,"S",null,null,null,false),
+    janin.currency.createCurrency("jumbucks","jumbucks",43,171,5,null,58353818,58352736,"Jumbucks Signed Message",false),
+    janin.currency.createCurrency("khc","khcoin",48,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("meow","kittehcoin",45,173,6,"S",null,null,null,false),
+    janin.currency.createCurrency("kobocoin","kobocoin",35,163,28,null,76067358,76066276,"Kobocoin Signed Message",false),
+    janin.currency.createCurrency("komodo","komodo",60,188,85,null,76067358,76066276,"Komodo Signed Message",false),
+    janin.currency.createCurrency("lana","lanacoin",48,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("landcoin","landcoin",48,176,122,null,76067358,76066276,"Landcoin Signed Message",false),
+    janin.currency.createCurrency("lat","latium",23,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("lbry","lbry",85,28,122,null,27014479,27013400,"LBRYcrd Signed Message",false),
+    janin.currency.createCurrency("lbry","lbry credits",85,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("linxcoin","linxcoin",75,203,5,null,76067358,76066276,"LinX Signed Message",false),
+    janin.currency.createCurrency("ltc","litecoin",48,176,5,"T",27108450,27106558,"Litecoin Signed Message",false),
+    janin.currency.createCurrency("litecoincash","litecoincash",28,176,50,null,76067358,76066276,"Litecoin Signed Message",false),
+    janin.currency.createCurrency("ldoge","litedoge",90,171,6,"S",null,null,null,false),
+    janin.currency.createCurrency("lmc","lomocoin",48,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("lynx","lynx",45,173,50,null,76067358,76066276,"Lynx Signed Message",false),
+    janin.currency.createCurrency("mbyt","madbytecoin",50,110,4,"H",null,null,null,false),
+    janin.currency.createCurrency("mim","magicinternetmoney",48,176,6,"T",null,null,null,false),
+    janin.currency.createCurrency("xmg","magicoin",20,148,5,"[NP]",null,null,null,false),
+    janin.currency.createCurrency("mars","marscoin",50,178,6,"T",null,null,null,false),
+    janin.currency.createCurrency("mxt","martexcoin",50,178,6,"T",null,null,null,false),
+    janin.currency.createCurrency("MDOGE","masterdoge",51,139,5,"M",null,null,null,false),
+    janin.currency.createCurrency("mzc","mazacoin",50,224,8,"a",null,null,null,false),
+    janin.currency.createCurrency("mec","megacoin",50,178,6,"T",null,null,null,false),
+    janin.currency.createCurrency("minexcoin","minexcoin",75,128,5,null,76067358,76066276,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("mint","mintcoin",51,179,[67],"T",null,null,null,false),
+    janin.currency.createCurrency("mix","mix",255,255,null,null,4294967295,4294967295,null,true),
+    janin.currency.createCurrency("mobi","mobiuscoin",0,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("monacoin","monacoin",50,178,5,null,76067358,76066276,"Monacoin Signed Message",false),
+    janin.currency.createCurrency("mu","monetaryunit",16,126,5,"K",null,null,null,false),
+    janin.currency.createCurrency("mon","monocle",50,178,6,"T",null,null,null,false),
+    janin.currency.createCurrency("moon","mooncoin",3,131,5,"L",null,null,null,false),
+    janin.currency.createCurrency("musicoin","musicoin",255,255,null,null,4294967295,4294967295,null,true),
+    janin.currency.createCurrency("xmy","myriadcoin",50,178,9,"T",76067358,76066276,"Myriadcoin Signed Message",false),
+    janin.currency.createCurrency("nmc","namecoin",52,180,13,"[LK]",76067358,76066276,"Namecoin Signed Message",false),
+    janin.currency.createCurrency("nav","navcoin",53,150,85,"P",76067358,76066276,"Navcoin Signed Message",false),
+    janin.currency.createCurrency("ndc","needlecoin",53,181,7,"T",null,null,null,false),
+    janin.currency.createCurrency("neet","neetcoin",53,181,7,"T",null,null,null,false),
+    janin.currency.createCurrency("neos","neoscoin",53,177,5,"T",76067358,76066276,"Neoscoin Signed Message",false),
+    janin.currency.createCurrency("neurocoin","neurocoin",53,181,117,null,76067358,76066276,"PPCoin Signed Message",false),
+    janin.currency.createCurrency("neva","nevacoin",53,177,6,"T",null,null,null,false),
+    janin.currency.createCurrency("newyorkcoin","newyorkcoin",60,188,22,null,76067358,76066276,"newyorkc Signed Message",false),
+    janin.currency.createCurrency("nvc","novacoin",8,136,20,"M",76067358,76066276,"Novacoin Signed Message",false),
+    janin.currency.createCurrency("usnbt","nubits",25,150,26,"V",76067358,76066276,"Nu Signed Message",false),
+    janin.currency.createCurrency("nushares","nushares",63,149,64,null,76067358,76066276,"Nu Signed Message",false),
+    janin.currency.createCurrency("nyan","nyancoin",45,173,6,"S",null,null,null,false),
+    janin.currency.createCurrency("nyc","nyc",60,188,7,"U",null,null,null,false),
+    janin.currency.createCurrency("ocupy","ocupy",115,243,9,"[cd]",null,null,null,false),
+    janin.currency.createCurrency("okcash","okcash",55,183,28,null,63710167,63708275,"Okcash Signed Message",false),
+    janin.currency.createCurrency("omni","omni",0,128,5,null,76067358,76066276,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("omc","omnicoin",115,243,9,"[cd]",null,null,null,false),
+    janin.currency.createCurrency("onyx","onyxcoin",115,243,9,"[cd]",null,null,null,false),
+    janin.currency.createCurrency("pac","paccoin",24,152,6,"P",null,null,null,false),
+    janin.currency.createCurrency("pnd","pandacoin",55,183,7,"U",null,null,null,false),
+    janin.currency.createCurrency("pkb","parkbyte",55,183,28,"U",76067358,76066276,"ParkByte Signed Message",false),
+    janin.currency.createCurrency("part","particl",56,108,4,"[HG]",null,null,null,false),
+    janin.currency.createCurrency("xpy","paycoin",55,183,7,"U",null,null,null,false),
+    janin.currency.createCurrency("ppc","peercoin",55,183,117,"U",76067358,76066276,"PPCoin Signed Message",false),
+    janin.currency.createCurrency("ptc","pesetacoin",47,175,6,"[ST]",null,null,null,false),
+    janin.currency.createCurrency("pesobit","pesobit",55,183,85,null,76067358,76066276,"Pesobit Signed Message",false),
+    janin.currency.createCurrency("phc","phcoin",55,183,7,"U",null,null,null,false),
+    janin.currency.createCurrency("pxc","phoenixcoin",56,184,7,"U",null,null,null,false),
+    janin.currency.createCurrency("piggy","piggycoin",118,246,9,"d",null,null,null,false),
+    janin.currency.createCurrency("pink","pinkcoin",3,131,28,"L",76067358,76066276,"Pinkcoin Signed Message",false),
+    janin.currency.createCurrency("pivx","pivx",30,212,13,"Y",36513075,35729707,"PIVX Signed Message",false),
+    janin.currency.createCurrency("poa","poa",255,255,null,null,4294967295,4294967295,null,true),
+    janin.currency.createCurrency("posw","posw",55,183,85,null,76067358,76066276,"POSWcoin Signed Message",false),
+    janin.currency.createCurrency("pot","potcoin",55,183,5,"U",76067358,76066276,"PotCoin Signed Message",false),
+    janin.currency.createCurrency("xpm","primecoin",23,151,83,"P",76067358,76066276,"Primecoin Signed Message",false),
+    janin.currency.createCurrency("prc","prospercoinclassic",58,186,7,"Q",null,null,null,false),
+    janin.currency.createCurrency("putincoin","putincoin",55,183,20,null,76067358,76066276,"PutinCoin Signed Message",false),
+    janin.currency.createCurrency("qrk","quark",58,186,7,"U",null,null,null,false),
+    janin.currency.createCurrency("q2c","qubitcoin",38,224,8,"a",null,null,null,false),
+    janin.currency.createCurrency("rdd","reddcoin",61,189,5,"[UV]",76067358,76066276,"Reddcoin Signed Message",false),
+    janin.currency.createCurrency("richcoin","richcoin",61,128,9,null,76067358,76066276,"Richcoin Signed Message",false),
+    janin.currency.createCurrency("ric","riecoin",60,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("rbt","rimbit",60,188,7,"U",null,null,null,false),
+    janin.currency.createCurrency("roi","roicoin",60,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("rby","rubycoin",60,188,85,"U",76067358,76066276,"Rubycoin Signed Message",false),
+    janin.currency.createCurrency("rupx","rupaya",60,188,7,"U",null,null,null,false),
+    janin.currency.createCurrency("smb","sambacoin",62,190,7,"V",null,null,null,false),
+    janin.currency.createCurrency("skc","seckcoin",63,191,7,"V",null,null,null,false),
+    janin.currency.createCurrency("shadow","shadow",63,191,125,null,4001376362,4001378792,"ShadowCash Signed Message",false),
+    janin.currency.createCurrency("shadowtn","shadowtn",127,255,196,null,1992359419,1992361850,"ShadowCash Signed Message",false),
+    janin.currency.createCurrency("sib","sibcoin",63,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("611","sixeleven",52,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("smartcash","smartcash",63,191,18,null,76067358,76066276,"SmartCash Signed Message",false),
+    janin.currency.createCurrency("smly","smileycoin",25,153,5,"P",76067358,76066276,"Smileycoin Signed Message",false),
+    janin.currency.createCurrency("solarcoin","solarcoin",18,146,5,null,76067358,76066276,"SolarCoin Signed Message",false),
+    janin.currency.createCurrency("song","songcoin",63,191,7,"V",null,null,null,false),
+    janin.currency.createCurrency("spr","spreadcoin",63,191,7,"V",null,null,null,false),
+    janin.currency.createCurrency("xst","stealthcoin",62,190,7,"V",null,null,null,false),
+    janin.currency.createCurrency("strat","stratis",63,191,125,"V",76067358,76067549,"Stratis Signed Message",false),
+    janin.currency.createCurrency("bucks","swagbucks",63,153,6,"P",null,null,null,false),
+    janin.currency.createCurrency("sys","syscoin",63,191,5,"[LK]",76067358,76066276,"Syscoin Signed Message",false),
+    janin.currency.createCurrency("taj","tajcoin",65,111,6,"H",null,null,null,false),
+    janin.currency.createCurrency("trc","terracoin",0,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("testnet","testnet",111,239,196,null,70617039,70615956,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("tether","tether",0,128,5,null,76067358,76066276,"Bitcoin Signed Message",false),
+    janin.currency.createCurrency("tit","titcoin",0,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("ttc","tittiecoin",65,193,7,"V",null,null,null,false),
+    janin.currency.createCurrency("toacoin","toacoin",65,193,23,null,76067358,76066276,"TOA Signed Message",false),
+    janin.currency.createCurrency("top","topcoin",66,194,7,"V",null,null,null,false),
+    janin.currency.createCurrency("tx","transfercoin",66,153,6,"P",null,null,null,false),
+    janin.currency.createCurrency("tzc","trezarcoin",66,194,7,"V",null,null,null,false),
+    janin.currency.createCurrency("ultimatesecurecash","ultimatesecurecash",68,137,125,null,4001376362,4001378792,"Ultimate Secure Cash Signed Message",false),
+    janin.currency.createCurrency("uno","unobtanium",130,224,30,"a",76067358,76066276,"Unobtanium Signed Message",false),
+    janin.currency.createCurrency("usde","usde",38,166,6,"R",null,null,null,false),
+    janin.currency.createCurrency("xvc","vcash",71,199,8,"W",76067358,76066276,"Vcash Signed Message",false),
+    janin.currency.createCurrency("xvg","vergecoin",30,158,33,"Q",76067358,76066276,"Vergecoin Signed Message",false),
+    janin.currency.createCurrency("v","versioncoin",70,198,7,"W",null,null,null,false),
+    janin.currency.createCurrency("vtc","vertcoin",71,199,5,"[LK]",76067358,76066276,"Vertcoin Signed Message",false),
+    janin.currency.createCurrency("via","viacoin",71,199,33,"W",76067358,76066276,"Viacoin Signed Message",false),
+    janin.currency.createCurrency("viacointestnet","viacointestnet",127,255,196,null,70617039,70615956,"Viacoin Signed Message",false),
+    janin.currency.createCurrency("vik","vikingcoin",70,86,3,"D",null,null,null,false),
+    janin.currency.createCurrency("vivo","vivo",70,198,10,null,76067358,76066276,"DarkCoin Signed Message",false),
+    janin.currency.createCurrency("voxels","voxels",70,198,5,null,76067358,76066276,"Voxels Signed Message",false),
+    janin.currency.createCurrency("vpncoin","vpncoin",71,199,5,null,76067358,76066276,"VpnCoin Signed Message",false),
+    janin.currency.createCurrency("w2c","w2coin",73,201,7,"W",null,null,null,false),
+    janin.currency.createCurrency("wac","wacoins",73,201,7,"W",null,null,null,false),
+    janin.currency.createCurrency("wkc","wankcoin",0,128,5,"[LK]",null,null,null,false),
+    janin.currency.createCurrency("wsx","wearesatoshicoin",135,151,6,"P",null,null,null,false),
+    janin.currency.createCurrency("whitecoin","whitecoin",73,201,87,null,76067358,76066276,"Whitecoin Signed Message",false),
+    janin.currency.createCurrency("wincoin","wincoin",73,201,83,null,76067358,76066276,"WinCoin Signed Message",false),
+    janin.currency.createCurrency("wdc","worldcoin",73,201,7,"W",null,null,null,false),
+    janin.currency.createCurrency("xp","xp",75,203,7,"X",null,null,null,false),
+    janin.currency.createCurrency("ytn","yenten",78,123,5,"K",null,null,null,false),
+    janin.currency.createCurrency("zec","zcash",7352,128,7357,"[LK]",76067358,76066276,"Zcash Signed Message",false),
+    janin.currency.createCurrency("zclassic","zclassic",7352,128,7357,null,76067358,76066276,"Zcash Signed Message",false),
+    janin.currency.createCurrency("zcoin","zcoin",82,210,7,null,76067358,76066276,"ZCoin Signed Message",false),
+    janin.currency.createCurrency("zencash","zencash",8329,128,8342,null,76067358,76066276,"Zcash Signed Message",false),
+    janin.currency.createCurrency("zet","zetacoin",80,224,9,"a",76067358,76066276,"Zetacoin Signed Message",false)
+];
+    module.exports = janin.currencies
+},{}],142:[function(require,module,exports){
+var Buffer = require('safe-buffer').Buffer
+var alts = require('./alts.js')
+// annoyingly, this is for browserify
+var coins = [
+  require('./coins/blk'),
+  require('./coins/btc'),
+  require('./coins/btg'),
+  require('./coins/dash'),
+  require('./coins/dcr'),
+  require('./coins/dgb'),
+  require('./coins/doge'),
+  require('./coins/ltc'),
+  require('./coins/mona'),
+  require('./coins/nbt'),
+  require('./coins/nmc'),
+  require('./coins/ppc'),
+  require('./coins/qtum'),
+  require('./coins/rdd'),
+  require('./coins/vtc'),
+  require('./coins/zec')
+]
+
+var extraCoins = []
+
+alts.forEach(alt => {
+  if (!alt.isEthereum) {
+    extraCoins.push(toCoinInfo(alt))
+  }
+  //console.log(toCoinInfo(alt))
+})
+
+coins = extraCoins
+
+var supportedCoins = {}
+
+coins.forEach(function (coin) {
+  //console.log('wtf', coin)
+  var unit = coin.main.unit.toLowerCase()
+  var name = coin.main.name.toLowerCase()
+
+  coin.main.testnet = false
+  coin.main.toBitcoinJS = toBitcoinJS.bind(coin.main)
+  coin.main.toBitcore = toBitcore.bind(coin.main)
+  //supportedCoins[unit] = coin.main
+  supportedCoins[name] = coin.main
+
+  /* if (coin.test) {
+    coin.test.testnet = true
+    coin.test.toBitcoinJS = toBitcoinJS.bind(coin.test)
+    coin.test.toBitcore = toBitcore.bind(coin.test)
+    supportedCoins[unit + '-test'] = coin.test
+    supportedCoins[name + '-test'] = coin.test
+  }
+
+  if (coin.regtest) {
+    coin.regtest.testnet = true
+    coin.regtest.toBitcoinJS = toBitcoinJS.bind(coin.regtest)
+    coin.regtest.toBitcore = toBitcore.bind(coin.regtest)
+    supportedCoins[unit + '-regtest'] = coin.regtest
+    supportedCoins[name + '-regtest'] = coin.regtest
+  } */
+})
+
+function coininfo (input) {
+  var coin = input.toLowerCase()
+
+  if (!(coin in supportedCoins)) {
+    return null
+  } else {
+    return supportedCoins[coin]
+  }
+}
+
+coins.forEach(function (coin) {
+  coininfo[coin.main.name.toLowerCase()] = coin
+})
+
+function toBitcoinJS () {
+  return Object.assign({}, this, {
+    messagePrefix: null, // TODO
+    bip32: {
+      public: this.versions.bip32.public,
+      private: this.versions.bip32.private
+    },
+    pubKeyHash: this.versions.public,
+    scriptHash: this.versions.scripthash,
+    wif: this.versions.private,
+    dustThreshold: null // TODO
+  })
+}
+
+function toBitcore () {
+  // reverse magic
+  var nm = Buffer.allocUnsafe(4)
+  nm.writeUInt32BE(this.protocol ? this.protocol.magic : 0, 0)
+  nm = nm.readUInt32LE(0)
+
+  return Object.assign({}, this, {
+    name: this.testnet ? 'testnet' : 'livenet',
+    alias: this.testnet ? 'testnet' : 'mainnet',
+    pubkeyhash: this.versions.public,
+    privatekey: this.versions.private,
+    scripthash: this.versions.scripthash,
+    xpubkey: this.versions.bip32.public,
+    xprivkey: this.versions.bip32.private,
+    networkMagic: nm,
+    port: this.port,
+    dnsSeeds: this.seedsDns || []
+  })
+}
+
+function toCoinInfo(coin) {
+  var template = {
+    port: 0,
+    protocol: { magic: 0 },
+    seedsDns: [],
+    versions: {
+      bip32: { private: 0, public: 0 },
+      bip44: 0,
+      scripthash: 0,
+      scripthash2: 0
+    },
+    name: '',
+    testnet: false,
+    unit: ''
+  }
+    var coinCheck = alreadyCoin(coin)
+    if (!coinCheck.found) {
+        var info = JSON.parse(JSON.stringify(template))
+        info.versions.private = coin.privateKeyPrefix
+        info.versions.public = coin.networkVersion
+        info.versions.bip32.private = coin.versions.bip32.private
+        info.versions.bip32.public = coin.versions.bip32.public
+        info.name = coin.name 
+        info.unit = coin.unit
+        return {main: info}
+    } else {
+        return coinCheck.filter[0]
+    }
+    
+}
+function alreadyCoin(coin) {
+    var filter = coins.filter(info=> {return info.main.name.toLowerCase() == coin.name.toLowerCase()})
+    var found = filter.length > 0
+    return {filter: filter, found: found}
+}
+
+module.exports = {supportedCoins:supportedCoins, coininfo:coininfo}
+},{"./alts.js":141,"./coins/blk":143,"./coins/btc":144,"./coins/btg":145,"./coins/dash":146,"./coins/dcr":147,"./coins/dgb":148,"./coins/doge":149,"./coins/ltc":150,"./coins/mona":151,"./coins/nbt":152,"./coins/nmc":153,"./coins/ppc":154,"./coins/qtum":155,"./coins/rdd":156,"./coins/vtc":157,"./coins/zec":158,"safe-buffer":344}],143:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/rat4/blackcoin/blob/master/src/chainparams.cpp
+*/
+var common = {
+  name: 'BlackCoin',
+  per1: 1e8,
+  unit: 'BLK'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563',
+  port: 15714,
+  portRpc: 15715,
+  protocol: {
+    magic: 0x05223570 // careful, sent over wire as little endian
+  },
+  seedsDns: [
+    'rat4.blackcoin.co',
+    'seed.blackcoin.co',
+    'archon.darkfox.id.au',
+    'foxy.seeds.darkfox.id.au',
+    '6.syllabear.us.to',
+    'bcseed.syllabear.us.to'
+  ],
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 0xa,
+    private: 0x99,
+    public: 0x19,
+    scripthash: 0x55
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: null
+}
+
+},{}],144:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp
+*/
+
+var common = {
+  name: 'Bitcoin',
+  per1: 1e8,
+  unit: 'BTC'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f',
+  // nDefaultPort
+  port: 8333,
+  portRpc: 8332,
+  protocol: {
+    // pchMessageStart
+    magic: 0xd9b4bef9 // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+    'seed.bitcoin.sipa.be',
+    'dnsseed.bluematt.me',
+    'dnsseed.bitcoin.dashjr.org',
+    'seed.bitcoinstats.com',
+    'bitseed.xf2.org',
+    'seed.bitcoin.jonasschnelli.ch'
+  ],
+  // base58Prefixes
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 0,
+    private: 0x80,
+    public: 0x00,
+    scripthash: 0x05
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: '000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943',
+  port: 18333,
+  portRpc: 18332,
+  protocol: {
+    magic: 0x0709110b
+  },
+  seedsDns: [
+    'testnet-seed.alexykot.me',
+    'testnet-seed.bitcoin.schildbach.de',
+    'testnet-seed.bitcoin.petertodd.org',
+    'testnet-seed.bluematt.me'
+  ],
+  versions: {
+    bip32: {
+      private: 0x04358394,
+      public: 0x043587cf
+    },
+    bip44: 1,
+    private: 0xef,
+    public: 0x6f,
+    scripthash: 0xc4
+  }
+}, common)
+
+var regtest = Object.assign({}, {
+  hashGenesisBlock: '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206',
+  port: 18444,
+  portRpc: 18332,
+  protocol: {
+    magic: 0xdab5bffa
+  },
+  seedsDns: [],
+  versions: {
+    bip32: {
+      private: 0x04358394,
+      public: 0x043587cf
+    },
+    bip44: 1,
+    private: 0xef,
+    public: 0x6f,
+    scripthash: 0xc4
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test,
+  regtest: regtest
+}
+
+},{}],145:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/BTCGPU/BTCGPU/blob/master/src/chainparams.cpp
+*/
+
+var common = {
+  name: 'Bitcoin Gold',
+  unit: 'BTG'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f',
+  // nDefaultPort
+  port: 8338,
+  protocol: {
+    // pchMessageStart
+    magic: 0x446d47e1 // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+    'eu-dnsseed.bitcoingold-official.org',
+    'dnsseed.bitcoingold.org',
+    'dnsseed.btcgpu.org'
+  ],
+  // base58Prefixes
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 156,
+    private: 0x80,
+    public: 0x26,
+    scripthash: 0x17
+  }
+}, common)
+
+module.exports = {
+  main: main
+}
+
+},{}],146:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/dashpay/dash/blob/master/src/chainparams.cpp
+*/
+
+var common = {
+  name: 'Dash',
+  unit: 'DASH'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6',
+  // nDefaultPort
+  port: 9999,
+  portRpc: 9998,
+  protocol: {
+    magic: 0xbd6b0cbf // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+    'dash.org',
+    'dnsseed.dash.org',
+    'dashdot.io',
+    'dnsseed.dashdot.io',
+    'masternode.io',
+    'dnsseed.masternode.io',
+    'dashpay.io',
+    'dnsseed.dashpay.io'
+  ],
+  // base58Prefixes
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 5,
+    private: 0xcc,
+    public: 0x4c,
+    scripthash: 0x10
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: '00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c',
+  port: 19999,
+  portRpc: 19998,
+  seedsDns: [
+    'dashdot.io',
+    'testnet-seed.dashdot.io',
+    'masternode.io',
+    'test.dnsseed.masternode.io'
+  ],
+  versions: {
+    bip32: {
+      private: 0x04358394,
+      public: 0x043587cf
+    },
+    bip44: 1,
+    private: 0xef,
+    public: 0x8c,
+    scripthash: 0x13
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test
+}
+
+},{}],147:[function(require,module,exports){
+var common = {
+  name: 'Decred',
+  unit: 'DCR'
+}
+
+// https://github.com/decred/dcrd/blob/ef71103c95cbf77e5a0418e3d413b5906e710b25/chaincfg/params.go
+// https://github.com/decred/bitcore/blob/a92381b2b0023b28a1b7eb03e6cb0bfb7800200d/lib/networks.js
+var main = Object.assign({}, {
+  hashGenesisBlock: '298e5cc3d985bfe7f81dc135f360abe089edd4396b86d2de66b0cef42b21d980',
+  port: 9108,
+  portRpc: 9109,
+  protocol: {
+    magic: 0xf900b4d9
+  },
+  seedsDns: [
+    'mainnet-seed.decred.mindcry.org',
+    'mainnet-seed.decred.netpurgatory.com',
+    'mainnet.decredseed.org',
+    'mainnet-seed.decred.org'
+  ],
+  versions: {
+    bip32: {
+      private: 0x02fda4e8,
+      public: 0x02fda926
+    },
+    bip44: 42,
+    private: 0x22de,
+    public: 0x073f,
+    scripthash: 0x071a
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: '5b7466edf6739adc9b32aaedc54e24bdc59a05f0ced855088835fe3cbe58375f',
+  port: 19108,
+  portRpc: 19109,
+  protocol: {
+    magic: 0x48e7a065
+  },
+  seedsDns: [
+    'testnet-seed.decred.mindcry.org',
+    'testnet-seed.decred.netpurgatory.org',
+    'testnet.decredseed.org',
+    'testnet-seed.decred.org'
+  ],
+  versions: {
+    bip32: {
+      private: 0x04358397,
+      public: 0x043587d1
+    },
+    bip44: 42,
+    private: 0x230e,
+    public: 0x0f21,
+    scripthash: 0x0efc
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test
+}
+
+},{}],148:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/digibyte/digibyte/blob/9e4c0b3ddfd10a7ab852240ff716a7b93af89a07/src/chainparams.cpp
+*/
+
+var common = {
+  name: 'DigiByte',
+  per1: 1e8,
+  unit: 'DGB'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f',
+  // nDefaultPort
+  port: 12024,
+  portRpc: 14022,
+  protocol: {
+    // pchMessageStart
+    magic: 0xfac3b6da // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+    'seed.digibyte.io',
+    'digiexplorer.info',
+    'digihash.co'
+  ],
+  // base58Prefixes
+  versions: {
+    bip44: 0x80000014,
+    private: 0x80,
+    public: 0x1e,
+    scripthash: 0x05
+  }
+}, common)
+
+module.exports = { main: main }
+
+},{}],149:[function(require,module,exports){
+// https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp
+
+var common = {
+  name: 'Dogecoin',
+  unit: 'DOGE'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691',
+  port: 22556,
+  protocol: {
+    magic: 0xc0c0c0c0
+  },
+  seedsDns: [
+    'seed.dogecoin.com',
+    'seed.multidoge.org',
+    'seed2.multidoge.org',
+    'seed.doger.dogecoin.com'
+  ],
+  versions: {
+    bip32: {
+      private: 0x02fac398,
+      public: 0x02facafd
+    },
+    bip44: 3,
+    private: 0x9e,
+    public: 0x1e,
+    scripthash: 0x16
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: 'bb0a78264637406b6360aad926284d544d7049f45189db5664f3c4d07350559e',
+  versions: {
+    bip44: 1,
+    private: 0xf1,
+    public: 0x71,
+    scripthash: 0xc4
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test
+}
+
+},{}],150:[function(require,module,exports){
+// https://github.com/litecoin-project/litecoin/blob/master-0.10/src/chainparams.cpp
+
+var common = {
+  name: 'Litecoin',
+  unit: 'LTC'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2',
+  port: 9333,
+  protocol: {
+    magic: 0xdbb6c0fb
+  },
+  seedsDns: [
+    'dnsseed.litecointools.com',
+    'dnsseed.litecoinpool.org',
+    'dnsseed.ltc.xurious.com',
+    'dnsseed.koin-project.com',
+    'dnsseed.weminemnc.com'
+  ],
+  versions: {
+    bip32: {
+      private: 0x019d9cfe,
+      public: 0x019da462
+    },
+    bip44: 2,
+    private: 0xb0,
+    public: 0x30,
+    scripthash: 0x32,
+    scripthash2: 0x05 // old '3' prefix. available for backward compatibility.
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: 'f5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f',
+  versions: {
+    bip44: 1,
+    private: 0xef,
+    public: 0x6f,
+    scripthash: 0x3a,
+    scripthash2: 0xc4
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test
+}
+
+},{}],151:[function(require,module,exports){
+// https://github.com/monacoinproject/monacoin/blob/master-0.13/src/chainparams.cpp
+
+var common = {
+  name: 'Monacoin',
+  unit: 'MONA'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: 'ff9f1c0116d19de7c9963845e129f9ed1bfc0b376eb54fd7afa42e0d418c8bb6',
+  port: 9401,
+  portRpc: 9402,
+  protocol: {
+    magic: 0xdbb6c0fb
+  },
+  seedsDns: [
+    'dnsseed.monacoin.org'
+  ],
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 22,
+    private: 0xb0,
+    private2: 0xb2, // old wif
+    public: 0x32,
+    scripthash: 0x37,
+    scripthash2: 0x05 // old '3' prefix. available for backward compatibility.
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: 'a2b106ceba3be0c6d097b2a6a6aacf9d638ba8258ae478158f449c321061e0b2',
+  port: 19403,
+  portRpc: 19402,
+  protocol: {
+    magic: 0xf1c8d2fd
+  },
+  seedsDns: [
+    'testnet-dnsseed.monacoin.org'
+  ],
+  versions: {
+    bip32: {
+      private: 0x04358394,
+      public: 0x043587cf
+    },
+    bip44: 1,
+    private: 0xef,
+    public: 0x6f,
+    scripthash: 0x75,
+    scripthash2: 0xc4
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test
+}
+
+},{}],152:[function(require,module,exports){
+var common = {
+  name: 'NuBits',
+  per1: 1e6,
+  unit: 'NBT'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '000003cc2da5a0a289ad0a590c20a8b975219ddc1204efd169e947dd4cbad73f',
+  // nDefaultPort
+  port: 7890,
+  portRpc: 14002,
+  protocol: {
+    // pchMessageStart
+    magic: 0xd9b4bef9 // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+  ],
+  // base58Prefixes
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 12,
+    private: 0x96,
+    public: 0x19,
+    scripthash: 0x1a
+  }
+}, common)
+
+module.exports = {
+  main: main
+}
+
+},{}],153:[function(require,module,exports){
+var common = {
+  name: 'Namecoin',
+  unit: 'NMC'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '000000000062b72c5e2ceb45fbc8587e807c155b0da735e6483dfba2f0a9c770',
+  versions: {
+    bip44: 7,
+    private: 0xb4,
+    public: 0x34,
+    scripthash: 0x05
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: null
+}
+
+},{}],154:[function(require,module,exports){
+var common = {
+  name: 'Peercoin',
+  unit: 'PPC'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '0000000032fe677166d54963b62a4677d8957e87c508eaa4fd7eb1c880cd27e3',
+  versions: {
+    bip44: 6,
+    private: 0xc4,
+    public: 0x44,
+    scripthash: 0x05
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: null
+}
+
+},{}],155:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/qtumproject/qtum/blob/master/src/chainparams.cpp
+*/
+
+var common = {
+  name: 'Qtum',
+  unit: 'QTUM'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '000075aef83cf2853580f8ae8ce6f8c3096cfa21d98334d6e3f95e5582ed986c',
+  // nDefaultPort
+  port: 3888,
+  protocol: {
+    // pchMessageStart
+    magic: 0xd3a6cff1 // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+    'qtum3.dynu.net'
+  ],
+  // base58Prefixes
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 88,
+    private: 0x80,
+    public: 0x3A,
+    scripthash: 0x32
+  }
+}, common)
+
+module.exports = {
+  main: main
+}
+
+},{}],156:[function(require,module,exports){
+var common = {
+  name: 'ReddCoin',
+  unit: 'RDD'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: 'b868e0d95a3c3c0e0dadc67ee587aaf9dc8acbf99e3b4b3110fad4eb74c1decc',
+  versions: {
+    bip44: 4,
+    private: 0xbd,
+    public: 0x3d,
+    scripthash: 0x05
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: 'a12ac9bd4cd26262c53a6277aafc61fe9dfe1e2b05eaa1ca148a5be8b394e35a',
+  versions: {
+    bip44: 1,
+    private: 0xef,
+    public: 0x6f,
+    scripthash: 0xc4
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test
+}
+
+},{}],157:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/vertcoin/vertcoin/blob/master/src/chainparams.cpp
+*/
+
+var common = {
+  name: 'Vertcoin',
+  unit: 'VTC'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '4d96a915f49d40b1e5c2844d1ee2dccb90013a990ccea12c492d22110489f0c4',
+  // nDefaultPort
+  port: 5889,
+  protocol: {
+    // pchMessageStart
+    magic: 0xdab5bffa // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+    'useast1.vtconline.org',
+    'vtc.gertjaap.org',
+    'seed.vtc.bryangoodson.org',
+    'dnsseed.pknight.ca',
+    'seed.orderofthetaco.org',
+    'seed.alexturek.org',
+    'vertcoin.mbl.cash'
+  ],
+  // base58Prefixes
+  versions: {
+    bip32: {
+      private: 0x0488ade4,
+      public: 0x0488b21e
+    },
+    bip44: 28,
+    private: 0x80,
+    public: 0x47,
+    scripthash: 0x05
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: 'cee8f24feb7a64c8f07916976aa4855decac79b6741a8ec2e32e2747497ad2c9',
+  port: 15889,
+  // portRpc: 18332,
+  protocol: {
+    magic: 0x74726576
+  },
+  seedsDns: [
+    'jlovejoy.mit.edu',
+    'gertjaap.ddns.net',
+    'fr1.vtconline.org',
+    'tvtc.vertcoin.org'
+  ],
+  versions: {
+    bip32: {
+      private: 0x04358394,
+      public: 0x043587cf
+    },
+    private: 0xef,
+    public: 0x4a,
+    scripthash: 0xc4
+  }
+}, common)
+
+var regtest = Object.assign({}, {
+  hashGenesisBlock: '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206',
+  port: 18444,
+  // portRpc: 18332,
+  protocol: {
+    magic: 0xdab5bffa
+  },
+  seedsDns: [],
+  versions: {
+    bip32: {
+      private: 0x04358394,
+      public: 0x043587cf
+    },
+    private: 0xef,
+    public: 0x6f,
+    scripthash: 0xc4
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test,
+  regtest: regtest
+}
+
+},{}],158:[function(require,module,exports){
+/*
+  info from:
+    https://github.com/zcash/zcash/blob/v1.0.12/src/chainparamsbase.cpp
+    https://github.com/zcash/zcash/blob/v1.0.12/src/chainparams.cpp
+*/
+
+var common = {
+  name: 'Zcash',
+  unit: 'ZEC'
+}
+
+var main = Object.assign({}, {
+  hashGenesisBlock: '00040fe8ec8471911baa1db1266ea15dd06b4a8a5c453883c000b031973dce08',
+  // nDefaultPort
+  port: 8233,
+  portRpc: 8232,
+  protocol: {
+    // pchMessageStart
+    magic: 0x6427e924 // careful, sent over wire as little endian
+  },
+  // vSeeds
+  seedsDns: [
+    'dnsseed.z.cash',
+    'dnsseed.str4d.xyz',
+    'dnsseed.znodes.org'
+  ],
+  // base58Prefixes
+  versions: {
+    bip44: 133,
+    private: 0x80,
+    public: 0x1cb8,
+    scripthash: 0x1cbd
+  }
+}, common)
+
+var test = Object.assign({}, {
+  hashGenesisBlock: '0x05a60a92d99d85997cce3b87616c089f6124d7342af37106edc76126334a2c38',
+  port: 18233,
+  portRpc: 18232,
+  protocol: {
+    magic: 0xbff91afa
+  },
+  seedsDns: [
+    'dnsseed.testnet.z.cash'
+  ],
+  versions: {
+    bip44: 133,
+    private: 0xef,
+    public: 0x1d25,
+    scripthash: 0x1cba
+  }
+}, common)
+
+module.exports = {
+  main: main,
+  test: test
+}
+
+},{}],159:[function(require,module,exports){
 var assert = require('assert')
 var cs = require('coinstring')
 var ECKey = require('eckey')
@@ -49297,7 +50530,7 @@ CoinKey.addressToHash = function (address) {
 
 module.exports = CoinKey
 
-},{"./util":142,"assert":411,"coinstring":143,"eckey":220,"inherits":284,"secure-random":352}],142:[function(require,module,exports){
+},{"./util":160,"assert":411,"coinstring":161,"eckey":219,"inherits":283,"secure-random":352}],160:[function(require,module,exports){
 (function (Buffer){
 // poor man's clone
 function clone (obj) {
@@ -49331,7 +50564,7 @@ module.exports = {
 }
 
 }).call(this,{"isBuffer":require("../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503}],143:[function(require,module,exports){
+},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503}],161:[function(require,module,exports){
 (function (Buffer){
 var base58 = require('bs58')
 var createHash = require('create-hash')
@@ -49428,7 +50661,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bs58":134,"buffer":446,"create-hash":180}],144:[function(require,module,exports){
+},{"bs58":134,"buffer":446,"create-hash":179}],162:[function(require,module,exports){
 (function (Buffer){
 var util = require('util');
 var Stream = require('stream').Stream;
@@ -49620,7 +50853,7 @@ CombinedStream.prototype._emitError = function(err) {
 };
 
 }).call(this,{"isBuffer":require("../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503,"delayed-stream":216,"stream":570,"util":582}],145:[function(require,module,exports){
+},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503,"delayed-stream":215,"stream":570,"util":582}],163:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -49731,7 +50964,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503}],146:[function(require,module,exports){
+},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503}],164:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UserLib = require("./base/User");
@@ -49757,7 +50990,7 @@ var Agent = /** @class */ (function () {
 }());
 exports.Agent = Agent;
 
-},{"./base/User":153}],147:[function(require,module,exports){
+},{"./base/User":171}],165:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Protected_1 = require("./secure/Protected");
@@ -49854,7 +51087,7 @@ var Transports = /** @class */ (function () {
 }());
 exports.Transports = Transports;
 
-},{"./Agent":146,"./Emblem":148,"./base/Error":150,"./base/Log":151,"./base/Msgs":152,"./base/User":153,"./secure/HDKey":154,"./secure/ManyKeys":155,"./secure/Mnemonic":156,"./secure/Protected":157,"./transport/Envelope":159}],148:[function(require,module,exports){
+},{"./Agent":164,"./Emblem":166,"./base/Error":168,"./base/Log":169,"./base/Msgs":170,"./base/User":171,"./secure/HDKey":172,"./secure/ManyKeys":173,"./secure/Mnemonic":174,"./secure/Protected":175,"./transport/Envelope":177}],166:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Envelope_1 = require("./transport/Envelope");
@@ -49886,7 +51119,7 @@ var Emblem = /** @class */ (function () {
 }());
 exports.Emblem = Emblem;
 
-},{"./transport/Envelope":159}],149:[function(require,module,exports){
+},{"./transport/Envelope":177}],167:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Utils = /** @class */ (function () {
@@ -49926,7 +51159,7 @@ var Utils = /** @class */ (function () {
 }());
 exports.Utils = Utils;
 
-},{}],150:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -49989,7 +51222,7 @@ var Errors = /** @class */ (function () {
 }());
 exports.Errors = Errors;
 
-},{}],151:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Log = /** @class */ (function () {
@@ -50020,7 +51253,7 @@ var Logs = /** @class */ (function () {
 }());
 exports.Logs = Logs;
 
-},{}],152:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -50048,7 +51281,7 @@ var Msgs = /** @class */ (function (_super) {
 }(Error_1.Errors));
 exports.Msgs = Msgs;
 
-},{"./Error":150,"./Log":151}],153:[function(require,module,exports){
+},{"./Error":168,"./Log":169}],171:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -50151,7 +51384,7 @@ var UserType;
     UserType[UserType["Generic"] = 3] = "Generic";
 })(UserType = exports.UserType || (exports.UserType = {}));
 
-},{"../Utils":149,"../secure/Shamir":158,"../transport/Multichain":160}],154:[function(require,module,exports){
+},{"../Utils":167,"../secure/Shamir":176,"../transport/Multichain":178}],172:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var bitcore = require("bitcore-lib");
@@ -50270,7 +51503,7 @@ function GeneratePayloadFromSeed(seed, index, cb) {
     return cb(address, pk);
 }
 
-},{"../Utils":149,"../transport/Envelope":159,"bitcore-lib":59,"coininfo":162,"crypto-js":189}],155:[function(require,module,exports){
+},{"../Utils":167,"../transport/Envelope":177,"bitcore-lib":59,"coininfo":142,"crypto-js":188}],173:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
@@ -50337,7 +51570,7 @@ var ManyKeys = /** @class */ (function () {
 exports.ManyKeys = ManyKeys;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":446,"coininfo":162,"coinkey":141}],156:[function(require,module,exports){
+},{"buffer":446,"coininfo":142,"coinkey":159}],174:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Mnemonic = /** @class */ (function () {
@@ -50347,7 +51580,7 @@ var Mnemonic = /** @class */ (function () {
 }());
 exports.Mnemonic = Mnemonic;
 
-},{}],157:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Envelope_1 = require("../transport/Envelope");
@@ -50368,7 +51601,7 @@ var Protected = /** @class */ (function () {
 }());
 exports.Protected = Protected;
 
-},{"../transport/Envelope":159}],158:[function(require,module,exports){
+},{"../transport/Envelope":177}],176:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var secrets = require("secrets.js-grempe");
@@ -50412,7 +51645,7 @@ var Shamir;
     Shamir.Key = Key;
 })(Shamir = exports.Shamir || (exports.Shamir = {}));
 
-},{"../transport/Envelope":159,"secrets.js-grempe":179}],159:[function(require,module,exports){
+},{"../transport/Envelope":177,"secrets.js-grempe":351}],177:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -50450,7 +51683,7 @@ var Envelope = /** @class */ (function (_super) {
 }(Msgs_1.Msgs));
 exports.Envelope = Envelope;
 
-},{"../base/Log":151,"../base/Msgs":152}],160:[function(require,module,exports){
+},{"../base/Log":169,"../base/Msgs":170}],178:[function(require,module,exports){
 (function (process){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -50734,2254 +51967,7 @@ var MultichainConnection = /** @class */ (function () {
 exports.MultichainConnection = MultichainConnection;
 
 }).call(this,require('_process'))
-},{"../Utils":149,"../base/Error":150,"../secure/HDKey":154,"_process":534,"multichain-node":298}],161:[function(require,module,exports){
-var janin = {};
-
-janin.currency = {
-    createCurrency: function (unit, name, networkVersion, privateKeyPrefix, WIF_Start, CWIF_Start, public, private, msg, ethereum) {
-        var currency = {};
-        currency.unit = unit
-        currency.name = name;
-        currency.networkVersion = networkVersion;
-        currency.privateKeyPrefix = privateKeyPrefix;
-        currency.WIF_Start = WIF_Start;
-        currency.CWIF_Start = CWIF_Start;
-        currency.versions = {bip32:{}}
-        currency.versions.bip32.public = public
-        currency.versions.bip32.private = private
-        currency.isEthereum = ethereum
-        currency.msgStart = msg
-        return currency;
-    },
-
-    name: function() {
-        return janin.selectedCurrency.name;
-    },
-
-    networkVersion: function() {
-        return janin.selectedCurrency.networkVersion;
-    },
-
-    privateKeyPrefix: function() {
-        return janin.selectedCurrency.privateKeyPrefix;
-    },
-
-    WIF_RegEx: function() {
-        return new RegExp("^" + janin.selectedCurrency.WIF_Start + "[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$");
-    },
-
-    CWIF_RegEx: function() {
-        return new RegExp("^" + janin.selectedCurrency.CWIF_Start + "[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51}$");
-    },
-};
-
-janin.currencies = [
-    janin.currency.createCurrency("2give","2give",39,167,6,"R",null,null,null,false),
-    janin.currency.createCurrency("42","42coin",8,136,5,"M",null,null,null,false),
-    janin.currency.createCurrency("abncoin","abncoin",25,153,85,null,76067358,76066276,"Abncoin Signed Message",false),
-    janin.currency.createCurrency("acoin","acoin",23,230,8,"b",null,null,null,false),
-    janin.currency.createCurrency("adcoin","adcoin",23,151,5,null,76067358,76066276,"AdCoin Signed Message",false),
-    janin.currency.createCurrency("aga","agacoin",83,211,8,"Y",null,null,null,false),
-    janin.currency.createCurrency("alf","alphacoin",82,210,8,"Y",null,null,null,false),
-    janin.currency.createCurrency("alqo","alqo",23,193,7,"V",null,null,null,false),
-    janin.currency.createCurrency("ani","animecoin",23,151,6,"P",null,null,null,false),
-    janin.currency.createCurrency("anc","anoncoin",23,151,6,"P",null,null,null,false),
-    janin.currency.createCurrency("apex","apexcoin",23,151,6,"P",null,null,null,false),
-    janin.currency.createCurrency("arco","aquariuscoin",23,151,6,"P",null,null,null,false),
-    janin.currency.createCurrency("asiacoin","asiacoin",23,151,8,null,76067358,76066276,"Asiacoin Signed Message",false),
-    janin.currency.createCurrency("aur","auroracoin",23,151,5,"T",76067358,76066276,"Auroracoin Signed Message",false),
-    janin.currency.createCurrency("axe","axe",75,203,7,"X",null,null,null,false),
-    janin.currency.createCurrency("batacoin","batacoin",25,153,5,null,76067358,76066276,"Bata Signed Message",false),
-    janin.currency.createCurrency("bqc","bbqcoin",85,213,6,"T",null,null,null,false),
-    janin.currency.createCurrency("bela","bela",25,153,5,null,76067358,76066276,"Belacoin Signed Message",false),
-    janin.currency.createCurrency("bbp","biblepay",25,182,7,"[TU]",null,null,null,false),
-    janin.currency.createCurrency("brd","birdcoin",47,175,6,"[ST]",null,null,null,false),
-    janin.currency.createCurrency("btc","bitcoin",0,128,5,"[LK]",76067358,76066276,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("bitcoinatom","bitcoinatom",23,128,10,null,76067358,76066276,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("bch","bitcoincash",0,128,5,"[LK]",76067358,76066276,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("btcd","bitcoindark",60,188,7,"U",null,null,null,false),
-    janin.currency.createCurrency("btg","bitcoingold",38,128,23,"[LK]",76067358,76066276,"Bitcoin Gold Signed Message",false),
-    janin.currency.createCurrency("bitcoinplus","bitcoinplus",25,153,85,null,76067358,76066276,"Bitcoinplus Signed Message",false),
-    janin.currency.createCurrency("bitcoinprivate","bitcoinprivate",4901,128,5039,null,76067358,76066276,"Zcash Signed Message",false),
-    janin.currency.createCurrency("bitcoinz","bitcoinz",7352,128,7357,null,76067358,76066276,"BitcoinZ Signed Message",false),
-    janin.currency.createCurrency("bitcore","bitcore",0,128,5,null,76067358,76066276,"BitCore Signed Message",false),
-    janin.currency.createCurrency("bitsend","bitsend",102,204,5,null,50221816,50221772,"Bitsend Signed Message",false),
-    janin.currency.createCurrency("synq","bitsynq",63,191,7,"V",null,null,null,false),
-    janin.currency.createCurrency("zny","bitzeny",81,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("blk","blackcoin",25,153,85,"P",76067358,76066276,"BlackCoin Signed Message",false),
-    janin.currency.createCurrency("jack","blackjack",21,149,[56],"P",null,null,null,false),
-    janin.currency.createCurrency("block","blocknet",26,154,6,"P",null,null,null,false),
-    janin.currency.createCurrency("boli","bolivarcoin",85,213,8,"Y",null,null,null,false),
-    janin.currency.createCurrency("boxy","boxycoin",75,203,7,"X",null,null,null,false),
-    janin.currency.createCurrency("bridgecoin","bridgecoin",27,176,50,null,76067358,76066276,"bridgecoin Signed Message",false),
-    janin.currency.createCurrency("britcoin","britcoin",25,153,85,null,76067358,76066276,"Britcoin Signed Message",false),
-    janin.currency.createCurrency("bun","bunnycoin",26,154,6,"P",null,null,null,false),
-    janin.currency.createCurrency("c2","c2coin",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("cage","cagecoin",31,159,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("cmpco","campuscoin",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("cdn","canadaecoin",28,156,5,"Q",76067358,76066276,"Canada eCoin Signed Message",false),
-    janin.currency.createCurrency("cann","cannabiscoin",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("cannacoin","cannacoin",28,156,5,null,76067358,76066276,"Cannacoin Signed Message",false),
-    janin.currency.createCurrency("cpc","capricoin",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("cash","cashcoin",34,162,6,"[QR]",null,null,null,false),
-    janin.currency.createCurrency("cdt","cassubiandetk",30,158,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("cat","catcoin",21,149,[56],"P",null,null,null,false),
-    janin.currency.createCurrency("chc","chaincoin",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("clam","clam",137,null,133,null,2831314276,2831251494,null,false),
-    janin.currency.createCurrency("clo","clo",255,255,null,4294967295,4294967295,null,true),
-    janin.currency.createCurrency("clubcoin","clubcoin",28,153,85,null,76067358,76066276,"Clubcoin Signed Message",false),
-    janin.currency.createCurrency("colx","colossuscoinxt",30,212,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("compcoin","compcoin",28,156,5,null,76067358,76066276,"Compcoin Signed Message",false),
-    janin.currency.createCurrency("rain","condensate",60,188,7,"U",null,null,null,false),
-    janin.currency.createCurrency("xcpo","copico",28,144,5,"N",null,null,null,false),
-    janin.currency.createCurrency("copper","coppercoin",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("corg","corgicoin",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("coval","coval",0,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("crave","crave",70,153,85,null,76067358,76066276,"DarkNet Signed Message",false),
-    janin.currency.createCurrency("crown","crown",0,128,28,null,76067358,76066276,"Crown Signed Message",false),
-    janin.currency.createCurrency("cbx","cryptobullion",11,139,5,"M",null,null,null,false),
-    janin.currency.createCurrency("ccb","cryptoclub",35,163,6,"R",null,null,null,false),
-    janin.currency.createCurrency("cesc","cryptoescudo",28,156,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("xcn","cryptonite",28,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("cwis","cryptowisdomcoin",73,135,5,"[LM]",null,null,null,false),
-    janin.currency.createCurrency("dash","dash",76,204,16,"X",50221816,50221772,"DarkCoin Signed Message",false),
-    janin.currency.createCurrency("deaf","deafdollars",48,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("onion","deeponion",31,159,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("defcoin","defcoin",30,158,5,null,76067358,76066276,"defcoin Signed Message",false),
-    janin.currency.createCurrency("denarius","denarius",30,158,90,null,76067358,76066276,"Denarius Signed Message",false),
-    janin.currency.createCurrency("dem","deutsche emark",53,181,7,"T",null,null,null,false),
-    janin.currency.createCurrency("dvc","devcoin",0,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("diamond","diamond",90,218,8,null,76067358,76066276,"Diamond Signed Message",false),
-    janin.currency.createCurrency("dgb","digibyte",30,128,5,"Q",76067358,76066276,"Digibyte Signed Message",false),
-    janin.currency.createCurrency("dgc","digitalcoin",30,158,5,"Q",76067358,76066276,"Digitalcoin Signed Message",false),
-    janin.currency.createCurrency("dime","dimecoin",15,143,5,"N",null,null,null,false),
-    janin.currency.createCurrency("note","dnotes",31,159,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("doge","dogecoin",30,158,22,"Q",49990397,49988504,"Dogecoin Signed Message",false),
-    janin.currency.createCurrency("xvg","dogecoindark",30,158,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("ecoin","ecoin",92,220,20,null,76067358,76066276,"eCoin Signed Message",false),
-    janin.currency.createCurrency("edrcoin","edrcoin",93,221,28,null,76067358,76066276,"EDRcoin Signed Message",false),
-    janin.currency.createCurrency("efl","egulden",48,176,5,"T",76067358,76066276,"e-Gulden Signed Message",false),
-    janin.currency.createCurrency("einsteinium","einsteinium",33,161,5,null,76067358,76066276,"Einsteinium Signed Message",false),
-    janin.currency.createCurrency("krn","ekrona",45,173,6,"S",null,null,null,false),
-    janin.currency.createCurrency("eca","electra",33,161,6,"Q",null,null,null,false),
-    janin.currency.createCurrency("emb","ember",92,50,2,"8",null,null,null,false),
-    janin.currency.createCurrency("emd","emerald",34,162,6,"[QR]",null,null,null,false),
-    janin.currency.createCurrency("emc","emercoin",33,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("enrg","energycoin",92,220,8,"Z",null,null,null,false),
-    janin.currency.createCurrency("esp","espers",33,144,5,"N",null,null,null,false),
-    janin.currency.createCurrency("etc","etc",255,255,null,null,4294967295,4294967295,null,true),
-    janin.currency.createCurrency("eth","eth",255,255,null,null,4294967295,4294967295,null,true),
-    janin.currency.createCurrency("europecoin","europecoin",33,168,5,null,76067358,76066276,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("exclusivecoin","exclusivecoin",33,161,137,null,76067358,76066276,"ExclusiveCoin Signed Message",false),
-    janin.currency.createCurrency("expanse","expanse",255,255,null,4294967295,4294967295,null,true),
-    janin.currency.createCurrency("fst","fastcoin",96,224,8,"a",null,null,null,false),
-    janin.currency.createCurrency("ftc","feathercoin",14,142,5,"N",76067358,76066276,"Feathercoin Signed Message",false),
-    janin.currency.createCurrency("tips","fedoracoin",33,128,5,"[KL]",null,null,null,false),
-    janin.currency.createCurrency("fibre","fibre",35,163,6,"R",null,null,null,false),
-    janin.currency.createCurrency("firstcoin","firstcoin",35,163,5,null,76067358,76066276,"FirstCoin Signed Message",false),
-    janin.currency.createCurrency("flashcoin","flashcoin",68,196,130,null,76067358,76066276,"Flashcoin Signed Message",false),
-    janin.currency.createCurrency("flo","florincoin",35,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("flb","flurbo",35,48,6,"8",null,null,null,false),
-    janin.currency.createCurrency("flt","fluttercoin",35,163,6,"R",null,null,null,false),
-    janin.currency.createCurrency("fraz","frazcoin",35,163,6,"R",null,null,null,false),
-    janin.currency.createCurrency("frc","freicoin",0,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("fud","fudcoin",35,163,6,"R",null,null,null,false),
-    janin.currency.createCurrency("fc2","fuelcoin",36,128,5,"[KL]",null,null,null,false),
-    janin.currency.createCurrency("fjc","fujicoin",36,164,16,"R",76067358,76066276,"Fujicoin Signed Message",false),
-    janin.currency.createCurrency("gbn","gabencoin",16,144,5,"N",null,null,null,false),
-    janin.currency.createCurrency("gamecredits","gamecredits",38,166,5,null,27108450,27106558,"Gamecredits Signed Message",false),
-    janin.currency.createCurrency("grlc","garlicoin",38,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("gcrcoin","gcrcoin",38,154,97,null,76067358,76066276,"GCR Signed Message",false),
-    janin.currency.createCurrency("bsty","globalboost",38,166,6,"R",null,null,null,false),
-    janin.currency.createCurrency("gobyte","gobyte",38,198,10,null,76067358,76066276,"DarkCoin Signed Message",false),
-    janin.currency.createCurrency("good","goodcoin",38,166,6,"R",null,null,null,false),
-    janin.currency.createCurrency("gridcoin","gridcoin",62,190,85,null,76067358,76066276,"Gridcoin Signed Message",false),
-    janin.currency.createCurrency("grc","gridcoinresearch",62,190,7,"V",null,null,null,false),
-    janin.currency.createCurrency("groestlcoin","groestlcoin",36,128,5,null,76067358,76066276,"GroestlCoin Signed Message",false),
-    janin.currency.createCurrency("nlg","gulden",38,166,5,"R",76067358,76066276,"Gulden Signed Message",false),
-    janin.currency.createCurrency("gun","guncoin",39,167,6,"R",null,null,null,false),
-    janin.currency.createCurrency("ham","hamradiocoin",0,128,5,"LK",null,null,null,false),
-    janin.currency.createCurrency("Helleniccoin","Helleniccoin",48,176,5,null,76067358,76066276,"helleniccoin Signed Message",false),
-    janin.currency.createCurrency("hempcoin","hempcoin",40,168,8,null,76067358,76066276,"Hempcoin Signed Message",false),
-    janin.currency.createCurrency("hfr","hfrcoin",16,144,5,"N",null,null,null,false),
-    janin.currency.createCurrency("hodl","hodlcoin",40,168,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("html","htmlcoin",41,169,6,"S",null,null,null,false),
-    janin.currency.createCurrency("hyp","hyperstake",117,245,9,"d",null,null,null,false),
-    janin.currency.createCurrency("icash","icash",102,204,7,"X",null,null,null,false),
-    janin.currency.createCurrency("mprm","imperiumcoin",48,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("nka","incakoin",53,181,7,"T",null,null,null,false),
-    janin.currency.createCurrency("icg","incognitocoin",0,128,5,"LK",null,null,null,false),
-    janin.currency.createCurrency("infx","influxcoin",102,230,8,"b",null,null,null,false),
-    janin.currency.createCurrency("insane","insane",102,55,57,null,76067358,76066276,"Insanecoin Signed Message",false),
-    janin.currency.createCurrency("iop","iop",117,49,174,null,662737247,2922649334,"Internet of People Signed Message",false),
-    janin.currency.createCurrency("ird","iridiumcoin",48,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("ixc","ixcoin",138,128,5,"[LK]",76067358,76066276,"Ixcoin Signed Message",false),
-    janin.currency.createCurrency("judge","judgecoin",43,171,6,"S",null,null,null,false),
-    janin.currency.createCurrency("jumbucks","jumbucks",43,171,5,null,58353818,58352736,"Jumbucks Signed Message",false),
-    janin.currency.createCurrency("khc","khcoin",48,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("meow","kittehcoin",45,173,6,"S",null,null,null,false),
-    janin.currency.createCurrency("kobocoin","kobocoin",35,163,28,null,76067358,76066276,"Kobocoin Signed Message",false),
-    janin.currency.createCurrency("komodo","komodo",60,188,85,null,76067358,76066276,"Komodo Signed Message",false),
-    janin.currency.createCurrency("lana","lanacoin",48,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("landcoin","landcoin",48,176,122,null,76067358,76066276,"Landcoin Signed Message",false),
-    janin.currency.createCurrency("lat","latium",23,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("lbry","lbry",85,28,122,null,27014479,27013400,"LBRYcrd Signed Message",false),
-    janin.currency.createCurrency("lbry","lbry credits",85,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("linxcoin","linxcoin",75,203,5,null,76067358,76066276,"LinX Signed Message",false),
-    janin.currency.createCurrency("ltc","litecoin",48,176,5,"T",27108450,27106558,"Litecoin Signed Message",false),
-    janin.currency.createCurrency("litecoincash","litecoincash",28,176,50,null,76067358,76066276,"Litecoin Signed Message",false),
-    janin.currency.createCurrency("ldoge","litedoge",90,171,6,"S",null,null,null,false),
-    janin.currency.createCurrency("lmc","lomocoin",48,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("lynx","lynx",45,173,50,null,76067358,76066276,"Lynx Signed Message",false),
-    janin.currency.createCurrency("mbyt","madbytecoin",50,110,4,"H",null,null,null,false),
-    janin.currency.createCurrency("mim","magicinternetmoney",48,176,6,"T",null,null,null,false),
-    janin.currency.createCurrency("xmg","magicoin",20,148,5,"[NP]",null,null,null,false),
-    janin.currency.createCurrency("mars","marscoin",50,178,6,"T",null,null,null,false),
-    janin.currency.createCurrency("mxt","martexcoin",50,178,6,"T",null,null,null,false),
-    janin.currency.createCurrency("MDOGE","masterdoge",51,139,5,"M",null,null,null,false),
-    janin.currency.createCurrency("mzc","mazacoin",50,224,8,"a",null,null,null,false),
-    janin.currency.createCurrency("mec","megacoin",50,178,6,"T",null,null,null,false),
-    janin.currency.createCurrency("minexcoin","minexcoin",75,128,5,null,76067358,76066276,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("mint","mintcoin",51,179,[67],"T",null,null,null,false),
-    janin.currency.createCurrency("mix","mix",255,255,null,null,4294967295,4294967295,null,true),
-    janin.currency.createCurrency("mobi","mobiuscoin",0,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("monacoin","monacoin",50,178,5,null,76067358,76066276,"Monacoin Signed Message",false),
-    janin.currency.createCurrency("mu","monetaryunit",16,126,5,"K",null,null,null,false),
-    janin.currency.createCurrency("mon","monocle",50,178,6,"T",null,null,null,false),
-    janin.currency.createCurrency("moon","mooncoin",3,131,5,"L",null,null,null,false),
-    janin.currency.createCurrency("musicoin","musicoin",255,255,null,null,4294967295,4294967295,null,true),
-    janin.currency.createCurrency("xmy","myriadcoin",50,178,9,"T",76067358,76066276,"Myriadcoin Signed Message",false),
-    janin.currency.createCurrency("nmc","namecoin",52,180,13,"[LK]",76067358,76066276,"Namecoin Signed Message",false),
-    janin.currency.createCurrency("nav","navcoin",53,150,85,"P",76067358,76066276,"Navcoin Signed Message",false),
-    janin.currency.createCurrency("ndc","needlecoin",53,181,7,"T",null,null,null,false),
-    janin.currency.createCurrency("neet","neetcoin",53,181,7,"T",null,null,null,false),
-    janin.currency.createCurrency("neos","neoscoin",53,177,5,"T",76067358,76066276,"Neoscoin Signed Message",false),
-    janin.currency.createCurrency("neurocoin","neurocoin",53,181,117,null,76067358,76066276,"PPCoin Signed Message",false),
-    janin.currency.createCurrency("neva","nevacoin",53,177,6,"T",null,null,null,false),
-    janin.currency.createCurrency("newyorkcoin","newyorkcoin",60,188,22,null,76067358,76066276,"newyorkc Signed Message",false),
-    janin.currency.createCurrency("nvc","novacoin",8,136,20,"M",76067358,76066276,"Novacoin Signed Message",false),
-    janin.currency.createCurrency("usnbt","nubits",25,150,26,"V",76067358,76066276,"Nu Signed Message",false),
-    janin.currency.createCurrency("nushares","nushares",63,149,64,null,76067358,76066276,"Nu Signed Message",false),
-    janin.currency.createCurrency("nyan","nyancoin",45,173,6,"S",null,null,null,false),
-    janin.currency.createCurrency("nyc","nyc",60,188,7,"U",null,null,null,false),
-    janin.currency.createCurrency("ocupy","ocupy",115,243,9,"[cd]",null,null,null,false),
-    janin.currency.createCurrency("okcash","okcash",55,183,28,null,63710167,63708275,"Okcash Signed Message",false),
-    janin.currency.createCurrency("omni","omni",0,128,5,null,76067358,76066276,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("omc","omnicoin",115,243,9,"[cd]",null,null,null,false),
-    janin.currency.createCurrency("onyx","onyxcoin",115,243,9,"[cd]",null,null,null,false),
-    janin.currency.createCurrency("pac","paccoin",24,152,6,"P",null,null,null,false),
-    janin.currency.createCurrency("pnd","pandacoin",55,183,7,"U",null,null,null,false),
-    janin.currency.createCurrency("pkb","parkbyte",55,183,28,"U",76067358,76066276,"ParkByte Signed Message",false),
-    janin.currency.createCurrency("part","particl",56,108,4,"[HG]",null,null,null,false),
-    janin.currency.createCurrency("xpy","paycoin",55,183,7,"U",null,null,null,false),
-    janin.currency.createCurrency("ppc","peercoin",55,183,117,"U",76067358,76066276,"PPCoin Signed Message",false),
-    janin.currency.createCurrency("ptc","pesetacoin",47,175,6,"[ST]",null,null,null,false),
-    janin.currency.createCurrency("pesobit","pesobit",55,183,85,null,76067358,76066276,"Pesobit Signed Message",false),
-    janin.currency.createCurrency("phc","phcoin",55,183,7,"U",null,null,null,false),
-    janin.currency.createCurrency("pxc","phoenixcoin",56,184,7,"U",null,null,null,false),
-    janin.currency.createCurrency("piggy","piggycoin",118,246,9,"d",null,null,null,false),
-    janin.currency.createCurrency("pink","pinkcoin",3,131,28,"L",76067358,76066276,"Pinkcoin Signed Message",false),
-    janin.currency.createCurrency("pivx","pivx",30,212,13,"Y",36513075,35729707,"PIVX Signed Message",false),
-    janin.currency.createCurrency("poa","poa",255,255,null,null,4294967295,4294967295,null,true),
-    janin.currency.createCurrency("posw","posw",55,183,85,null,76067358,76066276,"POSWcoin Signed Message",false),
-    janin.currency.createCurrency("pot","potcoin",55,183,5,"U",76067358,76066276,"PotCoin Signed Message",false),
-    janin.currency.createCurrency("xpm","primecoin",23,151,83,"P",76067358,76066276,"Primecoin Signed Message",false),
-    janin.currency.createCurrency("prc","prospercoinclassic",58,186,7,"Q",null,null,null,false),
-    janin.currency.createCurrency("putincoin","putincoin",55,183,20,null,76067358,76066276,"PutinCoin Signed Message",false),
-    janin.currency.createCurrency("qrk","quark",58,186,7,"U",null,null,null,false),
-    janin.currency.createCurrency("q2c","qubitcoin",38,224,8,"a",null,null,null,false),
-    janin.currency.createCurrency("rdd","reddcoin",61,189,5,"[UV]",76067358,76066276,"Reddcoin Signed Message",false),
-    janin.currency.createCurrency("richcoin","richcoin",61,128,9,null,76067358,76066276,"Richcoin Signed Message",false),
-    janin.currency.createCurrency("ric","riecoin",60,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("rbt","rimbit",60,188,7,"U",null,null,null,false),
-    janin.currency.createCurrency("roi","roicoin",60,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("rby","rubycoin",60,188,85,"U",76067358,76066276,"Rubycoin Signed Message",false),
-    janin.currency.createCurrency("rupx","rupaya",60,188,7,"U",null,null,null,false),
-    janin.currency.createCurrency("smb","sambacoin",62,190,7,"V",null,null,null,false),
-    janin.currency.createCurrency("skc","seckcoin",63,191,7,"V",null,null,null,false),
-    janin.currency.createCurrency("shadow","shadow",63,191,125,null,4001376362,4001378792,"ShadowCash Signed Message",false),
-    janin.currency.createCurrency("shadowtn","shadowtn",127,255,196,null,1992359419,1992361850,"ShadowCash Signed Message",false),
-    janin.currency.createCurrency("sib","sibcoin",63,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("611","sixeleven",52,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("smartcash","smartcash",63,191,18,null,76067358,76066276,"SmartCash Signed Message",false),
-    janin.currency.createCurrency("smly","smileycoin",25,153,5,"P",76067358,76066276,"Smileycoin Signed Message",false),
-    janin.currency.createCurrency("solarcoin","solarcoin",18,146,5,null,76067358,76066276,"SolarCoin Signed Message",false),
-    janin.currency.createCurrency("song","songcoin",63,191,7,"V",null,null,null,false),
-    janin.currency.createCurrency("spr","spreadcoin",63,191,7,"V",null,null,null,false),
-    janin.currency.createCurrency("xst","stealthcoin",62,190,7,"V",null,null,null,false),
-    janin.currency.createCurrency("strat","stratis",63,191,125,"V",76067358,76067549,"Stratis Signed Message",false),
-    janin.currency.createCurrency("bucks","swagbucks",63,153,6,"P",null,null,null,false),
-    janin.currency.createCurrency("sys","syscoin",63,191,5,"[LK]",76067358,76066276,"Syscoin Signed Message",false),
-    janin.currency.createCurrency("taj","tajcoin",65,111,6,"H",null,null,null,false),
-    janin.currency.createCurrency("trc","terracoin",0,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("testnet","testnet",111,239,196,null,70617039,70615956,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("tether","tether",0,128,5,null,76067358,76066276,"Bitcoin Signed Message",false),
-    janin.currency.createCurrency("tit","titcoin",0,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("ttc","tittiecoin",65,193,7,"V",null,null,null,false),
-    janin.currency.createCurrency("toacoin","toacoin",65,193,23,null,76067358,76066276,"TOA Signed Message",false),
-    janin.currency.createCurrency("top","topcoin",66,194,7,"V",null,null,null,false),
-    janin.currency.createCurrency("tx","transfercoin",66,153,6,"P",null,null,null,false),
-    janin.currency.createCurrency("tzc","trezarcoin",66,194,7,"V",null,null,null,false),
-    janin.currency.createCurrency("ultimatesecurecash","ultimatesecurecash",68,137,125,null,4001376362,4001378792,"Ultimate Secure Cash Signed Message",false),
-    janin.currency.createCurrency("uno","unobtanium",130,224,30,"a",76067358,76066276,"Unobtanium Signed Message",false),
-    janin.currency.createCurrency("usde","usde",38,166,6,"R",null,null,null,false),
-    janin.currency.createCurrency("xvc","vcash",71,199,8,"W",76067358,76066276,"Vcash Signed Message",false),
-    janin.currency.createCurrency("xvg","vergecoin",30,158,33,"Q",76067358,76066276,"Vergecoin Signed Message",false),
-    janin.currency.createCurrency("v","versioncoin",70,198,7,"W",null,null,null,false),
-    janin.currency.createCurrency("vtc","vertcoin",71,199,5,"[LK]",76067358,76066276,"Vertcoin Signed Message",false),
-    janin.currency.createCurrency("via","viacoin",71,199,33,"W",76067358,76066276,"Viacoin Signed Message",false),
-    janin.currency.createCurrency("viacointestnet","viacointestnet",127,255,196,null,70617039,70615956,"Viacoin Signed Message",false),
-    janin.currency.createCurrency("vik","vikingcoin",70,86,3,"D",null,null,null,false),
-    janin.currency.createCurrency("vivo","vivo",70,198,10,null,76067358,76066276,"DarkCoin Signed Message",false),
-    janin.currency.createCurrency("voxels","voxels",70,198,5,null,76067358,76066276,"Voxels Signed Message",false),
-    janin.currency.createCurrency("vpncoin","vpncoin",71,199,5,null,76067358,76066276,"VpnCoin Signed Message",false),
-    janin.currency.createCurrency("w2c","w2coin",73,201,7,"W",null,null,null,false),
-    janin.currency.createCurrency("wac","wacoins",73,201,7,"W",null,null,null,false),
-    janin.currency.createCurrency("wkc","wankcoin",0,128,5,"[LK]",null,null,null,false),
-    janin.currency.createCurrency("wsx","wearesatoshicoin",135,151,6,"P",null,null,null,false),
-    janin.currency.createCurrency("whitecoin","whitecoin",73,201,87,null,76067358,76066276,"Whitecoin Signed Message",false),
-    janin.currency.createCurrency("wincoin","wincoin",73,201,83,null,76067358,76066276,"WinCoin Signed Message",false),
-    janin.currency.createCurrency("wdc","worldcoin",73,201,7,"W",null,null,null,false),
-    janin.currency.createCurrency("xp","xp",75,203,7,"X",null,null,null,false),
-    janin.currency.createCurrency("ytn","yenten",78,123,5,"K",null,null,null,false),
-    janin.currency.createCurrency("zec","zcash",7352,128,7357,"[LK]",76067358,76066276,"Zcash Signed Message",false),
-    janin.currency.createCurrency("zclassic","zclassic",7352,128,7357,null,76067358,76066276,"Zcash Signed Message",false),
-    janin.currency.createCurrency("zcoin","zcoin",82,210,7,null,76067358,76066276,"ZCoin Signed Message",false),
-    janin.currency.createCurrency("zencash","zencash",8329,128,8342,null,76067358,76066276,"Zcash Signed Message",false),
-    janin.currency.createCurrency("zet","zetacoin",80,224,9,"a",76067358,76066276,"Zetacoin Signed Message",false)
-];
-    module.exports = janin.currencies
-},{}],162:[function(require,module,exports){
-var Buffer = require('safe-buffer').Buffer
-var alts = require('./alts.js')
-// annoyingly, this is for browserify
-var coins = [
-  require('./coins/blk'),
-  require('./coins/btc'),
-  require('./coins/btg'),
-  require('./coins/dash'),
-  require('./coins/dcr'),
-  require('./coins/dgb'),
-  require('./coins/doge'),
-  require('./coins/ltc'),
-  require('./coins/mona'),
-  require('./coins/nbt'),
-  require('./coins/nmc'),
-  require('./coins/ppc'),
-  require('./coins/qtum'),
-  require('./coins/rdd'),
-  require('./coins/vtc'),
-  require('./coins/zec')
-]
-
-var extraCoins = []
-
-alts.forEach(alt => {
-  if (!alt.isEthereum) {
-    extraCoins.push(toCoinInfo(alt))
-  }
-  //console.log(toCoinInfo(alt))
-})
-
-coins = extraCoins
-
-var supportedCoins = {}
-
-coins.forEach(function (coin) {
-  //console.log('wtf', coin)
-  var unit = coin.main.unit.toLowerCase()
-  var name = coin.main.name.toLowerCase()
-
-  coin.main.testnet = false
-  coin.main.toBitcoinJS = toBitcoinJS.bind(coin.main)
-  coin.main.toBitcore = toBitcore.bind(coin.main)
-  //supportedCoins[unit] = coin.main
-  supportedCoins[name] = coin.main
-
-  /* if (coin.test) {
-    coin.test.testnet = true
-    coin.test.toBitcoinJS = toBitcoinJS.bind(coin.test)
-    coin.test.toBitcore = toBitcore.bind(coin.test)
-    supportedCoins[unit + '-test'] = coin.test
-    supportedCoins[name + '-test'] = coin.test
-  }
-
-  if (coin.regtest) {
-    coin.regtest.testnet = true
-    coin.regtest.toBitcoinJS = toBitcoinJS.bind(coin.regtest)
-    coin.regtest.toBitcore = toBitcore.bind(coin.regtest)
-    supportedCoins[unit + '-regtest'] = coin.regtest
-    supportedCoins[name + '-regtest'] = coin.regtest
-  } */
-})
-
-function coininfo (input) {
-  var coin = input.toLowerCase()
-
-  if (!(coin in supportedCoins)) {
-    return null
-  } else {
-    return supportedCoins[coin]
-  }
-}
-
-coins.forEach(function (coin) {
-  coininfo[coin.main.name.toLowerCase()] = coin
-})
-
-function toBitcoinJS () {
-  return Object.assign({}, this, {
-    messagePrefix: null, // TODO
-    bip32: {
-      public: this.versions.bip32.public,
-      private: this.versions.bip32.private
-    },
-    pubKeyHash: this.versions.public,
-    scriptHash: this.versions.scripthash,
-    wif: this.versions.private,
-    dustThreshold: null // TODO
-  })
-}
-
-function toBitcore () {
-  // reverse magic
-  var nm = Buffer.allocUnsafe(4)
-  nm.writeUInt32BE(this.protocol ? this.protocol.magic : 0, 0)
-  nm = nm.readUInt32LE(0)
-
-  return Object.assign({}, this, {
-    name: this.testnet ? 'testnet' : 'livenet',
-    alias: this.testnet ? 'testnet' : 'mainnet',
-    pubkeyhash: this.versions.public,
-    privatekey: this.versions.private,
-    scripthash: this.versions.scripthash,
-    xpubkey: this.versions.bip32.public,
-    xprivkey: this.versions.bip32.private,
-    networkMagic: nm,
-    port: this.port,
-    dnsSeeds: this.seedsDns || []
-  })
-}
-
-function toCoinInfo(coin) {
-  var template = {
-    port: 0,
-    protocol: { magic: 0 },
-    seedsDns: [],
-    versions: {
-      bip32: { private: 0, public: 0 },
-      bip44: 0,
-      scripthash: 0,
-      scripthash2: 0
-    },
-    name: '',
-    testnet: false,
-    unit: ''
-  }
-    var coinCheck = alreadyCoin(coin)
-    if (!coinCheck.found) {
-        var info = JSON.parse(JSON.stringify(template))
-        info.versions.private = coin.privateKeyPrefix
-        info.versions.public = coin.networkVersion
-        info.name = coin.name
-        info.unit = coin.unit
-        return {main: info}
-    } else {
-        return coinCheck.filter[0]
-    }
-    
-}
-function alreadyCoin(coin) {
-    var filter = coins.filter(info=> {return info.main.name.toLowerCase() == coin.name.toLowerCase()})
-    var found = filter.length > 0
-    return {filter: filter, found: found}
-}
-
-module.exports = {supportedCoins:supportedCoins, coininfo:coininfo}
-},{"./alts.js":161,"./coins/blk":163,"./coins/btc":164,"./coins/btg":165,"./coins/dash":166,"./coins/dcr":167,"./coins/dgb":168,"./coins/doge":169,"./coins/ltc":170,"./coins/mona":171,"./coins/nbt":172,"./coins/nmc":173,"./coins/ppc":174,"./coins/qtum":175,"./coins/rdd":176,"./coins/vtc":177,"./coins/zec":178,"safe-buffer":345}],163:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/rat4/blackcoin/blob/master/src/chainparams.cpp
-*/
-var common = {
-  name: 'BlackCoin',
-  per1: 1e8,
-  unit: 'BLK'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563',
-  port: 15714,
-  portRpc: 15715,
-  protocol: {
-    magic: 0x05223570 // careful, sent over wire as little endian
-  },
-  seedsDns: [
-    'rat4.blackcoin.co',
-    'seed.blackcoin.co',
-    'archon.darkfox.id.au',
-    'foxy.seeds.darkfox.id.au',
-    '6.syllabear.us.to',
-    'bcseed.syllabear.us.to'
-  ],
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 0xa,
-    private: 0x99,
-    public: 0x19,
-    scripthash: 0x55
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: null
-}
-
-},{}],164:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp
-*/
-
-var common = {
-  name: 'Bitcoin',
-  per1: 1e8,
-  unit: 'BTC'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f',
-  // nDefaultPort
-  port: 8333,
-  portRpc: 8332,
-  protocol: {
-    // pchMessageStart
-    magic: 0xd9b4bef9 // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-    'seed.bitcoin.sipa.be',
-    'dnsseed.bluematt.me',
-    'dnsseed.bitcoin.dashjr.org',
-    'seed.bitcoinstats.com',
-    'bitseed.xf2.org',
-    'seed.bitcoin.jonasschnelli.ch'
-  ],
-  // base58Prefixes
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 0,
-    private: 0x80,
-    public: 0x00,
-    scripthash: 0x05
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: '000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943',
-  port: 18333,
-  portRpc: 18332,
-  protocol: {
-    magic: 0x0709110b
-  },
-  seedsDns: [
-    'testnet-seed.alexykot.me',
-    'testnet-seed.bitcoin.schildbach.de',
-    'testnet-seed.bitcoin.petertodd.org',
-    'testnet-seed.bluematt.me'
-  ],
-  versions: {
-    bip32: {
-      private: 0x04358394,
-      public: 0x043587cf
-    },
-    bip44: 1,
-    private: 0xef,
-    public: 0x6f,
-    scripthash: 0xc4
-  }
-}, common)
-
-var regtest = Object.assign({}, {
-  hashGenesisBlock: '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206',
-  port: 18444,
-  portRpc: 18332,
-  protocol: {
-    magic: 0xdab5bffa
-  },
-  seedsDns: [],
-  versions: {
-    bip32: {
-      private: 0x04358394,
-      public: 0x043587cf
-    },
-    bip44: 1,
-    private: 0xef,
-    public: 0x6f,
-    scripthash: 0xc4
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test,
-  regtest: regtest
-}
-
-},{}],165:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/BTCGPU/BTCGPU/blob/master/src/chainparams.cpp
-*/
-
-var common = {
-  name: 'Bitcoin Gold',
-  unit: 'BTG'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f',
-  // nDefaultPort
-  port: 8338,
-  protocol: {
-    // pchMessageStart
-    magic: 0x446d47e1 // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-    'eu-dnsseed.bitcoingold-official.org',
-    'dnsseed.bitcoingold.org',
-    'dnsseed.btcgpu.org'
-  ],
-  // base58Prefixes
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 156,
-    private: 0x80,
-    public: 0x26,
-    scripthash: 0x17
-  }
-}, common)
-
-module.exports = {
-  main: main
-}
-
-},{}],166:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/dashpay/dash/blob/master/src/chainparams.cpp
-*/
-
-var common = {
-  name: 'Dash',
-  unit: 'DASH'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6',
-  // nDefaultPort
-  port: 9999,
-  portRpc: 9998,
-  protocol: {
-    magic: 0xbd6b0cbf // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-    'dash.org',
-    'dnsseed.dash.org',
-    'dashdot.io',
-    'dnsseed.dashdot.io',
-    'masternode.io',
-    'dnsseed.masternode.io',
-    'dashpay.io',
-    'dnsseed.dashpay.io'
-  ],
-  // base58Prefixes
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 5,
-    private: 0xcc,
-    public: 0x4c,
-    scripthash: 0x10
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: '00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c',
-  port: 19999,
-  portRpc: 19998,
-  seedsDns: [
-    'dashdot.io',
-    'testnet-seed.dashdot.io',
-    'masternode.io',
-    'test.dnsseed.masternode.io'
-  ],
-  versions: {
-    bip32: {
-      private: 0x04358394,
-      public: 0x043587cf
-    },
-    bip44: 1,
-    private: 0xef,
-    public: 0x8c,
-    scripthash: 0x13
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test
-}
-
-},{}],167:[function(require,module,exports){
-var common = {
-  name: 'Decred',
-  unit: 'DCR'
-}
-
-// https://github.com/decred/dcrd/blob/ef71103c95cbf77e5a0418e3d413b5906e710b25/chaincfg/params.go
-// https://github.com/decred/bitcore/blob/a92381b2b0023b28a1b7eb03e6cb0bfb7800200d/lib/networks.js
-var main = Object.assign({}, {
-  hashGenesisBlock: '298e5cc3d985bfe7f81dc135f360abe089edd4396b86d2de66b0cef42b21d980',
-  port: 9108,
-  portRpc: 9109,
-  protocol: {
-    magic: 0xf900b4d9
-  },
-  seedsDns: [
-    'mainnet-seed.decred.mindcry.org',
-    'mainnet-seed.decred.netpurgatory.com',
-    'mainnet.decredseed.org',
-    'mainnet-seed.decred.org'
-  ],
-  versions: {
-    bip32: {
-      private: 0x02fda4e8,
-      public: 0x02fda926
-    },
-    bip44: 42,
-    private: 0x22de,
-    public: 0x073f,
-    scripthash: 0x071a
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: '5b7466edf6739adc9b32aaedc54e24bdc59a05f0ced855088835fe3cbe58375f',
-  port: 19108,
-  portRpc: 19109,
-  protocol: {
-    magic: 0x48e7a065
-  },
-  seedsDns: [
-    'testnet-seed.decred.mindcry.org',
-    'testnet-seed.decred.netpurgatory.org',
-    'testnet.decredseed.org',
-    'testnet-seed.decred.org'
-  ],
-  versions: {
-    bip32: {
-      private: 0x04358397,
-      public: 0x043587d1
-    },
-    bip44: 42,
-    private: 0x230e,
-    public: 0x0f21,
-    scripthash: 0x0efc
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test
-}
-
-},{}],168:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/digibyte/digibyte/blob/9e4c0b3ddfd10a7ab852240ff716a7b93af89a07/src/chainparams.cpp
-*/
-
-var common = {
-  name: 'DigiByte',
-  per1: 1e8,
-  unit: 'DGB'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f',
-  // nDefaultPort
-  port: 12024,
-  portRpc: 14022,
-  protocol: {
-    // pchMessageStart
-    magic: 0xfac3b6da // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-    'seed.digibyte.io',
-    'digiexplorer.info',
-    'digihash.co'
-  ],
-  // base58Prefixes
-  versions: {
-    bip44: 0x80000014,
-    private: 0x80,
-    public: 0x1e,
-    scripthash: 0x05
-  }
-}, common)
-
-module.exports = { main: main }
-
-},{}],169:[function(require,module,exports){
-// https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp
-
-var common = {
-  name: 'Dogecoin',
-  unit: 'DOGE'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691',
-  port: 22556,
-  protocol: {
-    magic: 0xc0c0c0c0
-  },
-  seedsDns: [
-    'seed.dogecoin.com',
-    'seed.multidoge.org',
-    'seed2.multidoge.org',
-    'seed.doger.dogecoin.com'
-  ],
-  versions: {
-    bip32: {
-      private: 0x02fac398,
-      public: 0x02facafd
-    },
-    bip44: 3,
-    private: 0x9e,
-    public: 0x1e,
-    scripthash: 0x16
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: 'bb0a78264637406b6360aad926284d544d7049f45189db5664f3c4d07350559e',
-  versions: {
-    bip44: 1,
-    private: 0xf1,
-    public: 0x71,
-    scripthash: 0xc4
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test
-}
-
-},{}],170:[function(require,module,exports){
-// https://github.com/litecoin-project/litecoin/blob/master-0.10/src/chainparams.cpp
-
-var common = {
-  name: 'Litecoin',
-  unit: 'LTC'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2',
-  port: 9333,
-  protocol: {
-    magic: 0xdbb6c0fb
-  },
-  seedsDns: [
-    'dnsseed.litecointools.com',
-    'dnsseed.litecoinpool.org',
-    'dnsseed.ltc.xurious.com',
-    'dnsseed.koin-project.com',
-    'dnsseed.weminemnc.com'
-  ],
-  versions: {
-    bip32: {
-      private: 0x019d9cfe,
-      public: 0x019da462
-    },
-    bip44: 2,
-    private: 0xb0,
-    public: 0x30,
-    scripthash: 0x32,
-    scripthash2: 0x05 // old '3' prefix. available for backward compatibility.
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: 'f5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f',
-  versions: {
-    bip44: 1,
-    private: 0xef,
-    public: 0x6f,
-    scripthash: 0x3a,
-    scripthash2: 0xc4
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test
-}
-
-},{}],171:[function(require,module,exports){
-// https://github.com/monacoinproject/monacoin/blob/master-0.13/src/chainparams.cpp
-
-var common = {
-  name: 'Monacoin',
-  unit: 'MONA'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: 'ff9f1c0116d19de7c9963845e129f9ed1bfc0b376eb54fd7afa42e0d418c8bb6',
-  port: 9401,
-  portRpc: 9402,
-  protocol: {
-    magic: 0xdbb6c0fb
-  },
-  seedsDns: [
-    'dnsseed.monacoin.org'
-  ],
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 22,
-    private: 0xb0,
-    private2: 0xb2, // old wif
-    public: 0x32,
-    scripthash: 0x37,
-    scripthash2: 0x05 // old '3' prefix. available for backward compatibility.
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: 'a2b106ceba3be0c6d097b2a6a6aacf9d638ba8258ae478158f449c321061e0b2',
-  port: 19403,
-  portRpc: 19402,
-  protocol: {
-    magic: 0xf1c8d2fd
-  },
-  seedsDns: [
-    'testnet-dnsseed.monacoin.org'
-  ],
-  versions: {
-    bip32: {
-      private: 0x04358394,
-      public: 0x043587cf
-    },
-    bip44: 1,
-    private: 0xef,
-    public: 0x6f,
-    scripthash: 0x75,
-    scripthash2: 0xc4
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test
-}
-
-},{}],172:[function(require,module,exports){
-var common = {
-  name: 'NuBits',
-  per1: 1e6,
-  unit: 'NBT'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '000003cc2da5a0a289ad0a590c20a8b975219ddc1204efd169e947dd4cbad73f',
-  // nDefaultPort
-  port: 7890,
-  portRpc: 14002,
-  protocol: {
-    // pchMessageStart
-    magic: 0xd9b4bef9 // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-  ],
-  // base58Prefixes
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 12,
-    private: 0x96,
-    public: 0x19,
-    scripthash: 0x1a
-  }
-}, common)
-
-module.exports = {
-  main: main
-}
-
-},{}],173:[function(require,module,exports){
-var common = {
-  name: 'Namecoin',
-  unit: 'NMC'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '000000000062b72c5e2ceb45fbc8587e807c155b0da735e6483dfba2f0a9c770',
-  versions: {
-    bip44: 7,
-    private: 0xb4,
-    public: 0x34,
-    scripthash: 0x05
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: null
-}
-
-},{}],174:[function(require,module,exports){
-var common = {
-  name: 'Peercoin',
-  unit: 'PPC'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '0000000032fe677166d54963b62a4677d8957e87c508eaa4fd7eb1c880cd27e3',
-  versions: {
-    bip44: 6,
-    private: 0xc4,
-    public: 0x44,
-    scripthash: 0x05
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: null
-}
-
-},{}],175:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/qtumproject/qtum/blob/master/src/chainparams.cpp
-*/
-
-var common = {
-  name: 'Qtum',
-  unit: 'QTUM'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '000075aef83cf2853580f8ae8ce6f8c3096cfa21d98334d6e3f95e5582ed986c',
-  // nDefaultPort
-  port: 3888,
-  protocol: {
-    // pchMessageStart
-    magic: 0xd3a6cff1 // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-    'qtum3.dynu.net'
-  ],
-  // base58Prefixes
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 88,
-    private: 0x80,
-    public: 0x3A,
-    scripthash: 0x32
-  }
-}, common)
-
-module.exports = {
-  main: main
-}
-
-},{}],176:[function(require,module,exports){
-var common = {
-  name: 'ReddCoin',
-  unit: 'RDD'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: 'b868e0d95a3c3c0e0dadc67ee587aaf9dc8acbf99e3b4b3110fad4eb74c1decc',
-  versions: {
-    bip44: 4,
-    private: 0xbd,
-    public: 0x3d,
-    scripthash: 0x05
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: 'a12ac9bd4cd26262c53a6277aafc61fe9dfe1e2b05eaa1ca148a5be8b394e35a',
-  versions: {
-    bip44: 1,
-    private: 0xef,
-    public: 0x6f,
-    scripthash: 0xc4
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test
-}
-
-},{}],177:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/vertcoin/vertcoin/blob/master/src/chainparams.cpp
-*/
-
-var common = {
-  name: 'Vertcoin',
-  unit: 'VTC'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '4d96a915f49d40b1e5c2844d1ee2dccb90013a990ccea12c492d22110489f0c4',
-  // nDefaultPort
-  port: 5889,
-  protocol: {
-    // pchMessageStart
-    magic: 0xdab5bffa // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-    'useast1.vtconline.org',
-    'vtc.gertjaap.org',
-    'seed.vtc.bryangoodson.org',
-    'dnsseed.pknight.ca',
-    'seed.orderofthetaco.org',
-    'seed.alexturek.org',
-    'vertcoin.mbl.cash'
-  ],
-  // base58Prefixes
-  versions: {
-    bip32: {
-      private: 0x0488ade4,
-      public: 0x0488b21e
-    },
-    bip44: 28,
-    private: 0x80,
-    public: 0x47,
-    scripthash: 0x05
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: 'cee8f24feb7a64c8f07916976aa4855decac79b6741a8ec2e32e2747497ad2c9',
-  port: 15889,
-  // portRpc: 18332,
-  protocol: {
-    magic: 0x74726576
-  },
-  seedsDns: [
-    'jlovejoy.mit.edu',
-    'gertjaap.ddns.net',
-    'fr1.vtconline.org',
-    'tvtc.vertcoin.org'
-  ],
-  versions: {
-    bip32: {
-      private: 0x04358394,
-      public: 0x043587cf
-    },
-    private: 0xef,
-    public: 0x4a,
-    scripthash: 0xc4
-  }
-}, common)
-
-var regtest = Object.assign({}, {
-  hashGenesisBlock: '0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206',
-  port: 18444,
-  // portRpc: 18332,
-  protocol: {
-    magic: 0xdab5bffa
-  },
-  seedsDns: [],
-  versions: {
-    bip32: {
-      private: 0x04358394,
-      public: 0x043587cf
-    },
-    private: 0xef,
-    public: 0x6f,
-    scripthash: 0xc4
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test,
-  regtest: regtest
-}
-
-},{}],178:[function(require,module,exports){
-/*
-  info from:
-    https://github.com/zcash/zcash/blob/v1.0.12/src/chainparamsbase.cpp
-    https://github.com/zcash/zcash/blob/v1.0.12/src/chainparams.cpp
-*/
-
-var common = {
-  name: 'Zcash',
-  unit: 'ZEC'
-}
-
-var main = Object.assign({}, {
-  hashGenesisBlock: '00040fe8ec8471911baa1db1266ea15dd06b4a8a5c453883c000b031973dce08',
-  // nDefaultPort
-  port: 8233,
-  portRpc: 8232,
-  protocol: {
-    // pchMessageStart
-    magic: 0x6427e924 // careful, sent over wire as little endian
-  },
-  // vSeeds
-  seedsDns: [
-    'dnsseed.z.cash',
-    'dnsseed.str4d.xyz',
-    'dnsseed.znodes.org'
-  ],
-  // base58Prefixes
-  versions: {
-    bip44: 133,
-    private: 0x80,
-    public: 0x1cb8,
-    scripthash: 0x1cbd
-  }
-}, common)
-
-var test = Object.assign({}, {
-  hashGenesisBlock: '0x05a60a92d99d85997cce3b87616c089f6124d7342af37106edc76126334a2c38',
-  port: 18233,
-  portRpc: 18232,
-  protocol: {
-    magic: 0xbff91afa
-  },
-  seedsDns: [
-    'dnsseed.testnet.z.cash'
-  ],
-  versions: {
-    bip44: 133,
-    private: 0xef,
-    public: 0x1d25,
-    scripthash: 0x1cba
-  }
-}, common)
-
-module.exports = {
-  main: main,
-  test: test
-}
-
-},{}],179:[function(require,module,exports){
-// @preserve author Alexander Stetsyuk
-// @preserve author Glenn Rempe <glenn@rempe.us>
-// @license MIT
-
-/*jslint passfail: false, bitwise: true, nomen: true, plusplus: true, todo: false, maxerr: 1000 */
-/*global define, require, module, exports, window, Uint32Array, sjcl */
-
-// eslint : http://eslint.org/docs/configuring/
-/*eslint-env node, browser, jasmine, sjcl */
-/*eslint no-underscore-dangle:0 */
-
-// UMD (Universal Module Definition)
-// Uses Node, AMD or browser globals to create a module. This module creates
-// a global even when AMD is used. This is useful if you have some scripts
-// that are loaded by an AMD loader, but they still want access to globals.
-// See : https://github.com/umdjs/umd
-// See : https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
-//
-(function (root, factory) {
-    "use strict";
-
-    if (typeof define === "function" && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([], function () {
-            /*eslint-disable no-return-assign */
-            return (root.secrets = factory());
-            /*eslint-enable no-return-assign */
-        });
-    } else if (typeof exports === "object") {
-        // Node. Does not work with strict CommonJS, but
-        // only CommonJS-like environments that support module.exports,
-        // like Node.
-        module.exports = factory(require("crypto"));
-    } else {
-        // Browser globals (root is window)
-        root.secrets = factory(root.crypto);
-    }
-}(this, function (crypto) {
-    "use strict";
-
-    var defaults,
-        config,
-        preGenPadding,
-        runCSPRNGTest,
-        sjclParanoia,
-        CSPRNGTypes;
-
-    function reset() {
-        defaults = {
-            bits: 8, // default number of bits
-            radix: 16, // work with HEX by default
-            minBits: 3,
-            maxBits: 20, // this permits 1,048,575 shares, though going this high is NOT recommended in JS!
-            bytesPerChar: 2,
-            maxBytesPerChar: 6, // Math.pow(256,7) > Math.pow(2,53)
-
-            // Primitive polynomials (in decimal form) for Galois Fields GF(2^n), for 2 <= n <= 30
-            // The index of each term in the array corresponds to the n for that polynomial
-            // i.e. to get the polynomial for n=16, use primitivePolynomials[16]
-            primitivePolynomials: [null, null, 1, 3, 3, 5, 3, 3, 29, 17, 9, 5, 83, 27, 43, 3, 45, 9, 39, 39, 9, 5, 3, 33, 27, 9, 71, 39, 9, 5, 83]
-        };
-        config = {};
-        preGenPadding = new Array(1024).join("0"); // Pre-generate a string of 1024 0's for use by padLeft().
-        runCSPRNGTest = true;
-        sjclParanoia = 10;
-
-        // WARNING : Never use 'testRandom' except for testing.
-        CSPRNGTypes = ["nodeCryptoRandomBytes", "browserCryptoGetRandomValues", "browserSJCLRandom", "testRandom"];
-    }
-
-    function isSetRNG() {
-        if (config && config.rng && typeof config.rng === "function") {
-            return true;
-        }
-
-        return false;
-    }
-
-    // Pads a string `str` with zeros on the left so that its length is a multiple of `bits`
-    function padLeft(str, multipleOfBits) {
-        var missing;
-
-        if (multipleOfBits === 0 || multipleOfBits === 1) {
-            return str;
-        }
-
-        if (multipleOfBits && multipleOfBits > 1024) {
-            throw new Error("Padding must be multiples of no larger than 1024 bits.");
-        }
-
-        multipleOfBits = multipleOfBits || config.bits;
-
-        if (str) {
-            missing = str.length % multipleOfBits;
-        }
-
-        if (missing) {
-            return (preGenPadding + str).slice(-(multipleOfBits - missing + str.length));
-        }
-
-        return str;
-    }
-
-    function hex2bin(str) {
-        var bin = "",
-            num,
-            i;
-
-        for (i = str.length - 1; i >= 0; i--) {
-            num = parseInt(str[i], 16);
-
-            if (isNaN(num)) {
-                throw new Error("Invalid hex character.");
-            }
-
-            bin = padLeft(num.toString(2), 4) + bin;
-        }
-        return bin;
-    }
-
-    function bin2hex(str) {
-        var hex = "",
-            num,
-            i;
-
-        str = padLeft(str, 4);
-
-        for (i = str.length; i >= 4; i -= 4) {
-            num = parseInt(str.slice(i - 4, i), 2);
-            if (isNaN(num)) {
-                throw new Error("Invalid binary character.");
-            }
-            hex = num.toString(16) + hex;
-        }
-
-        return hex;
-    }
-
-    // Browser supports crypto.getRandomValues()
-    function hasCryptoGetRandomValues() {
-        if (crypto &&
-            typeof crypto === "object" &&
-            (typeof crypto.getRandomValues === "function" || typeof crypto.getRandomValues === "object") &&
-            (typeof Uint32Array === "function" || typeof Uint32Array === "object")) {
-                return true;
-            }
-
-        return false;
-    }
-
-    // Node.js support for crypto.randomBytes()
-    function hasCryptoRandomBytes() {
-        if (typeof crypto === "object" &&
-            typeof crypto.randomBytes === "function") {
-            return true;
-        }
-
-        return false;
-    }
-
-    // Stanford Javascript Crypto Library Support
-    function hasSJCL() {
-        if (typeof sjcl === "object" &&
-            typeof sjcl.random === "object") {
-            return true;
-        }
-
-        return false;
-    }
-
-    // Returns a pseudo-random number generator of the form function(bits){}
-    // which should output a random string of 1's and 0's of length `bits`.
-    // `type` (Optional) : A string representing the CSPRNG that you want to
-    // force to be loaded, overriding feature detection. Can be one of:
-    //    "nodeCryptoRandomBytes"
-    //    "browserCryptoGetRandomValues"
-    //    "browserSJCLRandom"
-    //
-    function getRNG(type) {
-
-        function construct(bits, arr, radix, size) {
-            var i = 0,
-                len,
-                str = "",
-                parsedInt;
-
-            if (arr) {
-                len = arr.length - 1;
-            }
-
-            while (i < len || (str.length < bits)) {
-                // convert any negative nums to positive with Math.abs()
-                parsedInt = Math.abs(parseInt(arr[i], radix));
-                str = str + padLeft(parsedInt.toString(2), size);
-                i++;
-            }
-
-            str = str.substr(-bits);
-
-            // return null so this result can be re-processed if the result is all 0's.
-            if ((str.match(/0/g) || []).length === str.length) {
-                return null;
-            }
-
-            return str;
-        }
-
-        // Node.js : crypto.randomBytes()
-        // Note : Node.js and crypto.randomBytes() uses the OpenSSL RAND_bytes() function for its CSPRNG.
-        //        Node.js will need to have been compiled with OpenSSL for this to work.
-        // See : https://github.com/joyent/node/blob/d8baf8a2a4481940bfed0196308ae6189ca18eee/src/node_crypto.cc#L4696
-        // See : https://www.openssl.org/docs/crypto/rand.html
-        function nodeCryptoRandomBytes(bits) {
-            var buf,
-                bytes,
-                radix,
-                size,
-                str = null;
-
-            radix = 16;
-            size = 4;
-            bytes = Math.ceil(bits / 8);
-
-            while (str === null) {
-                buf = crypto.randomBytes(bytes);
-                str = construct(bits, buf.toString("hex"), radix, size);
-            }
-
-            return str;
-        }
-
-        // Browser : crypto.getRandomValues()
-        // See : https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-Crypto
-        // See : https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
-        // Supported Browsers : http://caniuse.com/#search=crypto.getRandomValues
-        function browserCryptoGetRandomValues(bits) {
-            var elems,
-                radix,
-                size,
-                str = null;
-
-            radix = 10;
-            size = 32;
-            elems = Math.ceil(bits / 32);
-            while (str === null) {
-                str = construct(bits, crypto.getRandomValues(new Uint32Array(elems)), radix, size);
-            }
-
-            return str;
-        }
-
-        // Browser SJCL : If the Stanford Javascript Crypto Library (SJCL) is loaded in the browser
-        // then use it as a fallback CSPRNG when crypto.getRandomValues() is not available.
-        // It may require some time and mouse movements to be fully seeded. Uses a modified version
-        // of the Fortuna RNG.
-        // See : https://bitwiseshiftleft.github.io/sjcl/
-        function browserSJCLRandom(bits) {
-            var elems,
-                radix,
-                size,
-                str = null;
-
-            radix = 10;
-            size = 32;
-            elems = Math.ceil(bits / 32);
-
-            if(sjcl.random.isReady(sjclParanoia)) {
-                str = construct(bits, sjcl.random.randomWords(elems, sjclParanoia), radix, size);
-            } else {
-                throw new Error("SJCL isn't finished seeding the RNG yet.");
-            }
-
-            return str;
-        }
-
-        // /////////////////////////////////////////////////////////////
-        // WARNING : DO NOT USE. For testing purposes only.
-        // /////////////////////////////////////////////////////////////
-        // This function will return repeatable non-random test bits. Can be used
-        // for testing only. Node.js does not return proper random bytes
-        // when run within a PhantomJS container.
-        function testRandom(bits) {
-            var arr,
-                elems,
-                int,
-                radix,
-                size,
-                str = null;
-
-            radix = 10;
-            size = 32;
-            elems = Math.ceil(bits / 32);
-            int = 123456789;
-            arr = new Uint32Array(elems);
-
-            // Fill every element of the Uint32Array with the same int.
-            for (var i = 0; i < arr.length; i++) {
-                arr[i] = int;
-            }
-
-            while (str === null) {
-                str = construct(bits, arr, radix, size);
-            }
-
-            return str;
-        }
-
-        // Return a random generator function for browsers that support HTML5
-        // crypto.getRandomValues(), Node.js compiled with OpenSSL support.
-        // or the Stanford Javascript Crypto Library Fortuna RNG.
-        // WARNING : NEVER use testRandom outside of a testing context. Totally non-random!
-        if (type && type === "testRandom") {
-            config.typeCSPRNG = type;
-            return testRandom;
-        } else if (type && type === "nodeCryptoRandomBytes") {
-            config.typeCSPRNG = type;
-            return nodeCryptoRandomBytes;
-        } else if (type && type === "browserCryptoGetRandomValues") {
-            config.typeCSPRNG = type;
-            return browserCryptoGetRandomValues;
-        } else if (type && type === "browserSJCLRandom") {
-            runCSPRNGTest = false;
-            config.typeCSPRNG = type;
-            return browserSJCLRandom;
-        } else if (hasCryptoRandomBytes()) {
-            config.typeCSPRNG = "nodeCryptoRandomBytes";
-            return nodeCryptoRandomBytes;
-        } else if (hasCryptoGetRandomValues()) {
-            config.typeCSPRNG = "browserCryptoGetRandomValues";
-            return browserCryptoGetRandomValues;
-        } else if (hasSJCL()) {
-            runCSPRNGTest = false;
-            config.typeCSPRNG = "browserSJCLRandom";
-            return browserSJCLRandom;
-        }
-
-    }
-
-    // Splits a number string `bits`-length segments, after first
-    // optionally zero-padding it to a length that is a multiple of `padLength.
-    // Returns array of integers (each less than 2^bits-1), with each element
-    // representing a `bits`-length segment of the input string from right to left,
-    // i.e. parts[0] represents the right-most `bits`-length segment of the input string.
-    function splitNumStringToIntArray(str, padLength) {
-        var parts = [],
-            i;
-
-        if (padLength) {
-            str = padLeft(str, padLength);
-        }
-
-        for (i = str.length; i > config.bits; i -= config.bits) {
-            parts.push(parseInt(str.slice(i - config.bits, i), 2));
-        }
-
-        parts.push(parseInt(str.slice(0, i), 2));
-
-        return parts;
-    }
-
-    // Polynomial evaluation at `x` using Horner's Method
-    // NOTE: fx=fx * x + coeff[i] ->  exp(log(fx) + log(x)) + coeff[i],
-    //       so if fx===0, just set fx to coeff[i] because
-    //       using the exp/log form will result in incorrect value
-    function horner(x, coeffs) {
-        var logx = config.logs[x],
-            fx = 0,
-            i;
-
-        for (i = coeffs.length - 1; i >= 0; i--) {
-            if (fx !== 0) {
-                fx = config.exps[(logx + config.logs[fx]) % config.maxShares] ^ coeffs[i];
-            } else {
-                fx = coeffs[i];
-            }
-        }
-
-        return fx;
-    }
-
-    // Evaluate the Lagrange interpolation polynomial at x = `at`
-    // using x and y Arrays that are of the same length, with
-    // corresponding elements constituting points on the polynomial.
-    function lagrange(at, x, y) {
-        var sum = 0,
-            len,
-            product,
-            i,
-            j;
-
-        for (i = 0, len = x.length; i < len; i++) {
-            if (y[i]) {
-
-                product = config.logs[y[i]];
-
-                for (j = 0; j < len; j++) {
-                    if (i !== j) {
-                        if (at === x[j]) { // happens when computing a share that is in the list of shares used to compute it
-                            product = -1; // fix for a zero product term, after which the sum should be sum^0 = sum, not sum^1
-                            break;
-                        }
-                        product = (product + config.logs[at ^ x[j]] - config.logs[x[i] ^ x[j]] + config.maxShares) % config.maxShares; // to make sure it's not negative
-                    }
-                }
-
-                // though exps[-1] === undefined and undefined ^ anything = anything in
-                // chrome, this behavior may not hold everywhere, so do the check
-                sum = product === -1 ? sum : sum ^ config.exps[product];
-            }
-
-        }
-
-        return sum;
-    }
-
-    // This is the basic polynomial generation and evaluation function
-    // for a `config.bits`-length secret (NOT an arbitrary length)
-    // Note: no error-checking at this stage! If `secret` is NOT
-    // a NUMBER less than 2^bits-1, the output will be incorrect!
-    function getShares(secret, numShares, threshold) {
-        var shares = [],
-            coeffs = [secret],
-            i,
-            len;
-
-        for (i = 1; i < threshold; i++) {
-            coeffs[i] = parseInt(config.rng(config.bits), 2);
-        }
-
-        for (i = 1, len = numShares + 1; i < len; i++) {
-            shares[i - 1] = {
-                x: i,
-                y: horner(i, coeffs)
-            };
-        }
-
-        return shares;
-    }
-
-    function constructPublicShareString(bits, id, data) {
-        var bitsBase36,
-            idHex,
-            idMax,
-            idPaddingLen,
-            newShareString;
-
-        id = parseInt(id, config.radix);
-        bits = parseInt(bits, 10) || config.bits;
-        bitsBase36 = bits.toString(36).toUpperCase();
-        idMax = Math.pow(2, bits) - 1;
-        idPaddingLen = idMax.toString(config.radix).length;
-        idHex = padLeft(id.toString(config.radix), idPaddingLen);
-
-        if (typeof id !== "number" || id % 1 !== 0 || id < 1 || id > idMax) {
-            throw new Error("Share id must be an integer between 1 and " + idMax + ", inclusive.");
-        }
-
-        newShareString = bitsBase36 + idHex + data;
-
-        return newShareString;
-    }
-
-    // EXPORTED FUNCTIONS
-    // //////////////////
-
-    var secrets = {
-
-        init: function (bits, rngType) {
-            var logs = [],
-                exps = [],
-                x = 1,
-                primitive,
-                i;
-
-            // reset all config back to initial state
-            reset();
-
-            if (bits && (typeof bits !== "number" || bits % 1 !== 0 || bits < defaults.minBits || bits > defaults.maxBits)) {
-                throw new Error("Number of bits must be an integer between " + defaults.minBits + " and " + defaults.maxBits + ", inclusive.");
-            }
-
-            if (rngType && CSPRNGTypes.indexOf(rngType) === -1) {
-                throw new Error("Invalid RNG type argument : '" + rngType + "'");
-            }
-
-            config.radix = defaults.radix;
-            config.bits = bits || defaults.bits;
-            config.size = Math.pow(2, config.bits);
-            config.maxShares = config.size - 1;
-
-            // Construct the exp and log tables for multiplication.
-            primitive = defaults.primitivePolynomials[config.bits];
-
-            for (i = 0; i < config.size; i++) {
-                exps[i] = x;
-                logs[x] = i;
-                x = x << 1;              // Left shift assignment
-                if (x >= config.size) {
-                    x = x ^ primitive;   // Bitwise XOR assignment
-                    x = x & config.maxShares;  // Bitwise AND assignment
-                }
-            }
-
-            config.logs = logs;
-            config.exps = exps;
-
-            if (rngType) {
-                this.setRNG(rngType);
-            }
-
-            if (!isSetRNG()) {
-                this.setRNG();
-            }
-
-            // Setup SJCL and start collecting entropy from mouse movements
-            if (hasSJCL() && config.typeCSPRNG === "browserSJCLRandom") {
-                /*eslint-disable new-cap */
-                sjcl.random = new sjcl.prng(sjclParanoia);
-                /*eslint-enable new-cap */
-
-                // In a Browser
-                if (hasCryptoGetRandomValues()) {
-                    // Collects entropy from browser mouse movement
-                    // which obviously won't work in Node.js.
-                    sjcl.random.startCollectors();
-                }
-
-                // see SJCL with browser or Node.js RNG if available.
-                this.seedRNG();
-            }
-
-            if (!isSetRNG() || !config.bits || !config.size || !config.maxShares || !config.logs || !config.exps || config.logs.length !== config.size || config.exps.length !== config.size) {
-                throw new Error("Initialization failed.");
-            }
-
-        },
-
-        // Pass in additional secure entropy, and an estimate of the bits of entropy
-        // provided, and a source name, and it will be used to seed the SJCL PRNG. This is
-        // useful since SJCL may take a while to be seeded since it depends on mouse
-        // movement and this can kickstart the generator almost immediately. SJCL will
-        // also continue to collect entropy from mouse movements after seeding.
-        //
-        // e.g. from random data sources like:
-        // https://api.random.org/json-rpc/1/
-        // https://entropy.ubuntu.com/?challenge=123
-        // https://qrng.anu.edu.au/API/api-demo.php
-        //
-        // See `examples/example_js_global.html` for sample usage with an
-        // external source of entropy.
-        seedRNG: function (data, estimatedEntropy, source) {
-
-            var bytes, rand;
-
-            estimatedEntropy = parseInt(estimatedEntropy, 10);
-            source = source || "seedRNG";
-
-            // Seed with browser RNG
-            if (hasSJCL() && hasCryptoGetRandomValues()) {
-                bytes = new Uint32Array(256);
-                rand = crypto.getRandomValues(bytes);
-                //console.log(rand);
-                sjcl.random.addEntropy(rand, 2048, "cryptoGetRandomValues");
-            }
-
-            // See with Node.js RNG (Async)
-            if (hasSJCL() && hasCryptoRandomBytes()) {
-                crypto.randomBytes(256, function(ex, buf) {
-                  if (ex) { throw ex; }
-                  //console.log("Have %d bytes of random data containing %s", buf.length, buf.toString('hex'));
-                  sjcl.random.addEntropy(buf.toString("hex"), 2048, "cryptoRandomBytes");
-                });
-            }
-
-            if (hasSJCL() && data && estimatedEntropy && source && config.typeCSPRNG === "browserSJCLRandom") {
-                sjcl.random.addEntropy(data, estimatedEntropy, source);
-            }
-        },
-
-        // Evaluates the Lagrange interpolation polynomial at x=`at` for
-        // individual config.bits-length segments of each share in the `shares`
-        // Array. Each share is expressed in base `inputRadix`. The output
-        // is expressed in base `outputRadix'.
-        combine: function (shares, at) {
-            var i,
-                j,
-                len,
-                len2,
-                result = "",
-                setBits,
-                share,
-                splitShare,
-                x = [],
-                y = [];
-
-            at = at || 0;
-
-            for (i = 0, len = shares.length; i < len; i++) {
-                share = this.extractShareComponents(shares[i]);
-
-                // All shares must have the same bits settings.
-                if (setBits === undefined) {
-                    setBits = share.bits;
-                } else if (share.bits !== setBits) {
-                    throw new Error("Mismatched shares: Different bit settings.");
-                }
-
-                // Reset everything to the bit settings of the shares.
-                if (config.bits !== setBits) {
-                    this.init(setBits);
-                }
-
-                // Proceed if this share.id is not already in the Array 'x' and
-                // then split each share's hex data into an Array of Integers,
-                // then 'rotate' those arrays where the first element of each row is converted to
-                // its own array, the second element of each to its own Array, and so on for all of the rest.
-                // Essentially zipping all of the shares together.
-                //
-                // e.g.
-                //   [ 193, 186, 29, 150, 5, 120, 44, 46, 49, 59, 6, 1, 102, 98, 177, 196 ]
-                //   [ 53, 105, 139, 49, 187, 240, 91, 92, 98, 118, 12, 2, 204, 196, 127, 149 ]
-                //   [ 146, 211, 249, 167, 209, 136, 118, 114, 83, 77, 10, 3, 170, 166, 206, 81 ]
-                //
-                // becomes:
-                //
-                // [ [ 193, 53, 146 ],
-                //   [ 186, 105, 211 ],
-                //   [ 29, 139, 249 ],
-                //   [ 150, 49, 167 ],
-                //   [ 5, 187, 209 ],
-                //   [ 120, 240, 136 ],
-                //   [ 44, 91, 118 ],
-                //   [ 46, 92, 114 ],
-                //   [ 49, 98, 83 ],
-                //   [ 59, 118, 77 ],
-                //   [ 6, 12, 10 ],
-                //   [ 1, 2, 3 ],
-                //   [ 102, 204, 170 ],
-                //   [ 98, 196, 166 ],
-                //   [ 177, 127, 206 ],
-                //   [ 196, 149, 81 ] ]
-                //
-                if (x.indexOf(share.id) === -1) {
-                    x.push(share.id);
-                    splitShare = splitNumStringToIntArray(hex2bin(share.data));
-                    for (j = 0, len2 = splitShare.length; j < len2; j++) {
-                        y[j] = y[j] || [];
-                        y[j][x.length - 1] = splitShare[j];
-                    }
-                }
-
-            }
-
-            // Extract the secret from the 'rotated' share data and return a
-            // string of Binary digits which represent the secret directly. or in the
-            // case of a newShare() return the binary string representing just that
-            // new share.
-            for (i = 0, len = y.length; i < len; i++) {
-                result = padLeft(lagrange(at, x, y[i]).toString(2)) + result;
-            }
-
-            // If 'at' is non-zero combine() was called from newShare(). In this
-            // case return the result (the new share data) directly.
-            //
-            // Otherwise find the first '1' which was added in the share() function as a padding marker
-            // and return only the data after the padding and the marker. Convert this Binary string
-            // to hex, which represents the final secret result (which can be converted from hex back
-            // to the original string in user space using `hex2str()`).
-            return bin2hex(at >= 1 ? result : result.slice(result.indexOf("1") + 1));
-        },
-
-        getConfig: function () {
-            var obj = {};
-            obj.radix = config.radix;
-            obj.bits = config.bits;
-            obj.maxShares = config.maxShares;
-            obj.hasCSPRNG = isSetRNG();
-            obj.typeCSPRNG = config.typeCSPRNG;
-            return obj;
-        },
-
-        // Given a public share, extract the bits (Integer), share ID (Integer), and share data (Hex)
-        // and return an Object containing those components.
-        extractShareComponents: function (share) {
-            var bits,
-                id,
-                idLen,
-                max,
-                obj = {},
-                regexStr,
-                shareComponents;
-
-            // Extract the first char which represents the bits in Base 36
-            bits = parseInt(share.substr(0, 1), 36);
-
-            if (bits && (typeof bits !== "number" || bits % 1 !== 0 || bits < defaults.minBits || bits > defaults.maxBits)) {
-                throw new Error("Invalid share : Number of bits must be an integer between " + defaults.minBits + " and " + defaults.maxBits + ", inclusive.");
-            }
-
-            // calc the max shares allowed for given bits
-            max = Math.pow(2, bits) - 1;
-
-            // Determine the ID length which is variable and based on the bit count.
-            idLen = (Math.pow(2, bits) - 1).toString(config.radix).length;
-
-            // Extract all the parts now that the segment sizes are known.
-            regexStr = "^([a-kA-K3-9]{1})([a-fA-F0-9]{" + idLen + "})([a-fA-F0-9]+)$";
-            shareComponents = new RegExp(regexStr).exec(share);
-
-            // The ID is a Hex number and needs to be converted to an Integer
-            if (shareComponents) {
-                id = parseInt(shareComponents[2], config.radix);
-            }
-
-            if (typeof id !== "number" || id % 1 !== 0 || id < 1 || id > max) {
-                throw new Error("Invalid share : Share id must be an integer between 1 and " + config.maxShares + ", inclusive.");
-            }
-
-            if (shareComponents && shareComponents[3]) {
-                obj.bits = bits;
-                obj.id = id;
-                obj.data = shareComponents[3];
-                return obj;
-            }
-
-            throw new Error("The share data provided is invalid : " + share);
-
-        },
-
-        // Set the PRNG to use. If no RNG function is supplied, pick a default using getRNG()
-        setRNG: function (rng) {
-
-            var errPrefix = "Random number generator is invalid ",
-                errSuffix = " Supply an CSPRNG of the form function(bits){} that returns a string containing 'bits' number of random 1's and 0's.";
-
-            if (rng && typeof rng === "string" && CSPRNGTypes.indexOf(rng) === -1) {
-                throw new Error("Invalid RNG type argument : '" + rng + "'");
-            }
-
-            // If RNG was not specified at all,
-            // try to pick one appropriate for this env.
-            if (!rng) {
-                rng = getRNG();
-            }
-
-            // If `rng` is a string, try to forcibly
-            // set the RNG to the type specified.
-            if (rng && typeof rng === "string") {
-                rng = getRNG(rng);
-            }
-
-            if (runCSPRNGTest) {
-
-                if (rng && typeof rng !== "function") {
-                    throw new Error(errPrefix + "(Not a function)." + errSuffix);
-                }
-
-                if (rng && typeof rng(config.bits) !== "string") {
-                    throw new Error(errPrefix + "(Output is not a string)." + errSuffix);
-                }
-
-                if (rng && !parseInt(rng(config.bits), 2)) {
-                    throw new Error(errPrefix + "(Binary string output not parseable to an Integer)." + errSuffix);
-                }
-
-                if (rng && rng(config.bits).length > config.bits) {
-                    throw new Error(errPrefix + "(Output length is greater than config.bits)." + errSuffix);
-                }
-
-                if (rng && rng(config.bits).length < config.bits) {
-                    throw new Error(errPrefix + "(Output length is less than config.bits)." + errSuffix);
-                }
-
-            }
-
-            config.rng = rng;
-
-            return true;
-        },
-
-        // Converts a given UTF16 character string to the HEX representation.
-        // Each character of the input string is represented by
-        // `bytesPerChar` bytes in the output string which defaults to 2.
-        str2hex: function (str, bytesPerChar) {
-            var hexChars,
-                max,
-                out = "",
-                neededBytes,
-                num,
-                i,
-                len;
-
-            if (typeof str !== "string") {
-                throw new Error("Input must be a character string.");
-            }
-
-            if (!bytesPerChar) {
-                bytesPerChar = defaults.bytesPerChar;
-            }
-
-            if (typeof bytesPerChar !== "number" || bytesPerChar < 1 || bytesPerChar > defaults.maxBytesPerChar || bytesPerChar % 1 !== 0) {
-                throw new Error("Bytes per character must be an integer between 1 and " + defaults.maxBytesPerChar + ", inclusive.");
-            }
-
-            hexChars = 2 * bytesPerChar;
-            max = Math.pow(16, hexChars) - 1;
-
-            for (i = 0, len = str.length; i < len; i++) {
-                num = str[i].charCodeAt();
-
-                if (isNaN(num)) {
-                    throw new Error("Invalid character: " + str[i]);
-                }
-
-                if (num > max) {
-                    neededBytes = Math.ceil(Math.log(num + 1) / Math.log(256));
-                    throw new Error("Invalid character code (" + num + "). Maximum allowable is 256^bytes-1 (" + max + "). To convert this character, use at least " + neededBytes + " bytes.");
-                }
-
-                out = padLeft(num.toString(16), hexChars) + out;
-            }
-            return out;
-        },
-
-        // Converts a given HEX number string to a UTF16 character string.
-        hex2str: function (str, bytesPerChar) {
-            var hexChars,
-                out = "",
-                i,
-                len;
-
-            if (typeof str !== "string") {
-                throw new Error("Input must be a hexadecimal string.");
-            }
-            bytesPerChar = bytesPerChar || defaults.bytesPerChar;
-
-            if (typeof bytesPerChar !== "number" || bytesPerChar % 1 !== 0 || bytesPerChar < 1 || bytesPerChar > defaults.maxBytesPerChar) {
-                throw new Error("Bytes per character must be an integer between 1 and " + defaults.maxBytesPerChar + ", inclusive.");
-            }
-
-            hexChars = 2 * bytesPerChar;
-
-            str = padLeft(str, hexChars);
-
-            for (i = 0, len = str.length; i < len; i += hexChars) {
-                out = String.fromCharCode(parseInt(str.slice(i, i + hexChars), 16)) + out;
-            }
-
-            return out;
-        },
-
-        // Generates a random bits-length number string using the PRNG
-        random: function (bits) {
-
-            if (typeof bits !== "number" || bits % 1 !== 0 || bits < 2 || bits > 65536) {
-                throw new Error("Number of bits must be an Integer between 1 and 65536.");
-            }
-
-            if (config.typeCSPRNG === "browserSJCLRandom" && sjcl.random.isReady(sjclParanoia) < 1) {
-                throw new Error("SJCL isn't finished seeding the RNG yet. Needs new entropy added or more mouse movement.");
-            }
-
-            return bin2hex(config.rng(bits));
-        },
-
-        // Divides a `secret` number String str expressed in radix `inputRadix` (optional, default 16)
-        // into `numShares` shares, each expressed in radix `outputRadix` (optional, default to `inputRadix`),
-        // requiring `threshold` number of shares to reconstruct the secret.
-        // Optionally, zero-pads the secret to a length that is a multiple of padLength before sharing.
-        share: function (secret, numShares, threshold, padLength) {
-            var neededBits,
-                subShares,
-                x = new Array(numShares),
-                y = new Array(numShares),
-                i,
-                j,
-                len;
-
-            // Security:
-            // For additional security, pad in multiples of 128 bits by default.
-            // A small trade-off in larger share size to help prevent leakage of information
-            // about small-ish secrets and increase the difficulty of attacking them.
-            padLength = padLength || 128;
-
-            if (typeof secret !== "string") {
-                throw new Error("Secret must be a string.");
-            }
-
-            if (typeof numShares !== "number" || numShares % 1 !== 0 || numShares < 2) {
-                throw new Error("Number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive.");
-            }
-
-            if (numShares > config.maxShares) {
-                neededBits = Math.ceil(Math.log(numShares + 1) / Math.LN2);
-                throw new Error("Number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive. To create " + numShares + " shares, use at least " + neededBits + " bits.");
-            }
-
-            if (typeof threshold !== "number" || threshold % 1 !== 0 || threshold < 2) {
-                throw new Error("Threshold number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive.");
-            }
-
-            if (threshold > config.maxShares) {
-                neededBits = Math.ceil(Math.log(threshold + 1) / Math.LN2);
-                throw new Error("Threshold number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive.  To use a threshold of " + threshold + ", use at least " + neededBits + " bits.");
-            }
-
-            if (threshold > numShares) {
-                throw new Error("Threshold number of shares was " + threshold + " but must be less than or equal to the " + numShares + " shares specified as the total to generate.");
-            }
-
-            if (typeof padLength !== "number" || padLength % 1 !== 0 || padLength < 0 || padLength > 1024) {
-                throw new Error("Zero-pad length must be an integer between 0 and 1024 inclusive.");
-            }
-
-            secret = "1" + hex2bin(secret); // append a 1 as a marker so that we can preserve the correct number of leading zeros in our secret
-            secret = splitNumStringToIntArray(secret, padLength);
-
-            for (i = 0, len = secret.length; i < len; i++) {
-                subShares = getShares(secret[i], numShares, threshold);
-                for (j = 0; j < numShares; j++) {
-                    x[j] = x[j] || subShares[j].x.toString(config.radix);
-                    y[j] = padLeft(subShares[j].y.toString(2)) + (y[j] || "");
-                }
-            }
-
-            for (i = 0; i < numShares; i++) {
-                x[i] = constructPublicShareString(config.bits, x[i], bin2hex(y[i]));
-            }
-
-            return x;
-        },
-
-        // Generate a new share with id `id` (a number between 1 and 2^bits-1)
-        // `id` can be a Number or a String in the default radix (16)
-        newShare: function (id, shares) {
-            var share;
-
-            if (id && typeof id === "string") {
-                id = parseInt(id, config.radix);
-            }
-
-            if (id && shares && shares[0]) {
-                share = this.extractShareComponents(shares[0]);
-                return constructPublicShareString(share.bits, id, this.combine(shares, id));
-            }
-
-            throw new Error("Invalid 'id' or 'shares' Array argument to newShare().");
-        },
-
-        /* test-code */
-        // export private functions so they can be unit tested directly.
-        _reset: reset,
-        _padLeft: padLeft,
-        _hex2bin: hex2bin,
-        _bin2hex: bin2hex,
-        _hasCryptoGetRandomValues: hasCryptoGetRandomValues,
-        _hasCryptoRandomBytes: hasCryptoRandomBytes,
-        _hasSJCL: hasSJCL,
-        _getRNG: getRNG,
-        _isSetRNG: isSetRNG,
-        _splitNumStringToIntArray: splitNumStringToIntArray,
-        _horner: horner,
-        _lagrange: lagrange,
-        _getShares: getShares,
-        _constructPublicShareString: constructPublicShareString
-        /* end-test-code */
-
-    };
-
-    // Always initialize secrets with default settings.
-    secrets.init();
-
-    return secrets;
-
-}));
-
-},{"crypto":456}],180:[function(require,module,exports){
+},{"../Utils":167,"../base/Error":168,"../secure/HDKey":172,"_process":534,"multichain-node":297}],179:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -53013,7 +51999,7 @@ module.exports = function createHash (alg) {
   return new Hash(sha(alg))
 }
 
-},{"cipher-base":138,"inherits":284,"md5.js":292,"ripemd160":343,"sha.js":354}],181:[function(require,module,exports){
+},{"cipher-base":138,"inherits":283,"md5.js":291,"ripemd160":342,"sha.js":354}],180:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -53246,7 +52232,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.AES;
 
 }));
-},{"./cipher-core":182,"./core":183,"./enc-base64":184,"./evpkdf":186,"./md5":191}],182:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182,"./enc-base64":183,"./evpkdf":185,"./md5":190}],181:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -54127,7 +53113,7 @@ module.exports = function createHash (alg) {
 
 
 }));
-},{"./core":183,"./evpkdf":186}],183:[function(require,module,exports){
+},{"./core":182,"./evpkdf":185}],182:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -54888,7 +53874,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS;
 
 }));
-},{}],184:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55024,7 +54010,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.enc.Base64;
 
 }));
-},{"./core":183}],185:[function(require,module,exports){
+},{"./core":182}],184:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55174,7 +54160,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.enc.Utf16;
 
 }));
-},{"./core":183}],186:[function(require,module,exports){
+},{"./core":182}],185:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55307,7 +54293,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.EvpKDF;
 
 }));
-},{"./core":183,"./hmac":188,"./sha1":207}],187:[function(require,module,exports){
+},{"./core":182,"./hmac":187,"./sha1":206}],186:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55374,7 +54360,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.format.Hex;
 
 }));
-},{"./cipher-core":182,"./core":183}],188:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],187:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55518,7 +54504,7 @@ module.exports = function createHash (alg) {
 
 
 }));
-},{"./core":183}],189:[function(require,module,exports){
+},{"./core":182}],188:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55537,7 +54523,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS;
 
 }));
-},{"./aes":181,"./cipher-core":182,"./core":183,"./enc-base64":184,"./enc-utf16":185,"./evpkdf":186,"./format-hex":187,"./hmac":188,"./lib-typedarrays":190,"./md5":191,"./mode-cfb":192,"./mode-ctr":194,"./mode-ctr-gladman":193,"./mode-ecb":195,"./mode-ofb":196,"./pad-ansix923":197,"./pad-iso10126":198,"./pad-iso97971":199,"./pad-nopadding":200,"./pad-zeropadding":201,"./pbkdf2":202,"./rabbit":204,"./rabbit-legacy":203,"./rc4":205,"./ripemd160":206,"./sha1":207,"./sha224":208,"./sha256":209,"./sha3":210,"./sha384":211,"./sha512":212,"./tripledes":213,"./x64-core":214}],190:[function(require,module,exports){
+},{"./aes":180,"./cipher-core":181,"./core":182,"./enc-base64":183,"./enc-utf16":184,"./evpkdf":185,"./format-hex":186,"./hmac":187,"./lib-typedarrays":189,"./md5":190,"./mode-cfb":191,"./mode-ctr":193,"./mode-ctr-gladman":192,"./mode-ecb":194,"./mode-ofb":195,"./pad-ansix923":196,"./pad-iso10126":197,"./pad-iso97971":198,"./pad-nopadding":199,"./pad-zeropadding":200,"./pbkdf2":201,"./rabbit":203,"./rabbit-legacy":202,"./rc4":204,"./ripemd160":205,"./sha1":206,"./sha224":207,"./sha256":208,"./sha3":209,"./sha384":210,"./sha512":211,"./tripledes":212,"./x64-core":213}],189:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55614,7 +54600,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.lib.WordArray;
 
 }));
-},{"./core":183}],191:[function(require,module,exports){
+},{"./core":182}],190:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55883,7 +54869,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.MD5;
 
 }));
-},{"./core":183}],192:[function(require,module,exports){
+},{"./core":182}],191:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -55962,7 +54948,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.mode.CFB;
 
 }));
-},{"./cipher-core":182,"./core":183}],193:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],192:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56079,7 +55065,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.mode.CTRGladman;
 
 }));
-},{"./cipher-core":182,"./core":183}],194:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],193:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56138,7 +55124,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.mode.CTR;
 
 }));
-},{"./cipher-core":182,"./core":183}],195:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],194:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56179,7 +55165,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.mode.ECB;
 
 }));
-},{"./cipher-core":182,"./core":183}],196:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],195:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56234,7 +55220,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.mode.OFB;
 
 }));
-},{"./cipher-core":182,"./core":183}],197:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],196:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56284,7 +55270,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.pad.Ansix923;
 
 }));
-},{"./cipher-core":182,"./core":183}],198:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],197:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56329,7 +55315,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.pad.Iso10126;
 
 }));
-},{"./cipher-core":182,"./core":183}],199:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],198:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56370,7 +55356,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.pad.Iso97971;
 
 }));
-},{"./cipher-core":182,"./core":183}],200:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],199:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56401,7 +55387,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.pad.NoPadding;
 
 }));
-},{"./cipher-core":182,"./core":183}],201:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],200:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56447,7 +55433,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.pad.ZeroPadding;
 
 }));
-},{"./cipher-core":182,"./core":183}],202:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182}],201:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56593,7 +55579,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.PBKDF2;
 
 }));
-},{"./core":183,"./hmac":188,"./sha1":207}],203:[function(require,module,exports){
+},{"./core":182,"./hmac":187,"./sha1":206}],202:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56784,7 +55770,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.RabbitLegacy;
 
 }));
-},{"./cipher-core":182,"./core":183,"./enc-base64":184,"./evpkdf":186,"./md5":191}],204:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182,"./enc-base64":183,"./evpkdf":185,"./md5":190}],203:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -56977,7 +55963,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.Rabbit;
 
 }));
-},{"./cipher-core":182,"./core":183,"./enc-base64":184,"./evpkdf":186,"./md5":191}],205:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182,"./enc-base64":183,"./evpkdf":185,"./md5":190}],204:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -57117,7 +56103,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.RC4;
 
 }));
-},{"./cipher-core":182,"./core":183,"./enc-base64":184,"./evpkdf":186,"./md5":191}],206:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182,"./enc-base64":183,"./evpkdf":185,"./md5":190}],205:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -57385,7 +56371,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.RIPEMD160;
 
 }));
-},{"./core":183}],207:[function(require,module,exports){
+},{"./core":182}],206:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -57536,7 +56522,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.SHA1;
 
 }));
-},{"./core":183}],208:[function(require,module,exports){
+},{"./core":182}],207:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -57617,7 +56603,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.SHA224;
 
 }));
-},{"./core":183,"./sha256":209}],209:[function(require,module,exports){
+},{"./core":182,"./sha256":208}],208:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -57817,7 +56803,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.SHA256;
 
 }));
-},{"./core":183}],210:[function(require,module,exports){
+},{"./core":182}],209:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -58141,7 +57127,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.SHA3;
 
 }));
-},{"./core":183,"./x64-core":214}],211:[function(require,module,exports){
+},{"./core":182,"./x64-core":213}],210:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -58225,7 +57211,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.SHA384;
 
 }));
-},{"./core":183,"./sha512":212,"./x64-core":214}],212:[function(require,module,exports){
+},{"./core":182,"./sha512":211,"./x64-core":213}],211:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -58549,7 +57535,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.SHA512;
 
 }));
-},{"./core":183,"./x64-core":214}],213:[function(require,module,exports){
+},{"./core":182,"./x64-core":213}],212:[function(require,module,exports){
 ;(function (root, factory, undef) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -59320,7 +58306,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS.TripleDES;
 
 }));
-},{"./cipher-core":182,"./core":183,"./enc-base64":184,"./evpkdf":186,"./md5":191}],214:[function(require,module,exports){
+},{"./cipher-core":181,"./core":182,"./enc-base64":183,"./evpkdf":185,"./md5":190}],213:[function(require,module,exports){
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -59625,7 +58611,7 @@ module.exports = function createHash (alg) {
 	return CryptoJS;
 
 }));
-},{"./core":183}],215:[function(require,module,exports){
+},{"./core":182}],214:[function(require,module,exports){
 const request = require('request-promise');
 const DEFAULT_URL = 'https://api.cryptokitties.co/';
 
@@ -59688,7 +58674,7 @@ function CryptokittiesClient(opts = {}){
 }
 module.exports = CryptokittiesClient;
 
-},{"request-promise":325}],216:[function(require,module,exports){
+},{"request-promise":324}],215:[function(require,module,exports){
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -59797,7 +58783,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
   this.emit('error', new Error(message));
 };
 
-},{"stream":570,"util":582}],217:[function(require,module,exports){
+},{"stream":570,"util":582}],216:[function(require,module,exports){
 (function (Buffer){
 var crypto = require("crypto");
 var BigInteger = require("jsbn").BigInteger;
@@ -59858,7 +58844,7 @@ exports.ECKey = function(curve, key, isPublic)
 
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/ec.js":218,"./lib/sec.js":219,"buffer":446,"crypto":456,"jsbn":287}],218:[function(require,module,exports){
+},{"./lib/ec.js":217,"./lib/sec.js":218,"buffer":446,"crypto":456,"jsbn":286}],217:[function(require,module,exports){
 // Basic Javascript Elliptic Curve implementation
 // Ported loosely from BouncyCastle's Java EC code
 // Only Fp curves implemented for now
@@ -60421,7 +59407,7 @@ var exports = {
 
 module.exports = exports
 
-},{"jsbn":287}],219:[function(require,module,exports){
+},{"jsbn":286}],218:[function(require,module,exports){
 // Named EC curves
 
 // Requires ec.js, jsbn.js, and jsbn2.js
@@ -60593,7 +59579,7 @@ module.exports = {
   "secp256r1":secp256r1
 }
 
-},{"./ec.js":218,"jsbn":287}],220:[function(require,module,exports){
+},{"./ec.js":217,"jsbn":286}],219:[function(require,module,exports){
 (function (Buffer){
 var crypto = require('crypto')
 var secp256k1 = require('secp256k1')
@@ -60690,7 +59676,7 @@ ECKey.prototype.toString = function (format) {
 module.exports = ECKey
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":446,"crypto":456,"secp256k1":346}],221:[function(require,module,exports){
+},{"buffer":446,"crypto":456,"secp256k1":345}],220:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -60705,7 +59691,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":236,"./elliptic/curve":224,"./elliptic/curves":227,"./elliptic/ec":228,"./elliptic/eddsa":231,"./elliptic/utils":235,"brorand":133}],222:[function(require,module,exports){
+},{"../package.json":235,"./elliptic/curve":223,"./elliptic/curves":226,"./elliptic/ec":227,"./elliptic/eddsa":230,"./elliptic/utils":234,"brorand":133}],221:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -61082,7 +60068,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":221,"bn.js":132}],223:[function(require,module,exports){
+},{"../../elliptic":220,"bn.js":132}],222:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -61517,9 +60503,9 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":221,"../curve":224,"bn.js":132,"inherits":284}],224:[function(require,module,exports){
+},{"../../elliptic":220,"../curve":223,"bn.js":132,"inherits":283}],223:[function(require,module,exports){
 arguments[4][110][0].apply(exports,arguments)
-},{"./base":222,"./edwards":223,"./mont":225,"./short":226,"dup":110}],225:[function(require,module,exports){
+},{"./base":221,"./edwards":222,"./mont":224,"./short":225,"dup":110}],224:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -61701,7 +60687,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":221,"../curve":224,"bn.js":132,"inherits":284}],226:[function(require,module,exports){
+},{"../../elliptic":220,"../curve":223,"bn.js":132,"inherits":283}],225:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -62641,7 +61627,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":221,"../curve":224,"bn.js":132,"inherits":284}],227:[function(require,module,exports){
+},{"../../elliptic":220,"../curve":223,"bn.js":132,"inherits":283}],226:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -62848,7 +61834,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":221,"./precomputed/secp256k1":234,"hash.js":265}],228:[function(require,module,exports){
+},{"../elliptic":220,"./precomputed/secp256k1":233,"hash.js":264}],227:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -63090,7 +62076,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":221,"./key":229,"./signature":230,"bn.js":132,"hmac-drbg":278}],229:[function(require,module,exports){
+},{"../../elliptic":220,"./key":228,"./signature":229,"bn.js":132,"hmac-drbg":277}],228:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -63211,7 +62197,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":221,"bn.js":132}],230:[function(require,module,exports){
+},{"../../elliptic":220,"bn.js":132}],229:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -63348,7 +62334,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":221,"bn.js":132}],231:[function(require,module,exports){
+},{"../../elliptic":220,"bn.js":132}],230:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -63468,7 +62454,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":221,"./key":232,"./signature":233,"hash.js":265}],232:[function(require,module,exports){
+},{"../../elliptic":220,"./key":231,"./signature":232,"hash.js":264}],231:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -63566,7 +62552,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":221}],233:[function(require,module,exports){
+},{"../../elliptic":220}],232:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -63634,9 +62620,9 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":221,"bn.js":132}],234:[function(require,module,exports){
+},{"../../elliptic":220,"bn.js":132}],233:[function(require,module,exports){
 arguments[4][118][0].apply(exports,arguments)
-},{"dup":118}],235:[function(require,module,exports){
+},{"dup":118}],234:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -63758,7 +62744,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":132,"minimalistic-assert":296,"minimalistic-crypto-utils":297}],236:[function(require,module,exports){
+},{"bn.js":132,"minimalistic-assert":295,"minimalistic-crypto-utils":296}],235:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -63849,7 +62835,7 @@ module.exports={
   "version": "6.4.0"
 }
 
-},{}],237:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 'use strict';
 
 var hasOwn = Object.prototype.hasOwnProperty;
@@ -63937,7 +62923,7 @@ module.exports = function extend() {
 	return target;
 };
 
-},{}],238:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 (function (process){
 /*
  * extsprintf.js: extended POSIX-style sprintf
@@ -64124,7 +63110,7 @@ function dumpException(ex)
 }
 
 }).call(this,require('_process'))
-},{"_process":534,"assert":411,"util":582}],239:[function(require,module,exports){
+},{"_process":534,"assert":411,"util":582}],238:[function(require,module,exports){
 'use strict';
 
 var isArray = Array.isArray;
@@ -64181,7 +63167,7 @@ module.exports = function equal(a, b) {
   return false;
 };
 
-},{}],240:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
 'use strict';
 
 module.exports = function (data, opts) {
@@ -64242,7 +63228,7 @@ module.exports = function (data, opts) {
     })(data);
 };
 
-},{}],241:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 module.exports = ForeverAgent
 ForeverAgent.SSL = ForeverAgentSSL
 
@@ -64382,11 +63368,11 @@ function createConnectionSSL (port, host, options) {
   return tls.connect(options);
 }
 
-},{"http":571,"https":499,"net":396,"tls":396,"util":582}],242:[function(require,module,exports){
+},{"http":571,"https":499,"net":396,"tls":396,"util":582}],241:[function(require,module,exports){
 /* eslint-env browser */
 module.exports = typeof self == 'object' ? self.FormData : window.FormData;
 
-},{}],243:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 module.exports={
   "$id": "afterRequest.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64418,7 +63404,7 @@ module.exports={
   }
 }
 
-},{}],244:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 module.exports={
   "$id": "beforeRequest.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64450,7 +63436,7 @@ module.exports={
   }
 }
 
-},{}],245:[function(require,module,exports){
+},{}],244:[function(require,module,exports){
 module.exports={
   "$id": "browser.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64472,7 +63458,7 @@ module.exports={
   }
 }
 
-},{}],246:[function(require,module,exports){
+},{}],245:[function(require,module,exports){
 module.exports={
   "$id": "cache.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64495,7 +63481,7 @@ module.exports={
   }
 }
 
-},{}],247:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 module.exports={
   "$id": "content.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64526,7 +63512,7 @@ module.exports={
   }
 }
 
-},{}],248:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 module.exports={
   "$id": "cookie.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64564,7 +63550,7 @@ module.exports={
   }
 }
 
-},{}],249:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 module.exports={
   "$id": "creator.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64586,7 +63572,7 @@ module.exports={
   }
 }
 
-},{}],250:[function(require,module,exports){
+},{}],249:[function(require,module,exports){
 module.exports={
   "$id": "entry.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64641,7 +63627,7 @@ module.exports={
   }
 }
 
-},{}],251:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 module.exports={
   "$id": "har.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64656,7 +63642,7 @@ module.exports={
   }
 }
 
-},{}],252:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 module.exports={
   "$id": "header.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64678,7 +63664,7 @@ module.exports={
   }
 }
 
-},{}],253:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 'use strict'
 
 module.exports = {
@@ -64702,7 +63688,7 @@ module.exports = {
   timings: require('./timings.json')
 }
 
-},{"./afterRequest.json":243,"./beforeRequest.json":244,"./browser.json":245,"./cache.json":246,"./content.json":247,"./cookie.json":248,"./creator.json":249,"./entry.json":250,"./har.json":251,"./header.json":252,"./log.json":254,"./page.json":255,"./pageTimings.json":256,"./postData.json":257,"./query.json":258,"./request.json":259,"./response.json":260,"./timings.json":261}],254:[function(require,module,exports){
+},{"./afterRequest.json":242,"./beforeRequest.json":243,"./browser.json":244,"./cache.json":245,"./content.json":246,"./cookie.json":247,"./creator.json":248,"./entry.json":249,"./har.json":250,"./header.json":251,"./log.json":253,"./page.json":254,"./pageTimings.json":255,"./postData.json":256,"./query.json":257,"./request.json":258,"./response.json":259,"./timings.json":260}],253:[function(require,module,exports){
 module.exports={
   "$id": "log.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64740,7 +63726,7 @@ module.exports={
   }
 }
 
-},{}],255:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 module.exports={
   "$id": "page.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64774,7 +63760,7 @@ module.exports={
   }
 }
 
-},{}],256:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
 module.exports={
   "$id": "pageTimings.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64794,7 +63780,7 @@ module.exports={
   }
 }
 
-},{}],257:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 module.exports={
   "$id": "postData.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64839,7 +63825,7 @@ module.exports={
   }
 }
 
-},{}],258:[function(require,module,exports){
+},{}],257:[function(require,module,exports){
 module.exports={
   "$id": "query.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64861,7 +63847,7 @@ module.exports={
   }
 }
 
-},{}],259:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
 module.exports={
   "$id": "request.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64920,7 +63906,7 @@ module.exports={
   }
 }
 
-},{}],260:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 module.exports={
   "$id": "response.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -64976,7 +63962,7 @@ module.exports={
   }
 }
 
-},{}],261:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 module.exports={
   "$id": "timings.json#",
   "$schema": "http://json-schema.org/draft-06/schema#",
@@ -65020,7 +64006,7 @@ module.exports={
   }
 }
 
-},{}],262:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 function HARError (errors) {
   var message = 'validation failed'
 
@@ -65039,7 +64025,7 @@ HARError.prototype = Error.prototype
 
 module.exports = HARError
 
-},{}],263:[function(require,module,exports){
+},{}],262:[function(require,module,exports){
 var Ajv = require('ajv')
 var HARError = require('./error')
 var schemas = require('har-schema')
@@ -65136,7 +64122,7 @@ exports.timings = function (data) {
   return validate('timings', data)
 }
 
-},{"./error":262,"ajv":8,"har-schema":253}],264:[function(require,module,exports){
+},{"./error":261,"ajv":8,"har-schema":252}],263:[function(require,module,exports){
 'use strict'
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('stream').Transform
@@ -65233,9 +64219,9 @@ HashBase.prototype._digest = function () {
 
 module.exports = HashBase
 
-},{"inherits":284,"safe-buffer":345,"stream":570}],265:[function(require,module,exports){
+},{"inherits":283,"safe-buffer":344,"stream":570}],264:[function(require,module,exports){
 arguments[4][121][0].apply(exports,arguments)
-},{"./hash/common":266,"./hash/hmac":267,"./hash/ripemd":268,"./hash/sha":269,"./hash/utils":276,"dup":121}],266:[function(require,module,exports){
+},{"./hash/common":265,"./hash/hmac":266,"./hash/ripemd":267,"./hash/sha":268,"./hash/utils":275,"dup":121}],265:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -65329,7 +64315,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"./utils":276,"minimalistic-assert":296}],267:[function(require,module,exports){
+},{"./utils":275,"minimalistic-assert":295}],266:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -65378,7 +64364,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"./utils":276,"minimalistic-assert":296}],268:[function(require,module,exports){
+},{"./utils":275,"minimalistic-assert":295}],267:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -65526,7 +64512,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"./common":266,"./utils":276}],269:[function(require,module,exports){
+},{"./common":265,"./utils":275}],268:[function(require,module,exports){
 'use strict';
 
 exports.sha1 = require('./sha/1');
@@ -65535,7 +64521,7 @@ exports.sha256 = require('./sha/256');
 exports.sha384 = require('./sha/384');
 exports.sha512 = require('./sha/512');
 
-},{"./sha/1":270,"./sha/224":271,"./sha/256":272,"./sha/384":273,"./sha/512":274}],270:[function(require,module,exports){
+},{"./sha/1":269,"./sha/224":270,"./sha/256":271,"./sha/384":272,"./sha/512":273}],269:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -65611,7 +64597,7 @@ SHA1.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":266,"../utils":276,"./common":275}],271:[function(require,module,exports){
+},{"../common":265,"../utils":275,"./common":274}],270:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -65643,7 +64629,7 @@ SHA224.prototype._digest = function digest(enc) {
 };
 
 
-},{"../utils":276,"./256":272}],272:[function(require,module,exports){
+},{"../utils":275,"./256":271}],271:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -65750,7 +64736,7 @@ SHA256.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":266,"../utils":276,"./common":275,"minimalistic-assert":296}],273:[function(require,module,exports){
+},{"../common":265,"../utils":275,"./common":274,"minimalistic-assert":295}],272:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -65787,7 +64773,7 @@ SHA384.prototype._digest = function digest(enc) {
     return utils.split32(this.h.slice(0, 12), 'big');
 };
 
-},{"../utils":276,"./512":274}],274:[function(require,module,exports){
+},{"../utils":275,"./512":273}],273:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -66119,7 +65105,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../common":266,"../utils":276,"minimalistic-assert":296}],275:[function(require,module,exports){
+},{"../common":265,"../utils":275,"minimalistic-assert":295}],274:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -66170,7 +65156,7 @@ function g1_256(x) {
 }
 exports.g1_256 = g1_256;
 
-},{"../utils":276}],276:[function(require,module,exports){
+},{"../utils":275}],275:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -66425,7 +65411,7 @@ function shr64_lo(ah, al, num) {
 }
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":284,"minimalistic-assert":296}],277:[function(require,module,exports){
+},{"inherits":283,"minimalistic-assert":295}],276:[function(require,module,exports){
 'use strict';
 
 /*
@@ -67220,7 +66206,7 @@ if (typeof module !== 'undefined' && module.exports) {
 /* eslint-enable */
 // $lab:coverage:on$
 
-},{}],278:[function(require,module,exports){
+},{}],277:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -67335,7 +66321,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"hash.js":265,"minimalistic-assert":296,"minimalistic-crypto-utils":297}],279:[function(require,module,exports){
+},{"hash.js":264,"minimalistic-assert":295,"minimalistic-crypto-utils":296}],278:[function(require,module,exports){
 // Copyright 2015 Joyent, Inc.
 
 var parser = require('./parser');
@@ -67366,7 +66352,7 @@ module.exports = {
   verifyHMAC: verify.verifyHMAC
 };
 
-},{"./parser":280,"./signer":281,"./utils":282,"./verify":283}],280:[function(require,module,exports){
+},{"./parser":279,"./signer":280,"./utils":281,"./verify":282}],279:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -67683,7 +66669,7 @@ module.exports = {
 
 };
 
-},{"./utils":282,"assert-plus":53,"util":582}],281:[function(require,module,exports){
+},{"./utils":281,"assert-plus":53,"util":582}],280:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
@@ -68088,7 +67074,7 @@ module.exports = {
 };
 
 }).call(this,{"isBuffer":require("../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503,"./utils":282,"assert-plus":53,"crypto":456,"http":571,"jsprim":291,"sshpk":378,"util":582}],282:[function(require,module,exports){
+},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503,"./utils":281,"assert-plus":53,"crypto":456,"http":571,"jsprim":290,"sshpk":378,"util":582}],281:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -68202,7 +67188,7 @@ module.exports = {
   }
 };
 
-},{"assert-plus":53,"sshpk":378,"util":582}],283:[function(require,module,exports){
+},{"assert-plus":53,"sshpk":378,"util":582}],282:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -68294,9 +67280,9 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./utils":282,"assert-plus":53,"buffer":446,"crypto":456,"sshpk":378}],284:[function(require,module,exports){
+},{"./utils":281,"assert-plus":53,"buffer":446,"crypto":456,"sshpk":378}],283:[function(require,module,exports){
 arguments[4][128][0].apply(exports,arguments)
-},{"dup":128}],285:[function(require,module,exports){
+},{"dup":128}],284:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -68339,7 +67325,7 @@ function isLooseTypedArray(arr) {
   return names[toString.call(arr)]
 }
 
-},{}],286:[function(require,module,exports){
+},{}],285:[function(require,module,exports){
 var stream = require('stream')
 
 
@@ -68368,7 +67354,7 @@ module.exports.isReadable = isReadable
 module.exports.isWritable = isWritable
 module.exports.isDuplex   = isDuplex
 
-},{"stream":570}],287:[function(require,module,exports){
+},{"stream":570}],286:[function(require,module,exports){
 (function(){
 
     // Copyright (c) 2005  Tom Wu
@@ -69727,7 +68713,7 @@ module.exports.isDuplex   = isDuplex
 
 }).call(this);
 
-},{}],288:[function(require,module,exports){
+},{}],287:[function(require,module,exports){
 'use strict';
 
 var traverse = module.exports = function (schema, opts, cb) {
@@ -69810,7 +68796,7 @@ function escapeJsonPtr(str) {
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
 }
 
-},{}],289:[function(require,module,exports){
+},{}],288:[function(require,module,exports){
 /**
  * JSONSchema Validator - Validates JavaScript objects using JSON Schemas
  *	(http://www.json.com/json-schema-proposal/)
@@ -70085,7 +69071,7 @@ exports.mustBeValid = function(result){
 return exports;
 }));
 
-},{}],290:[function(require,module,exports){
+},{}],289:[function(require,module,exports){
 exports = module.exports = stringify
 exports.getSerialize = serializer
 
@@ -70114,7 +69100,7 @@ function serializer(replacer, cycleReplacer) {
   }
 }
 
-},{}],291:[function(require,module,exports){
+},{}],290:[function(require,module,exports){
 /*
  * lib/jsprim.js: utilities for primitive JavaScript types
  */
@@ -70851,7 +69837,7 @@ function mergeObjects(provided, overrides, defaults)
 	return (rv);
 }
 
-},{"assert-plus":53,"extsprintf":238,"json-schema":289,"util":582,"verror":395}],292:[function(require,module,exports){
+},{"assert-plus":53,"extsprintf":237,"json-schema":288,"util":582,"verror":395}],291:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var inherits = require('inherits')
@@ -71000,7 +69986,7 @@ function fnI (a, b, c, d, m, k, s) {
 module.exports = MD5
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":446,"hash-base":264,"inherits":284}],293:[function(require,module,exports){
+},{"buffer":446,"hash-base":263,"inherits":283}],292:[function(require,module,exports){
 module.exports={
   "application/1d-interleaved-parityfec": {
     "source": "iana"
@@ -77968,7 +76954,7 @@ module.exports={
   }
 }
 
-},{}],294:[function(require,module,exports){
+},{}],293:[function(require,module,exports){
 /*!
  * mime-db
  * Copyright(c) 2014 Jonathan Ong
@@ -77981,7 +76967,7 @@ module.exports={
 
 module.exports = require('./db.json')
 
-},{"./db.json":293}],295:[function(require,module,exports){
+},{"./db.json":292}],294:[function(require,module,exports){
 /*!
  * mime-types
  * Copyright(c) 2014 Jonathan Ong
@@ -78171,7 +77157,7 @@ function populateMaps (extensions, types) {
   })
 }
 
-},{"mime-db":294,"path":527}],296:[function(require,module,exports){
+},{"mime-db":293,"path":527}],295:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -78184,7 +77170,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],297:[function(require,module,exports){
+},{}],296:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -78244,9 +77230,9 @@ utils.encode = function encode(arr, enc) {
     return arr;
 };
 
-},{}],298:[function(require,module,exports){
+},{}],297:[function(require,module,exports){
 module.exports = require("./lib/rpccall.js");
-},{"./lib/rpccall.js":301}],299:[function(require,module,exports){
+},{"./lib/rpccall.js":300}],298:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -78328,7 +77314,7 @@ let client = (connection) => {
 
 module.exports = client;
 }).call(this,require("buffer").Buffer)
-},{"buffer":446,"http":571,"https":499}],300:[function(require,module,exports){
+},{"buffer":446,"http":571,"https":499}],299:[function(require,module,exports){
 //from-address / to-address simply called from and to
 //data-hex called data, tx-hex called tx
 //unnamed requested / locking assets object called "assets"
@@ -78479,7 +77465,7 @@ module.exports = {
     getMiningInfo: [],
 }
 
-},{}],301:[function(require,module,exports){
+},{}],300:[function(require,module,exports){
 "use strict";
 
 const commands = require("./commands");
@@ -78554,7 +77540,7 @@ let parseParams = (commandParams, args) => {
 
     return userParams;
 }
-},{"./client":299,"./commands":300}],302:[function(require,module,exports){
+},{"./client":298,"./commands":299}],301:[function(require,module,exports){
 var crypto = require('crypto')
   , qs = require('querystring')
   ;
@@ -78692,7 +77678,7 @@ exports.rfc3986 = rfc3986
 exports.generateBase = generateBase
 
 
-},{"crypto":456,"querystring":544}],303:[function(require,module,exports){
+},{"crypto":456,"querystring":544}],302:[function(require,module,exports){
 (function (process){
 // Generated by CoffeeScript 1.12.2
 (function() {
@@ -78732,7 +77718,7 @@ exports.generateBase = generateBase
 
 
 }).call(this,require('_process'))
-},{"_process":534}],304:[function(require,module,exports){
+},{"_process":534}],303:[function(require,module,exports){
 'use strict';
 
 var replace = String.prototype.replace;
@@ -78752,7 +77738,7 @@ module.exports = {
     RFC3986: 'RFC3986'
 };
 
-},{}],305:[function(require,module,exports){
+},{}],304:[function(require,module,exports){
 'use strict';
 
 var stringify = require('./stringify');
@@ -78765,7 +77751,7 @@ module.exports = {
     stringify: stringify
 };
 
-},{"./formats":304,"./parse":306,"./stringify":307}],306:[function(require,module,exports){
+},{"./formats":303,"./parse":305,"./stringify":306}],305:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -78941,7 +77927,7 @@ module.exports = function (str, opts) {
     return utils.compact(obj);
 };
 
-},{"./utils":308}],307:[function(require,module,exports){
+},{"./utils":307}],306:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -79153,7 +78139,7 @@ module.exports = function (object, opts) {
     return joined.length > 0 ? prefix + joined : '';
 };
 
-},{"./formats":304,"./utils":308}],308:[function(require,module,exports){
+},{"./formats":303,"./utils":307}],307:[function(require,module,exports){
 'use strict';
 
 var has = Object.prototype.hasOwnProperty;
@@ -79357,7 +78343,7 @@ exports.isBuffer = function isBuffer(obj) {
     return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
 };
 
-},{}],309:[function(require,module,exports){
+},{}],308:[function(require,module,exports){
 (function (process,global){
 'use strict'
 
@@ -79399,7 +78385,7 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":534,"safe-buffer":345}],310:[function(require,module,exports){
+},{"_process":534,"safe-buffer":344}],309:[function(require,module,exports){
 'use strict';
 
 var core = require('../'),
@@ -79475,7 +78461,7 @@ module.exports = function (options) {
 
 };
 
-},{"../":312,"lodash/isArray":319,"lodash/isFunction":320,"lodash/isObjectLike":322}],311:[function(require,module,exports){
+},{"../":311,"lodash/isArray":318,"lodash/isFunction":319,"lodash/isObjectLike":321}],310:[function(require,module,exports){
 'use strict';
 
 
@@ -79539,7 +78525,7 @@ module.exports = {
     TransformError: TransformError
 };
 
-},{}],312:[function(require,module,exports){
+},{}],311:[function(require,module,exports){
 'use strict';
 
 var errors = require('./errors.js'),
@@ -79708,7 +78694,7 @@ module.exports = function (options) {
 
 };
 
-},{"./errors.js":311,"lodash/isFunction":320,"lodash/isObjectLike":322,"lodash/isString":323,"lodash/isUndefined":324}],313:[function(require,module,exports){
+},{"./errors.js":310,"lodash/isFunction":319,"lodash/isObjectLike":321,"lodash/isString":322,"lodash/isUndefined":323}],312:[function(require,module,exports){
 var root = require('./_root');
 
 /** Built-in value references. */
@@ -79716,7 +78702,7 @@ var Symbol = root.Symbol;
 
 module.exports = Symbol;
 
-},{"./_root":318}],314:[function(require,module,exports){
+},{"./_root":317}],313:[function(require,module,exports){
 var Symbol = require('./_Symbol'),
     getRawTag = require('./_getRawTag'),
     objectToString = require('./_objectToString');
@@ -79746,7 +78732,7 @@ function baseGetTag(value) {
 
 module.exports = baseGetTag;
 
-},{"./_Symbol":313,"./_getRawTag":316,"./_objectToString":317}],315:[function(require,module,exports){
+},{"./_Symbol":312,"./_getRawTag":315,"./_objectToString":316}],314:[function(require,module,exports){
 (function (global){
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -79754,7 +78740,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 module.exports = freeGlobal;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],316:[function(require,module,exports){
+},{}],315:[function(require,module,exports){
 var Symbol = require('./_Symbol');
 
 /** Used for built-in method references. */
@@ -79802,7 +78788,7 @@ function getRawTag(value) {
 
 module.exports = getRawTag;
 
-},{"./_Symbol":313}],317:[function(require,module,exports){
+},{"./_Symbol":312}],316:[function(require,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -79826,7 +78812,7 @@ function objectToString(value) {
 
 module.exports = objectToString;
 
-},{}],318:[function(require,module,exports){
+},{}],317:[function(require,module,exports){
 var freeGlobal = require('./_freeGlobal');
 
 /** Detect free variable `self`. */
@@ -79837,7 +78823,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 
 module.exports = root;
 
-},{"./_freeGlobal":315}],319:[function(require,module,exports){
+},{"./_freeGlobal":314}],318:[function(require,module,exports){
 /**
  * Checks if `value` is classified as an `Array` object.
  *
@@ -79865,7 +78851,7 @@ var isArray = Array.isArray;
 
 module.exports = isArray;
 
-},{}],320:[function(require,module,exports){
+},{}],319:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     isObject = require('./isObject');
 
@@ -79904,7 +78890,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./_baseGetTag":314,"./isObject":321}],321:[function(require,module,exports){
+},{"./_baseGetTag":313,"./isObject":320}],320:[function(require,module,exports){
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -79937,7 +78923,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],322:[function(require,module,exports){
+},{}],321:[function(require,module,exports){
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -79968,7 +78954,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],323:[function(require,module,exports){
+},{}],322:[function(require,module,exports){
 var baseGetTag = require('./_baseGetTag'),
     isArray = require('./isArray'),
     isObjectLike = require('./isObjectLike');
@@ -80000,7 +78986,7 @@ function isString(value) {
 
 module.exports = isString;
 
-},{"./_baseGetTag":314,"./isArray":319,"./isObjectLike":322}],324:[function(require,module,exports){
+},{"./_baseGetTag":313,"./isArray":318,"./isObjectLike":321}],323:[function(require,module,exports){
 /**
  * Checks if `value` is `undefined`.
  *
@@ -80024,7 +79010,7 @@ function isUndefined(value) {
 
 module.exports = isUndefined;
 
-},{}],325:[function(require,module,exports){
+},{}],324:[function(require,module,exports){
 'use strict';
 
 var Bluebird = require('bluebird').getNewLibraryCopy(),
@@ -80078,7 +79064,7 @@ request.bindCLS = function RP$bindCLS() {
 
 module.exports = request;
 
-},{"bluebird":131,"os":510,"request":326,"request-promise-core/configure/request2":310,"stealthy-require":384,"tough-cookie":386}],326:[function(require,module,exports){
+},{"bluebird":131,"os":510,"request":325,"request-promise-core/configure/request2":309,"stealthy-require":384,"tough-cookie":386}],325:[function(require,module,exports){
 // Copyright 2010-2012 Mikeal Rogers
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -80235,7 +79221,7 @@ Object.defineProperty(request, 'debug', {
   }
 })
 
-},{"./lib/cookies":328,"./lib/helpers":331,"./request":342,"extend":237}],327:[function(require,module,exports){
+},{"./lib/cookies":327,"./lib/helpers":330,"./request":341,"extend":236}],326:[function(require,module,exports){
 'use strict'
 
 var caseless = require('caseless')
@@ -80404,7 +79390,7 @@ Auth.prototype.onResponse = function (response) {
 
 exports.Auth = Auth
 
-},{"./helpers":331,"caseless":137,"uuid":337}],328:[function(require,module,exports){
+},{"./helpers":330,"caseless":137,"uuid":336}],327:[function(require,module,exports){
 'use strict'
 
 var tough = require('tough-cookie')
@@ -80444,7 +79430,7 @@ exports.jar = function (store) {
   return new RequestJar(store)
 }
 
-},{"tough-cookie":386}],329:[function(require,module,exports){
+},{"tough-cookie":386}],328:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -80527,7 +79513,7 @@ function getProxyFromURI (uri) {
 module.exports = getProxyFromURI
 
 }).call(this,require('_process'))
-},{"_process":534}],330:[function(require,module,exports){
+},{"_process":534}],329:[function(require,module,exports){
 'use strict'
 
 var fs = require('fs')
@@ -80734,7 +79720,7 @@ Har.prototype.options = function (options) {
 
 exports.Har = Har
 
-},{"extend":237,"fs":396,"har-validator":263,"querystring":544}],331:[function(require,module,exports){
+},{"extend":236,"fs":396,"har-validator":262,"querystring":544}],330:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -80804,7 +79790,7 @@ exports.version = version
 exports.defer = defer
 
 }).call(this,require('_process'))
-},{"_process":534,"crypto":456,"json-stringify-safe":290,"safe-buffer":345}],332:[function(require,module,exports){
+},{"_process":534,"crypto":456,"json-stringify-safe":289,"safe-buffer":344}],331:[function(require,module,exports){
 'use strict'
 
 var uuid = require('uuid')
@@ -80918,7 +79904,7 @@ Multipart.prototype.onRequest = function (options) {
 
 exports.Multipart = Multipart
 
-},{"combined-stream":144,"isstream":286,"safe-buffer":345,"uuid":337}],333:[function(require,module,exports){
+},{"combined-stream":162,"isstream":285,"safe-buffer":344,"uuid":336}],332:[function(require,module,exports){
 'use strict'
 
 var url = require('url')
@@ -81068,7 +80054,7 @@ OAuth.prototype.onRequest = function (_oauth) {
 
 exports.OAuth = OAuth
 
-},{"caseless":137,"crypto":456,"oauth-sign":302,"qs":305,"safe-buffer":345,"url":577,"uuid":337}],334:[function(require,module,exports){
+},{"caseless":137,"crypto":456,"oauth-sign":301,"qs":304,"safe-buffer":344,"url":577,"uuid":336}],333:[function(require,module,exports){
 'use strict'
 
 var qs = require('qs')
@@ -81120,7 +80106,7 @@ Querystring.prototype.unescape = querystring.unescape
 
 exports.Querystring = Querystring
 
-},{"qs":305,"querystring":544}],335:[function(require,module,exports){
+},{"qs":304,"querystring":544}],334:[function(require,module,exports){
 'use strict'
 
 var url = require('url')
@@ -81276,7 +80262,7 @@ Redirect.prototype.onResponse = function (response) {
 
 exports.Redirect = Redirect
 
-},{"url":577}],336:[function(require,module,exports){
+},{"url":577}],335:[function(require,module,exports){
 'use strict'
 
 var url = require('url')
@@ -81453,7 +80439,7 @@ Tunnel.defaultProxyHeaderWhiteList = defaultProxyHeaderWhiteList
 Tunnel.defaultProxyHeaderExclusiveList = defaultProxyHeaderExclusiveList
 exports.Tunnel = Tunnel
 
-},{"tunnel-agent":393,"url":577}],337:[function(require,module,exports){
+},{"tunnel-agent":393,"url":577}],336:[function(require,module,exports){
 var v1 = require('./v1');
 var v4 = require('./v4');
 
@@ -81463,7 +80449,7 @@ uuid.v4 = v4;
 
 module.exports = uuid;
 
-},{"./v1":340,"./v4":341}],338:[function(require,module,exports){
+},{"./v1":339,"./v4":340}],337:[function(require,module,exports){
 /**
  * Convert array of 16 byte values to UUID string format of the form:
  * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -81488,7 +80474,7 @@ function bytesToUuid(buf, offset) {
 
 module.exports = bytesToUuid;
 
-},{}],339:[function(require,module,exports){
+},{}],338:[function(require,module,exports){
 // Unique ID creation requires a high quality random # generator.  In the
 // browser this is a little complicated due to unknown quality of Math.random()
 // and inconsistent support for the `crypto` API.  We do the best we can via
@@ -81522,7 +80508,7 @@ if (getRandomValues) {
   };
 }
 
-},{}],340:[function(require,module,exports){
+},{}],339:[function(require,module,exports){
 var rng = require('./lib/rng');
 var bytesToUuid = require('./lib/bytesToUuid');
 
@@ -81633,7 +80619,7 @@ function v1(options, buf, offset) {
 
 module.exports = v1;
 
-},{"./lib/bytesToUuid":338,"./lib/rng":339}],341:[function(require,module,exports){
+},{"./lib/bytesToUuid":337,"./lib/rng":338}],340:[function(require,module,exports){
 var rng = require('./lib/rng');
 var bytesToUuid = require('./lib/bytesToUuid');
 
@@ -81664,7 +80650,7 @@ function v4(options, buf, offset) {
 
 module.exports = v4;
 
-},{"./lib/bytesToUuid":338,"./lib/rng":339}],342:[function(require,module,exports){
+},{"./lib/bytesToUuid":337,"./lib/rng":338}],341:[function(require,module,exports){
 (function (process){
 'use strict'
 
@@ -83220,7 +82206,7 @@ Request.prototype.toJSON = requestToJSON
 module.exports = Request
 
 }).call(this,require('_process'))
-},{"./lib/auth":327,"./lib/cookies":328,"./lib/getProxyFromURI":329,"./lib/har":330,"./lib/helpers":331,"./lib/multipart":332,"./lib/oauth":333,"./lib/querystring":334,"./lib/redirect":335,"./lib/tunnel":336,"_process":534,"aws-sign2":54,"aws4":55,"caseless":137,"extend":237,"forever-agent":241,"form-data":242,"hawk":277,"http":571,"http-signature":279,"https":499,"is-typedarray":285,"isstream":286,"mime-types":295,"performance-now":303,"safe-buffer":345,"stream":570,"stringstream":385,"url":577,"util":582,"zlib":444}],343:[function(require,module,exports){
+},{"./lib/auth":326,"./lib/cookies":327,"./lib/getProxyFromURI":328,"./lib/har":329,"./lib/helpers":330,"./lib/multipart":331,"./lib/oauth":332,"./lib/querystring":333,"./lib/redirect":334,"./lib/tunnel":335,"_process":534,"aws-sign2":54,"aws4":55,"caseless":137,"extend":236,"forever-agent":240,"form-data":241,"hawk":276,"http":571,"http-signature":278,"https":499,"is-typedarray":284,"isstream":285,"mime-types":294,"performance-now":302,"safe-buffer":344,"stream":570,"stringstream":385,"url":577,"util":582,"zlib":444}],342:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var inherits = require('inherits')
@@ -83515,7 +82501,7 @@ function fn5 (a, b, c, d, e, m, k, s) {
 module.exports = RIPEMD160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":446,"hash-base":344,"inherits":284}],344:[function(require,module,exports){
+},{"buffer":446,"hash-base":343,"inherits":283}],343:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var Transform = require('stream').Transform
@@ -83602,7 +82588,7 @@ HashBase.prototype._digest = function () {
 module.exports = HashBase
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":446,"inherits":284,"stream":570}],345:[function(require,module,exports){
+},{"buffer":446,"inherits":283,"stream":570}],344:[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -83666,11 +82652,11 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":446}],346:[function(require,module,exports){
+},{"buffer":446}],345:[function(require,module,exports){
 'use strict'
 module.exports = require('./lib')(require('./lib/elliptic'))
 
-},{"./lib":350,"./lib/elliptic":349}],347:[function(require,module,exports){
+},{"./lib":349,"./lib/elliptic":348}],346:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var toString = Object.prototype.toString
@@ -83718,7 +82704,7 @@ exports.isNumberInInterval = function (number, x, y, message) {
 }
 
 }).call(this,{"isBuffer":require("../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503}],348:[function(require,module,exports){
+},{"../../../../../../../usr/local/lib/node_modules/browserify/node_modules/is-buffer/index.js":503}],347:[function(require,module,exports){
 'use strict'
 var Buffer = require('safe-buffer').Buffer
 var bip66 = require('bip66')
@@ -83913,7 +82899,7 @@ exports.signatureImportLax = function (sig) {
   return { r: r, s: s }
 }
 
-},{"bip66":58,"safe-buffer":345}],349:[function(require,module,exports){
+},{"bip66":58,"safe-buffer":344}],348:[function(require,module,exports){
 'use strict'
 var Buffer = require('safe-buffer').Buffer
 var createHash = require('create-hash')
@@ -84175,7 +83161,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
   return Buffer.from(pair.pub.mul(scalar).encode(true, compressed))
 }
 
-},{"../messages.json":351,"bn.js":132,"create-hash":180,"elliptic":221,"safe-buffer":345}],350:[function(require,module,exports){
+},{"../messages.json":350,"bn.js":132,"create-hash":179,"elliptic":220,"safe-buffer":344}],349:[function(require,module,exports){
 'use strict'
 var assert = require('./assert')
 var der = require('./der')
@@ -84422,7 +83408,7 @@ module.exports = function (secp256k1) {
   }
 }
 
-},{"./assert":347,"./der":348,"./messages.json":351}],351:[function(require,module,exports){
+},{"./assert":346,"./der":347,"./messages.json":350}],350:[function(require,module,exports){
 module.exports={
   "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
   "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -84461,7 +83447,984 @@ module.exports={
   "TWEAK_LENGTH_INVALID": "tweak length is invalid"
 }
 
-},{}],352:[function(require,module,exports){
+},{}],351:[function(require,module,exports){
+// @preserve author Alexander Stetsyuk
+// @preserve author Glenn Rempe <glenn@rempe.us>
+// @license MIT
+
+/*jslint passfail: false, bitwise: true, nomen: true, plusplus: true, todo: false, maxerr: 1000 */
+/*global define, require, module, exports, window, Uint32Array, sjcl */
+
+// eslint : http://eslint.org/docs/configuring/
+/*eslint-env node, browser, jasmine, sjcl */
+/*eslint no-underscore-dangle:0 */
+
+// UMD (Universal Module Definition)
+// Uses Node, AMD or browser globals to create a module. This module creates
+// a global even when AMD is used. This is useful if you have some scripts
+// that are loaded by an AMD loader, but they still want access to globals.
+// See : https://github.com/umdjs/umd
+// See : https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
+//
+(function (root, factory) {
+    "use strict";
+
+    if (typeof define === "function" && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], function () {
+            /*eslint-disable no-return-assign */
+            return (root.secrets = factory());
+            /*eslint-enable no-return-assign */
+        });
+    } else if (typeof exports === "object") {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory(require("crypto"));
+    } else {
+        // Browser globals (root is window)
+        root.secrets = factory(root.crypto);
+    }
+}(this, function (crypto) {
+    "use strict";
+
+    var defaults,
+        config,
+        preGenPadding,
+        runCSPRNGTest,
+        sjclParanoia,
+        CSPRNGTypes;
+
+    function reset() {
+        defaults = {
+            bits: 8, // default number of bits
+            radix: 16, // work with HEX by default
+            minBits: 3,
+            maxBits: 20, // this permits 1,048,575 shares, though going this high is NOT recommended in JS!
+            bytesPerChar: 2,
+            maxBytesPerChar: 6, // Math.pow(256,7) > Math.pow(2,53)
+
+            // Primitive polynomials (in decimal form) for Galois Fields GF(2^n), for 2 <= n <= 30
+            // The index of each term in the array corresponds to the n for that polynomial
+            // i.e. to get the polynomial for n=16, use primitivePolynomials[16]
+            primitivePolynomials: [null, null, 1, 3, 3, 5, 3, 3, 29, 17, 9, 5, 83, 27, 43, 3, 45, 9, 39, 39, 9, 5, 3, 33, 27, 9, 71, 39, 9, 5, 83]
+        };
+        config = {};
+        preGenPadding = new Array(1024).join("0"); // Pre-generate a string of 1024 0's for use by padLeft().
+        runCSPRNGTest = true;
+        sjclParanoia = 10;
+
+        // WARNING : Never use 'testRandom' except for testing.
+        CSPRNGTypes = ["nodeCryptoRandomBytes", "browserCryptoGetRandomValues", "browserSJCLRandom", "testRandom"];
+    }
+
+    function isSetRNG() {
+        if (config && config.rng && typeof config.rng === "function") {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Pads a string `str` with zeros on the left so that its length is a multiple of `bits`
+    function padLeft(str, multipleOfBits) {
+        var missing;
+
+        if (multipleOfBits === 0 || multipleOfBits === 1) {
+            return str;
+        }
+
+        if (multipleOfBits && multipleOfBits > 1024) {
+            throw new Error("Padding must be multiples of no larger than 1024 bits.");
+        }
+
+        multipleOfBits = multipleOfBits || config.bits;
+
+        if (str) {
+            missing = str.length % multipleOfBits;
+        }
+
+        if (missing) {
+            return (preGenPadding + str).slice(-(multipleOfBits - missing + str.length));
+        }
+
+        return str;
+    }
+
+    function hex2bin(str) {
+        var bin = "",
+            num,
+            i;
+
+        for (i = str.length - 1; i >= 0; i--) {
+            num = parseInt(str[i], 16);
+
+            if (isNaN(num)) {
+                throw new Error("Invalid hex character.");
+            }
+
+            bin = padLeft(num.toString(2), 4) + bin;
+        }
+        return bin;
+    }
+
+    function bin2hex(str) {
+        var hex = "",
+            num,
+            i;
+
+        str = padLeft(str, 4);
+
+        for (i = str.length; i >= 4; i -= 4) {
+            num = parseInt(str.slice(i - 4, i), 2);
+            if (isNaN(num)) {
+                throw new Error("Invalid binary character.");
+            }
+            hex = num.toString(16) + hex;
+        }
+
+        return hex;
+    }
+
+    // Browser supports crypto.getRandomValues()
+    function hasCryptoGetRandomValues() {
+        if (crypto &&
+            typeof crypto === "object" &&
+            (typeof crypto.getRandomValues === "function" || typeof crypto.getRandomValues === "object") &&
+            (typeof Uint32Array === "function" || typeof Uint32Array === "object")) {
+                return true;
+            }
+
+        return false;
+    }
+
+    // Node.js support for crypto.randomBytes()
+    function hasCryptoRandomBytes() {
+        if (typeof crypto === "object" &&
+            typeof crypto.randomBytes === "function") {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Stanford Javascript Crypto Library Support
+    function hasSJCL() {
+        if (typeof sjcl === "object" &&
+            typeof sjcl.random === "object") {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Returns a pseudo-random number generator of the form function(bits){}
+    // which should output a random string of 1's and 0's of length `bits`.
+    // `type` (Optional) : A string representing the CSPRNG that you want to
+    // force to be loaded, overriding feature detection. Can be one of:
+    //    "nodeCryptoRandomBytes"
+    //    "browserCryptoGetRandomValues"
+    //    "browserSJCLRandom"
+    //
+    function getRNG(type) {
+
+        function construct(bits, arr, radix, size) {
+            var i = 0,
+                len,
+                str = "",
+                parsedInt;
+
+            if (arr) {
+                len = arr.length - 1;
+            }
+
+            while (i < len || (str.length < bits)) {
+                // convert any negative nums to positive with Math.abs()
+                parsedInt = Math.abs(parseInt(arr[i], radix));
+                str = str + padLeft(parsedInt.toString(2), size);
+                i++;
+            }
+
+            str = str.substr(-bits);
+
+            // return null so this result can be re-processed if the result is all 0's.
+            if ((str.match(/0/g) || []).length === str.length) {
+                return null;
+            }
+
+            return str;
+        }
+
+        // Node.js : crypto.randomBytes()
+        // Note : Node.js and crypto.randomBytes() uses the OpenSSL RAND_bytes() function for its CSPRNG.
+        //        Node.js will need to have been compiled with OpenSSL for this to work.
+        // See : https://github.com/joyent/node/blob/d8baf8a2a4481940bfed0196308ae6189ca18eee/src/node_crypto.cc#L4696
+        // See : https://www.openssl.org/docs/crypto/rand.html
+        function nodeCryptoRandomBytes(bits) {
+            var buf,
+                bytes,
+                radix,
+                size,
+                str = null;
+
+            radix = 16;
+            size = 4;
+            bytes = Math.ceil(bits / 8);
+
+            while (str === null) {
+                buf = crypto.randomBytes(bytes);
+                str = construct(bits, buf.toString("hex"), radix, size);
+            }
+
+            return str;
+        }
+
+        // Browser : crypto.getRandomValues()
+        // See : https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-Crypto
+        // See : https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
+        // Supported Browsers : http://caniuse.com/#search=crypto.getRandomValues
+        function browserCryptoGetRandomValues(bits) {
+            var elems,
+                radix,
+                size,
+                str = null;
+
+            radix = 10;
+            size = 32;
+            elems = Math.ceil(bits / 32);
+            while (str === null) {
+                str = construct(bits, crypto.getRandomValues(new Uint32Array(elems)), radix, size);
+            }
+
+            return str;
+        }
+
+        // Browser SJCL : If the Stanford Javascript Crypto Library (SJCL) is loaded in the browser
+        // then use it as a fallback CSPRNG when crypto.getRandomValues() is not available.
+        // It may require some time and mouse movements to be fully seeded. Uses a modified version
+        // of the Fortuna RNG.
+        // See : https://bitwiseshiftleft.github.io/sjcl/
+        function browserSJCLRandom(bits) {
+            var elems,
+                radix,
+                size,
+                str = null;
+
+            radix = 10;
+            size = 32;
+            elems = Math.ceil(bits / 32);
+
+            if(sjcl.random.isReady(sjclParanoia)) {
+                str = construct(bits, sjcl.random.randomWords(elems, sjclParanoia), radix, size);
+            } else {
+                throw new Error("SJCL isn't finished seeding the RNG yet.");
+            }
+
+            return str;
+        }
+
+        // /////////////////////////////////////////////////////////////
+        // WARNING : DO NOT USE. For testing purposes only.
+        // /////////////////////////////////////////////////////////////
+        // This function will return repeatable non-random test bits. Can be used
+        // for testing only. Node.js does not return proper random bytes
+        // when run within a PhantomJS container.
+        function testRandom(bits) {
+            var arr,
+                elems,
+                int,
+                radix,
+                size,
+                str = null;
+
+            radix = 10;
+            size = 32;
+            elems = Math.ceil(bits / 32);
+            int = 123456789;
+            arr = new Uint32Array(elems);
+
+            // Fill every element of the Uint32Array with the same int.
+            for (var i = 0; i < arr.length; i++) {
+                arr[i] = int;
+            }
+
+            while (str === null) {
+                str = construct(bits, arr, radix, size);
+            }
+
+            return str;
+        }
+
+        // Return a random generator function for browsers that support HTML5
+        // crypto.getRandomValues(), Node.js compiled with OpenSSL support.
+        // or the Stanford Javascript Crypto Library Fortuna RNG.
+        // WARNING : NEVER use testRandom outside of a testing context. Totally non-random!
+        if (type && type === "testRandom") {
+            config.typeCSPRNG = type;
+            return testRandom;
+        } else if (type && type === "nodeCryptoRandomBytes") {
+            config.typeCSPRNG = type;
+            return nodeCryptoRandomBytes;
+        } else if (type && type === "browserCryptoGetRandomValues") {
+            config.typeCSPRNG = type;
+            return browserCryptoGetRandomValues;
+        } else if (type && type === "browserSJCLRandom") {
+            runCSPRNGTest = false;
+            config.typeCSPRNG = type;
+            return browserSJCLRandom;
+        } else if (hasCryptoRandomBytes()) {
+            config.typeCSPRNG = "nodeCryptoRandomBytes";
+            return nodeCryptoRandomBytes;
+        } else if (hasCryptoGetRandomValues()) {
+            config.typeCSPRNG = "browserCryptoGetRandomValues";
+            return browserCryptoGetRandomValues;
+        } else if (hasSJCL()) {
+            runCSPRNGTest = false;
+            config.typeCSPRNG = "browserSJCLRandom";
+            return browserSJCLRandom;
+        }
+
+    }
+
+    // Splits a number string `bits`-length segments, after first
+    // optionally zero-padding it to a length that is a multiple of `padLength.
+    // Returns array of integers (each less than 2^bits-1), with each element
+    // representing a `bits`-length segment of the input string from right to left,
+    // i.e. parts[0] represents the right-most `bits`-length segment of the input string.
+    function splitNumStringToIntArray(str, padLength) {
+        var parts = [],
+            i;
+
+        if (padLength) {
+            str = padLeft(str, padLength);
+        }
+
+        for (i = str.length; i > config.bits; i -= config.bits) {
+            parts.push(parseInt(str.slice(i - config.bits, i), 2));
+        }
+
+        parts.push(parseInt(str.slice(0, i), 2));
+
+        return parts;
+    }
+
+    // Polynomial evaluation at `x` using Horner's Method
+    // NOTE: fx=fx * x + coeff[i] ->  exp(log(fx) + log(x)) + coeff[i],
+    //       so if fx===0, just set fx to coeff[i] because
+    //       using the exp/log form will result in incorrect value
+    function horner(x, coeffs) {
+        var logx = config.logs[x],
+            fx = 0,
+            i;
+
+        for (i = coeffs.length - 1; i >= 0; i--) {
+            if (fx !== 0) {
+                fx = config.exps[(logx + config.logs[fx]) % config.maxShares] ^ coeffs[i];
+            } else {
+                fx = coeffs[i];
+            }
+        }
+
+        return fx;
+    }
+
+    // Evaluate the Lagrange interpolation polynomial at x = `at`
+    // using x and y Arrays that are of the same length, with
+    // corresponding elements constituting points on the polynomial.
+    function lagrange(at, x, y) {
+        var sum = 0,
+            len,
+            product,
+            i,
+            j;
+
+        for (i = 0, len = x.length; i < len; i++) {
+            if (y[i]) {
+
+                product = config.logs[y[i]];
+
+                for (j = 0; j < len; j++) {
+                    if (i !== j) {
+                        if (at === x[j]) { // happens when computing a share that is in the list of shares used to compute it
+                            product = -1; // fix for a zero product term, after which the sum should be sum^0 = sum, not sum^1
+                            break;
+                        }
+                        product = (product + config.logs[at ^ x[j]] - config.logs[x[i] ^ x[j]] + config.maxShares) % config.maxShares; // to make sure it's not negative
+                    }
+                }
+
+                // though exps[-1] === undefined and undefined ^ anything = anything in
+                // chrome, this behavior may not hold everywhere, so do the check
+                sum = product === -1 ? sum : sum ^ config.exps[product];
+            }
+
+        }
+
+        return sum;
+    }
+
+    // This is the basic polynomial generation and evaluation function
+    // for a `config.bits`-length secret (NOT an arbitrary length)
+    // Note: no error-checking at this stage! If `secret` is NOT
+    // a NUMBER less than 2^bits-1, the output will be incorrect!
+    function getShares(secret, numShares, threshold) {
+        var shares = [],
+            coeffs = [secret],
+            i,
+            len;
+
+        for (i = 1; i < threshold; i++) {
+            coeffs[i] = parseInt(config.rng(config.bits), 2);
+        }
+
+        for (i = 1, len = numShares + 1; i < len; i++) {
+            shares[i - 1] = {
+                x: i,
+                y: horner(i, coeffs)
+            };
+        }
+
+        return shares;
+    }
+
+    function constructPublicShareString(bits, id, data) {
+        var bitsBase36,
+            idHex,
+            idMax,
+            idPaddingLen,
+            newShareString;
+
+        id = parseInt(id, config.radix);
+        bits = parseInt(bits, 10) || config.bits;
+        bitsBase36 = bits.toString(36).toUpperCase();
+        idMax = Math.pow(2, bits) - 1;
+        idPaddingLen = idMax.toString(config.radix).length;
+        idHex = padLeft(id.toString(config.radix), idPaddingLen);
+
+        if (typeof id !== "number" || id % 1 !== 0 || id < 1 || id > idMax) {
+            throw new Error("Share id must be an integer between 1 and " + idMax + ", inclusive.");
+        }
+
+        newShareString = bitsBase36 + idHex + data;
+
+        return newShareString;
+    }
+
+    // EXPORTED FUNCTIONS
+    // //////////////////
+
+    var secrets = {
+
+        init: function (bits, rngType) {
+            var logs = [],
+                exps = [],
+                x = 1,
+                primitive,
+                i;
+
+            // reset all config back to initial state
+            reset();
+
+            if (bits && (typeof bits !== "number" || bits % 1 !== 0 || bits < defaults.minBits || bits > defaults.maxBits)) {
+                throw new Error("Number of bits must be an integer between " + defaults.minBits + " and " + defaults.maxBits + ", inclusive.");
+            }
+
+            if (rngType && CSPRNGTypes.indexOf(rngType) === -1) {
+                throw new Error("Invalid RNG type argument : '" + rngType + "'");
+            }
+
+            config.radix = defaults.radix;
+            config.bits = bits || defaults.bits;
+            config.size = Math.pow(2, config.bits);
+            config.maxShares = config.size - 1;
+
+            // Construct the exp and log tables for multiplication.
+            primitive = defaults.primitivePolynomials[config.bits];
+
+            for (i = 0; i < config.size; i++) {
+                exps[i] = x;
+                logs[x] = i;
+                x = x << 1;              // Left shift assignment
+                if (x >= config.size) {
+                    x = x ^ primitive;   // Bitwise XOR assignment
+                    x = x & config.maxShares;  // Bitwise AND assignment
+                }
+            }
+
+            config.logs = logs;
+            config.exps = exps;
+
+            if (rngType) {
+                this.setRNG(rngType);
+            }
+
+            if (!isSetRNG()) {
+                this.setRNG();
+            }
+
+            // Setup SJCL and start collecting entropy from mouse movements
+            if (hasSJCL() && config.typeCSPRNG === "browserSJCLRandom") {
+                /*eslint-disable new-cap */
+                sjcl.random = new sjcl.prng(sjclParanoia);
+                /*eslint-enable new-cap */
+
+                // In a Browser
+                if (hasCryptoGetRandomValues()) {
+                    // Collects entropy from browser mouse movement
+                    // which obviously won't work in Node.js.
+                    sjcl.random.startCollectors();
+                }
+
+                // see SJCL with browser or Node.js RNG if available.
+                this.seedRNG();
+            }
+
+            if (!isSetRNG() || !config.bits || !config.size || !config.maxShares || !config.logs || !config.exps || config.logs.length !== config.size || config.exps.length !== config.size) {
+                throw new Error("Initialization failed.");
+            }
+
+        },
+
+        // Pass in additional secure entropy, and an estimate of the bits of entropy
+        // provided, and a source name, and it will be used to seed the SJCL PRNG. This is
+        // useful since SJCL may take a while to be seeded since it depends on mouse
+        // movement and this can kickstart the generator almost immediately. SJCL will
+        // also continue to collect entropy from mouse movements after seeding.
+        //
+        // e.g. from random data sources like:
+        // https://api.random.org/json-rpc/1/
+        // https://entropy.ubuntu.com/?challenge=123
+        // https://qrng.anu.edu.au/API/api-demo.php
+        //
+        // See `examples/example_js_global.html` for sample usage with an
+        // external source of entropy.
+        seedRNG: function (data, estimatedEntropy, source) {
+
+            var bytes, rand;
+
+            estimatedEntropy = parseInt(estimatedEntropy, 10);
+            source = source || "seedRNG";
+
+            // Seed with browser RNG
+            if (hasSJCL() && hasCryptoGetRandomValues()) {
+                bytes = new Uint32Array(256);
+                rand = crypto.getRandomValues(bytes);
+                //console.log(rand);
+                sjcl.random.addEntropy(rand, 2048, "cryptoGetRandomValues");
+            }
+
+            // See with Node.js RNG (Async)
+            if (hasSJCL() && hasCryptoRandomBytes()) {
+                crypto.randomBytes(256, function(ex, buf) {
+                  if (ex) { throw ex; }
+                  //console.log("Have %d bytes of random data containing %s", buf.length, buf.toString('hex'));
+                  sjcl.random.addEntropy(buf.toString("hex"), 2048, "cryptoRandomBytes");
+                });
+            }
+
+            if (hasSJCL() && data && estimatedEntropy && source && config.typeCSPRNG === "browserSJCLRandom") {
+                sjcl.random.addEntropy(data, estimatedEntropy, source);
+            }
+        },
+
+        // Evaluates the Lagrange interpolation polynomial at x=`at` for
+        // individual config.bits-length segments of each share in the `shares`
+        // Array. Each share is expressed in base `inputRadix`. The output
+        // is expressed in base `outputRadix'.
+        combine: function (shares, at) {
+            var i,
+                j,
+                len,
+                len2,
+                result = "",
+                setBits,
+                share,
+                splitShare,
+                x = [],
+                y = [];
+
+            at = at || 0;
+
+            for (i = 0, len = shares.length; i < len; i++) {
+                share = this.extractShareComponents(shares[i]);
+
+                // All shares must have the same bits settings.
+                if (setBits === undefined) {
+                    setBits = share.bits;
+                } else if (share.bits !== setBits) {
+                    throw new Error("Mismatched shares: Different bit settings.");
+                }
+
+                // Reset everything to the bit settings of the shares.
+                if (config.bits !== setBits) {
+                    this.init(setBits);
+                }
+
+                // Proceed if this share.id is not already in the Array 'x' and
+                // then split each share's hex data into an Array of Integers,
+                // then 'rotate' those arrays where the first element of each row is converted to
+                // its own array, the second element of each to its own Array, and so on for all of the rest.
+                // Essentially zipping all of the shares together.
+                //
+                // e.g.
+                //   [ 193, 186, 29, 150, 5, 120, 44, 46, 49, 59, 6, 1, 102, 98, 177, 196 ]
+                //   [ 53, 105, 139, 49, 187, 240, 91, 92, 98, 118, 12, 2, 204, 196, 127, 149 ]
+                //   [ 146, 211, 249, 167, 209, 136, 118, 114, 83, 77, 10, 3, 170, 166, 206, 81 ]
+                //
+                // becomes:
+                //
+                // [ [ 193, 53, 146 ],
+                //   [ 186, 105, 211 ],
+                //   [ 29, 139, 249 ],
+                //   [ 150, 49, 167 ],
+                //   [ 5, 187, 209 ],
+                //   [ 120, 240, 136 ],
+                //   [ 44, 91, 118 ],
+                //   [ 46, 92, 114 ],
+                //   [ 49, 98, 83 ],
+                //   [ 59, 118, 77 ],
+                //   [ 6, 12, 10 ],
+                //   [ 1, 2, 3 ],
+                //   [ 102, 204, 170 ],
+                //   [ 98, 196, 166 ],
+                //   [ 177, 127, 206 ],
+                //   [ 196, 149, 81 ] ]
+                //
+                if (x.indexOf(share.id) === -1) {
+                    x.push(share.id);
+                    splitShare = splitNumStringToIntArray(hex2bin(share.data));
+                    for (j = 0, len2 = splitShare.length; j < len2; j++) {
+                        y[j] = y[j] || [];
+                        y[j][x.length - 1] = splitShare[j];
+                    }
+                }
+
+            }
+
+            // Extract the secret from the 'rotated' share data and return a
+            // string of Binary digits which represent the secret directly. or in the
+            // case of a newShare() return the binary string representing just that
+            // new share.
+            for (i = 0, len = y.length; i < len; i++) {
+                result = padLeft(lagrange(at, x, y[i]).toString(2)) + result;
+            }
+
+            // If 'at' is non-zero combine() was called from newShare(). In this
+            // case return the result (the new share data) directly.
+            //
+            // Otherwise find the first '1' which was added in the share() function as a padding marker
+            // and return only the data after the padding and the marker. Convert this Binary string
+            // to hex, which represents the final secret result (which can be converted from hex back
+            // to the original string in user space using `hex2str()`).
+            return bin2hex(at >= 1 ? result : result.slice(result.indexOf("1") + 1));
+        },
+
+        getConfig: function () {
+            var obj = {};
+            obj.radix = config.radix;
+            obj.bits = config.bits;
+            obj.maxShares = config.maxShares;
+            obj.hasCSPRNG = isSetRNG();
+            obj.typeCSPRNG = config.typeCSPRNG;
+            return obj;
+        },
+
+        // Given a public share, extract the bits (Integer), share ID (Integer), and share data (Hex)
+        // and return an Object containing those components.
+        extractShareComponents: function (share) {
+            var bits,
+                id,
+                idLen,
+                max,
+                obj = {},
+                regexStr,
+                shareComponents;
+
+            // Extract the first char which represents the bits in Base 36
+            bits = parseInt(share.substr(0, 1), 36);
+
+            if (bits && (typeof bits !== "number" || bits % 1 !== 0 || bits < defaults.minBits || bits > defaults.maxBits)) {
+                throw new Error("Invalid share : Number of bits must be an integer between " + defaults.minBits + " and " + defaults.maxBits + ", inclusive.");
+            }
+
+            // calc the max shares allowed for given bits
+            max = Math.pow(2, bits) - 1;
+
+            // Determine the ID length which is variable and based on the bit count.
+            idLen = (Math.pow(2, bits) - 1).toString(config.radix).length;
+
+            // Extract all the parts now that the segment sizes are known.
+            regexStr = "^([a-kA-K3-9]{1})([a-fA-F0-9]{" + idLen + "})([a-fA-F0-9]+)$";
+            shareComponents = new RegExp(regexStr).exec(share);
+
+            // The ID is a Hex number and needs to be converted to an Integer
+            if (shareComponents) {
+                id = parseInt(shareComponents[2], config.radix);
+            }
+
+            if (typeof id !== "number" || id % 1 !== 0 || id < 1 || id > max) {
+                throw new Error("Invalid share : Share id must be an integer between 1 and " + config.maxShares + ", inclusive.");
+            }
+
+            if (shareComponents && shareComponents[3]) {
+                obj.bits = bits;
+                obj.id = id;
+                obj.data = shareComponents[3];
+                return obj;
+            }
+
+            throw new Error("The share data provided is invalid : " + share);
+
+        },
+
+        // Set the PRNG to use. If no RNG function is supplied, pick a default using getRNG()
+        setRNG: function (rng) {
+
+            var errPrefix = "Random number generator is invalid ",
+                errSuffix = " Supply an CSPRNG of the form function(bits){} that returns a string containing 'bits' number of random 1's and 0's.";
+
+            if (rng && typeof rng === "string" && CSPRNGTypes.indexOf(rng) === -1) {
+                throw new Error("Invalid RNG type argument : '" + rng + "'");
+            }
+
+            // If RNG was not specified at all,
+            // try to pick one appropriate for this env.
+            if (!rng) {
+                rng = getRNG();
+            }
+
+            // If `rng` is a string, try to forcibly
+            // set the RNG to the type specified.
+            if (rng && typeof rng === "string") {
+                rng = getRNG(rng);
+            }
+
+            if (runCSPRNGTest) {
+
+                if (rng && typeof rng !== "function") {
+                    throw new Error(errPrefix + "(Not a function)." + errSuffix);
+                }
+
+                if (rng && typeof rng(config.bits) !== "string") {
+                    throw new Error(errPrefix + "(Output is not a string)." + errSuffix);
+                }
+
+                if (rng && !parseInt(rng(config.bits), 2)) {
+                    throw new Error(errPrefix + "(Binary string output not parseable to an Integer)." + errSuffix);
+                }
+
+                if (rng && rng(config.bits).length > config.bits) {
+                    throw new Error(errPrefix + "(Output length is greater than config.bits)." + errSuffix);
+                }
+
+                if (rng && rng(config.bits).length < config.bits) {
+                    throw new Error(errPrefix + "(Output length is less than config.bits)." + errSuffix);
+                }
+
+            }
+
+            config.rng = rng;
+
+            return true;
+        },
+
+        // Converts a given UTF16 character string to the HEX representation.
+        // Each character of the input string is represented by
+        // `bytesPerChar` bytes in the output string which defaults to 2.
+        str2hex: function (str, bytesPerChar) {
+            var hexChars,
+                max,
+                out = "",
+                neededBytes,
+                num,
+                i,
+                len;
+
+            if (typeof str !== "string") {
+                throw new Error("Input must be a character string.");
+            }
+
+            if (!bytesPerChar) {
+                bytesPerChar = defaults.bytesPerChar;
+            }
+
+            if (typeof bytesPerChar !== "number" || bytesPerChar < 1 || bytesPerChar > defaults.maxBytesPerChar || bytesPerChar % 1 !== 0) {
+                throw new Error("Bytes per character must be an integer between 1 and " + defaults.maxBytesPerChar + ", inclusive.");
+            }
+
+            hexChars = 2 * bytesPerChar;
+            max = Math.pow(16, hexChars) - 1;
+
+            for (i = 0, len = str.length; i < len; i++) {
+                num = str[i].charCodeAt();
+
+                if (isNaN(num)) {
+                    throw new Error("Invalid character: " + str[i]);
+                }
+
+                if (num > max) {
+                    neededBytes = Math.ceil(Math.log(num + 1) / Math.log(256));
+                    throw new Error("Invalid character code (" + num + "). Maximum allowable is 256^bytes-1 (" + max + "). To convert this character, use at least " + neededBytes + " bytes.");
+                }
+
+                out = padLeft(num.toString(16), hexChars) + out;
+            }
+            return out;
+        },
+
+        // Converts a given HEX number string to a UTF16 character string.
+        hex2str: function (str, bytesPerChar) {
+            var hexChars,
+                out = "",
+                i,
+                len;
+
+            if (typeof str !== "string") {
+                throw new Error("Input must be a hexadecimal string.");
+            }
+            bytesPerChar = bytesPerChar || defaults.bytesPerChar;
+
+            if (typeof bytesPerChar !== "number" || bytesPerChar % 1 !== 0 || bytesPerChar < 1 || bytesPerChar > defaults.maxBytesPerChar) {
+                throw new Error("Bytes per character must be an integer between 1 and " + defaults.maxBytesPerChar + ", inclusive.");
+            }
+
+            hexChars = 2 * bytesPerChar;
+
+            str = padLeft(str, hexChars);
+
+            for (i = 0, len = str.length; i < len; i += hexChars) {
+                out = String.fromCharCode(parseInt(str.slice(i, i + hexChars), 16)) + out;
+            }
+
+            return out;
+        },
+
+        // Generates a random bits-length number string using the PRNG
+        random: function (bits) {
+
+            if (typeof bits !== "number" || bits % 1 !== 0 || bits < 2 || bits > 65536) {
+                throw new Error("Number of bits must be an Integer between 1 and 65536.");
+            }
+
+            if (config.typeCSPRNG === "browserSJCLRandom" && sjcl.random.isReady(sjclParanoia) < 1) {
+                throw new Error("SJCL isn't finished seeding the RNG yet. Needs new entropy added or more mouse movement.");
+            }
+
+            return bin2hex(config.rng(bits));
+        },
+
+        // Divides a `secret` number String str expressed in radix `inputRadix` (optional, default 16)
+        // into `numShares` shares, each expressed in radix `outputRadix` (optional, default to `inputRadix`),
+        // requiring `threshold` number of shares to reconstruct the secret.
+        // Optionally, zero-pads the secret to a length that is a multiple of padLength before sharing.
+        share: function (secret, numShares, threshold, padLength) {
+            var neededBits,
+                subShares,
+                x = new Array(numShares),
+                y = new Array(numShares),
+                i,
+                j,
+                len;
+
+            // Security:
+            // For additional security, pad in multiples of 128 bits by default.
+            // A small trade-off in larger share size to help prevent leakage of information
+            // about small-ish secrets and increase the difficulty of attacking them.
+            padLength = padLength || 128;
+
+            if (typeof secret !== "string") {
+                throw new Error("Secret must be a string.");
+            }
+
+            if (typeof numShares !== "number" || numShares % 1 !== 0 || numShares < 2) {
+                throw new Error("Number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive.");
+            }
+
+            if (numShares > config.maxShares) {
+                neededBits = Math.ceil(Math.log(numShares + 1) / Math.LN2);
+                throw new Error("Number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive. To create " + numShares + " shares, use at least " + neededBits + " bits.");
+            }
+
+            if (typeof threshold !== "number" || threshold % 1 !== 0 || threshold < 2) {
+                throw new Error("Threshold number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive.");
+            }
+
+            if (threshold > config.maxShares) {
+                neededBits = Math.ceil(Math.log(threshold + 1) / Math.LN2);
+                throw new Error("Threshold number of shares must be an integer between 2 and 2^bits-1 (" + config.maxShares + "), inclusive.  To use a threshold of " + threshold + ", use at least " + neededBits + " bits.");
+            }
+
+            if (threshold > numShares) {
+                throw new Error("Threshold number of shares was " + threshold + " but must be less than or equal to the " + numShares + " shares specified as the total to generate.");
+            }
+
+            if (typeof padLength !== "number" || padLength % 1 !== 0 || padLength < 0 || padLength > 1024) {
+                throw new Error("Zero-pad length must be an integer between 0 and 1024 inclusive.");
+            }
+
+            secret = "1" + hex2bin(secret); // append a 1 as a marker so that we can preserve the correct number of leading zeros in our secret
+            secret = splitNumStringToIntArray(secret, padLength);
+
+            for (i = 0, len = secret.length; i < len; i++) {
+                subShares = getShares(secret[i], numShares, threshold);
+                for (j = 0; j < numShares; j++) {
+                    x[j] = x[j] || subShares[j].x.toString(config.radix);
+                    y[j] = padLeft(subShares[j].y.toString(2)) + (y[j] || "");
+                }
+            }
+
+            for (i = 0; i < numShares; i++) {
+                x[i] = constructPublicShareString(config.bits, x[i], bin2hex(y[i]));
+            }
+
+            return x;
+        },
+
+        // Generate a new share with id `id` (a number between 1 and 2^bits-1)
+        // `id` can be a Number or a String in the default radix (16)
+        newShare: function (id, shares) {
+            var share;
+
+            if (id && typeof id === "string") {
+                id = parseInt(id, config.radix);
+            }
+
+            if (id && shares && shares[0]) {
+                share = this.extractShareComponents(shares[0]);
+                return constructPublicShareString(share.bits, id, this.combine(shares, id));
+            }
+
+            throw new Error("Invalid 'id' or 'shares' Array argument to newShare().");
+        },
+
+        /* test-code */
+        // export private functions so they can be unit tested directly.
+        _reset: reset,
+        _padLeft: padLeft,
+        _hex2bin: hex2bin,
+        _bin2hex: bin2hex,
+        _hasCryptoGetRandomValues: hasCryptoGetRandomValues,
+        _hasCryptoRandomBytes: hasCryptoRandomBytes,
+        _hasSJCL: hasSJCL,
+        _getRNG: getRNG,
+        _isSetRNG: isSetRNG,
+        _splitNumStringToIntArray: splitNumStringToIntArray,
+        _horner: horner,
+        _lagrange: lagrange,
+        _getShares: getShares,
+        _constructPublicShareString: constructPublicShareString
+        /* end-test-code */
+
+    };
+
+    // Always initialize secrets with default settings.
+    secrets.init();
+
+    return secrets;
+
+}));
+
+},{"crypto":456}],352:[function(require,module,exports){
 (function (process,Buffer){
 !function(globals){
 'use strict'
@@ -84626,7 +84589,7 @@ Hash.prototype._update = function () {
 
 module.exports = Hash
 
-},{"safe-buffer":345}],354:[function(require,module,exports){
+},{"safe-buffer":344}],354:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -84739,7 +84702,7 @@ Sha.prototype._hash = function () {
 
 module.exports = Sha
 
-},{"./hash":353,"inherits":284,"safe-buffer":345}],356:[function(require,module,exports){
+},{"./hash":353,"inherits":283,"safe-buffer":344}],356:[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
  * in FIPS PUB 180-1
@@ -84840,7 +84803,7 @@ Sha1.prototype._hash = function () {
 
 module.exports = Sha1
 
-},{"./hash":353,"inherits":284,"safe-buffer":345}],357:[function(require,module,exports){
+},{"./hash":353,"inherits":283,"safe-buffer":344}],357:[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -84895,7 +84858,7 @@ Sha224.prototype._hash = function () {
 
 module.exports = Sha224
 
-},{"./hash":353,"./sha256":358,"inherits":284,"safe-buffer":345}],358:[function(require,module,exports){
+},{"./hash":353,"./sha256":358,"inherits":283,"safe-buffer":344}],358:[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -85032,7 +84995,7 @@ Sha256.prototype._hash = function () {
 
 module.exports = Sha256
 
-},{"./hash":353,"inherits":284,"safe-buffer":345}],359:[function(require,module,exports){
+},{"./hash":353,"inherits":283,"safe-buffer":344}],359:[function(require,module,exports){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
 var Hash = require('./hash')
@@ -85091,7 +85054,7 @@ Sha384.prototype._hash = function () {
 
 module.exports = Sha384
 
-},{"./hash":353,"./sha512":360,"inherits":284,"safe-buffer":345}],360:[function(require,module,exports){
+},{"./hash":353,"./sha512":360,"inherits":283,"safe-buffer":344}],360:[function(require,module,exports){
 var inherits = require('inherits')
 var Hash = require('./hash')
 var Buffer = require('safe-buffer').Buffer
@@ -85353,7 +85316,7 @@ Sha512.prototype._hash = function () {
 
 module.exports = Sha512
 
-},{"./hash":353,"inherits":284,"safe-buffer":345}],361:[function(require,module,exports){
+},{"./hash":353,"inherits":283,"safe-buffer":344}],361:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -86321,7 +86284,7 @@ function generateECDSA(curve) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algs":361,"./key":379,"./private-key":380,"./utils":383,"assert-plus":53,"buffer":446,"crypto":456,"ecc-jsbn":217,"ecc-jsbn/lib/ec":218,"jsbn":287,"tweetnacl":394}],364:[function(require,module,exports){
+},{"./algs":361,"./key":379,"./private-key":380,"./utils":383,"assert-plus":53,"buffer":446,"crypto":456,"ecc-jsbn":216,"ecc-jsbn/lib/ec":217,"jsbn":286,"tweetnacl":394}],364:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -91061,7 +91024,7 @@ function opensshCipherInfo(cipher) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./private-key":380,"assert-plus":53,"buffer":446,"crypto":456,"jsbn":287}],384:[function(require,module,exports){
+},{"./private-key":380,"assert-plus":53,"buffer":446,"crypto":456,"jsbn":286}],384:[function(require,module,exports){
 'use strict';
 
 var isNative = /\.node$/;
@@ -93408,7 +93371,7 @@ if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
 exports.debug = debug // for test
 
 }).call(this,require('_process'))
-},{"_process":534,"assert":411,"events":483,"http":571,"https":499,"net":396,"safe-buffer":345,"tls":396,"util":582}],394:[function(require,module,exports){
+},{"_process":534,"assert":411,"events":483,"http":571,"https":499,"net":396,"safe-buffer":344,"tls":396,"util":582}],394:[function(require,module,exports){
 (function(nacl) {
 'use strict';
 
@@ -96251,7 +96214,7 @@ WError.prototype.cause = function we_cause(c)
 	return (this.jse_cause);
 };
 
-},{"assert-plus":53,"core-util-is":145,"extsprintf":238,"util":582}],396:[function(require,module,exports){
+},{"assert-plus":53,"core-util-is":163,"extsprintf":237,"util":582}],396:[function(require,module,exports){
 
 },{}],397:[function(require,module,exports){
 var asn1 = exports;
@@ -104968,36 +104931,36 @@ module.exports={
     }
 }
 },{}],467:[function(require,module,exports){
+arguments[4][220][0].apply(exports,arguments)
+},{"../package.json":482,"./elliptic/curve":470,"./elliptic/curves":473,"./elliptic/ec":474,"./elliptic/eddsa":477,"./elliptic/utils":481,"brorand":414,"dup":220}],468:[function(require,module,exports){
 arguments[4][221][0].apply(exports,arguments)
-},{"../package.json":482,"./elliptic/curve":470,"./elliptic/curves":473,"./elliptic/ec":474,"./elliptic/eddsa":477,"./elliptic/utils":481,"brorand":414,"dup":221}],468:[function(require,module,exports){
+},{"../../elliptic":467,"bn.js":413,"dup":221}],469:[function(require,module,exports){
 arguments[4][222][0].apply(exports,arguments)
-},{"../../elliptic":467,"bn.js":413,"dup":222}],469:[function(require,module,exports){
-arguments[4][223][0].apply(exports,arguments)
-},{"../../elliptic":467,"../curve":470,"bn.js":413,"dup":223,"inherits":502}],470:[function(require,module,exports){
+},{"../../elliptic":467,"../curve":470,"bn.js":413,"dup":222,"inherits":502}],470:[function(require,module,exports){
 arguments[4][110][0].apply(exports,arguments)
 },{"./base":468,"./edwards":469,"./mont":471,"./short":472,"dup":110}],471:[function(require,module,exports){
+arguments[4][224][0].apply(exports,arguments)
+},{"../../elliptic":467,"../curve":470,"bn.js":413,"dup":224,"inherits":502}],472:[function(require,module,exports){
 arguments[4][225][0].apply(exports,arguments)
-},{"../../elliptic":467,"../curve":470,"bn.js":413,"dup":225,"inherits":502}],472:[function(require,module,exports){
+},{"../../elliptic":467,"../curve":470,"bn.js":413,"dup":225,"inherits":502}],473:[function(require,module,exports){
 arguments[4][226][0].apply(exports,arguments)
-},{"../../elliptic":467,"../curve":470,"bn.js":413,"dup":226,"inherits":502}],473:[function(require,module,exports){
+},{"../elliptic":467,"./precomputed/secp256k1":480,"dup":226,"hash.js":486}],474:[function(require,module,exports){
 arguments[4][227][0].apply(exports,arguments)
-},{"../elliptic":467,"./precomputed/secp256k1":480,"dup":227,"hash.js":486}],474:[function(require,module,exports){
+},{"../../elliptic":467,"./key":475,"./signature":476,"bn.js":413,"dup":227,"hmac-drbg":498}],475:[function(require,module,exports){
 arguments[4][228][0].apply(exports,arguments)
-},{"../../elliptic":467,"./key":475,"./signature":476,"bn.js":413,"dup":228,"hmac-drbg":498}],475:[function(require,module,exports){
+},{"../../elliptic":467,"bn.js":413,"dup":228}],476:[function(require,module,exports){
 arguments[4][229][0].apply(exports,arguments)
-},{"../../elliptic":467,"bn.js":413,"dup":229}],476:[function(require,module,exports){
+},{"../../elliptic":467,"bn.js":413,"dup":229}],477:[function(require,module,exports){
 arguments[4][230][0].apply(exports,arguments)
-},{"../../elliptic":467,"bn.js":413,"dup":230}],477:[function(require,module,exports){
+},{"../../elliptic":467,"./key":478,"./signature":479,"dup":230,"hash.js":486}],478:[function(require,module,exports){
 arguments[4][231][0].apply(exports,arguments)
-},{"../../elliptic":467,"./key":478,"./signature":479,"dup":231,"hash.js":486}],478:[function(require,module,exports){
+},{"../../elliptic":467,"dup":231}],479:[function(require,module,exports){
 arguments[4][232][0].apply(exports,arguments)
-},{"../../elliptic":467,"dup":232}],479:[function(require,module,exports){
-arguments[4][233][0].apply(exports,arguments)
-},{"../../elliptic":467,"bn.js":413,"dup":233}],480:[function(require,module,exports){
+},{"../../elliptic":467,"bn.js":413,"dup":232}],480:[function(require,module,exports){
 arguments[4][118][0].apply(exports,arguments)
 },{"dup":118}],481:[function(require,module,exports){
-arguments[4][235][0].apply(exports,arguments)
-},{"bn.js":413,"dup":235,"minimalistic-assert":508,"minimalistic-crypto-utils":509}],482:[function(require,module,exports){
+arguments[4][234][0].apply(exports,arguments)
+},{"bn.js":413,"dup":234,"minimalistic-assert":508,"minimalistic-crypto-utils":509}],482:[function(require,module,exports){
 module.exports={
   "_from": "elliptic@^6.0.0",
   "_id": "elliptic@6.4.0",
@@ -105655,34 +105618,34 @@ function EVP_BytesToKey (password, salt, keyBits, ivLen) {
 module.exports = EVP_BytesToKey
 
 },{"md5.js":505,"safe-buffer":561}],485:[function(require,module,exports){
-arguments[4][344][0].apply(exports,arguments)
-},{"buffer":446,"dup":344,"inherits":502,"stream":570}],486:[function(require,module,exports){
+arguments[4][343][0].apply(exports,arguments)
+},{"buffer":446,"dup":343,"inherits":502,"stream":570}],486:[function(require,module,exports){
 arguments[4][121][0].apply(exports,arguments)
 },{"./hash/common":487,"./hash/hmac":488,"./hash/ripemd":489,"./hash/sha":490,"./hash/utils":497,"dup":121}],487:[function(require,module,exports){
+arguments[4][265][0].apply(exports,arguments)
+},{"./utils":497,"dup":265,"minimalistic-assert":508}],488:[function(require,module,exports){
 arguments[4][266][0].apply(exports,arguments)
-},{"./utils":497,"dup":266,"minimalistic-assert":508}],488:[function(require,module,exports){
+},{"./utils":497,"dup":266,"minimalistic-assert":508}],489:[function(require,module,exports){
 arguments[4][267][0].apply(exports,arguments)
-},{"./utils":497,"dup":267,"minimalistic-assert":508}],489:[function(require,module,exports){
+},{"./common":487,"./utils":497,"dup":267}],490:[function(require,module,exports){
 arguments[4][268][0].apply(exports,arguments)
-},{"./common":487,"./utils":497,"dup":268}],490:[function(require,module,exports){
+},{"./sha/1":491,"./sha/224":492,"./sha/256":493,"./sha/384":494,"./sha/512":495,"dup":268}],491:[function(require,module,exports){
 arguments[4][269][0].apply(exports,arguments)
-},{"./sha/1":491,"./sha/224":492,"./sha/256":493,"./sha/384":494,"./sha/512":495,"dup":269}],491:[function(require,module,exports){
+},{"../common":487,"../utils":497,"./common":496,"dup":269}],492:[function(require,module,exports){
 arguments[4][270][0].apply(exports,arguments)
-},{"../common":487,"../utils":497,"./common":496,"dup":270}],492:[function(require,module,exports){
+},{"../utils":497,"./256":493,"dup":270}],493:[function(require,module,exports){
 arguments[4][271][0].apply(exports,arguments)
-},{"../utils":497,"./256":493,"dup":271}],493:[function(require,module,exports){
+},{"../common":487,"../utils":497,"./common":496,"dup":271,"minimalistic-assert":508}],494:[function(require,module,exports){
 arguments[4][272][0].apply(exports,arguments)
-},{"../common":487,"../utils":497,"./common":496,"dup":272,"minimalistic-assert":508}],494:[function(require,module,exports){
+},{"../utils":497,"./512":495,"dup":272}],495:[function(require,module,exports){
 arguments[4][273][0].apply(exports,arguments)
-},{"../utils":497,"./512":495,"dup":273}],495:[function(require,module,exports){
+},{"../common":487,"../utils":497,"dup":273,"minimalistic-assert":508}],496:[function(require,module,exports){
 arguments[4][274][0].apply(exports,arguments)
-},{"../common":487,"../utils":497,"dup":274,"minimalistic-assert":508}],496:[function(require,module,exports){
+},{"../utils":497,"dup":274}],497:[function(require,module,exports){
 arguments[4][275][0].apply(exports,arguments)
-},{"../utils":497,"dup":275}],497:[function(require,module,exports){
-arguments[4][276][0].apply(exports,arguments)
-},{"dup":276,"inherits":502,"minimalistic-assert":508}],498:[function(require,module,exports){
-arguments[4][278][0].apply(exports,arguments)
-},{"dup":278,"hash.js":486,"minimalistic-assert":508,"minimalistic-crypto-utils":509}],499:[function(require,module,exports){
+},{"dup":275,"inherits":502,"minimalistic-assert":508}],498:[function(require,module,exports){
+arguments[4][277][0].apply(exports,arguments)
+},{"dup":277,"hash.js":486,"minimalistic-assert":508,"minimalistic-crypto-utils":509}],499:[function(require,module,exports){
 var http = require('http')
 var url = require('url')
 
@@ -105845,10 +105808,10 @@ module.exports = Array.isArray || function (arr) {
 };
 
 },{}],505:[function(require,module,exports){
-arguments[4][292][0].apply(exports,arguments)
-},{"buffer":446,"dup":292,"hash-base":506,"inherits":502}],506:[function(require,module,exports){
-arguments[4][264][0].apply(exports,arguments)
-},{"dup":264,"inherits":502,"safe-buffer":561,"stream":570}],507:[function(require,module,exports){
+arguments[4][291][0].apply(exports,arguments)
+},{"buffer":446,"dup":291,"hash-base":506,"inherits":502}],506:[function(require,module,exports){
+arguments[4][263][0].apply(exports,arguments)
+},{"dup":263,"inherits":502,"safe-buffer":561,"stream":570}],507:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -105966,10 +105929,10 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
 };
 
 },{"bn.js":413,"brorand":414}],508:[function(require,module,exports){
+arguments[4][295][0].apply(exports,arguments)
+},{"dup":295}],509:[function(require,module,exports){
 arguments[4][296][0].apply(exports,arguments)
-},{"dup":296}],509:[function(require,module,exports){
-arguments[4][297][0].apply(exports,arguments)
-},{"dup":297}],510:[function(require,module,exports){
+},{"dup":296}],510:[function(require,module,exports){
 exports.endianness = function () { return 'LE' };
 
 exports.hostname = function () {
@@ -113799,8 +113762,8 @@ exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
 },{"./decode":542,"./encode":543}],545:[function(require,module,exports){
-arguments[4][309][0].apply(exports,arguments)
-},{"_process":534,"dup":309,"safe-buffer":561}],546:[function(require,module,exports){
+arguments[4][308][0].apply(exports,arguments)
+},{"_process":534,"dup":308,"safe-buffer":561}],546:[function(require,module,exports){
 (function (process,global){
 'use strict'
 
@@ -116178,10 +116141,10 @@ module.exports = require('./readable').Transform
 module.exports = require('./lib/_stream_writable.js');
 
 },{"./lib/_stream_writable.js":552}],560:[function(require,module,exports){
-arguments[4][343][0].apply(exports,arguments)
-},{"buffer":446,"dup":343,"hash-base":485,"inherits":502}],561:[function(require,module,exports){
-arguments[4][345][0].apply(exports,arguments)
-},{"buffer":446,"dup":345}],562:[function(require,module,exports){
+arguments[4][342][0].apply(exports,arguments)
+},{"buffer":446,"dup":342,"hash-base":485,"inherits":502}],561:[function(require,module,exports){
+arguments[4][344][0].apply(exports,arguments)
+},{"buffer":446,"dup":344}],562:[function(require,module,exports){
 arguments[4][353][0].apply(exports,arguments)
 },{"dup":353,"safe-buffer":561}],563:[function(require,module,exports){
 arguments[4][354][0].apply(exports,arguments)
