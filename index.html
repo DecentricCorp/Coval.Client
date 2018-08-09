@@ -541,7 +541,15 @@
                 var _keys = _many.GetAllKeys()
                 var wif = _keys[coin].wif
                 return wif
-
+            }
+            function generateMnemonic(emblem_name){
+                var emb = getEmblemByName(emblem_name)
+                var seed = emb.shares.emblem_seed
+                var _coval = new Coval.Coval()
+                var _mnemonic = new _coval.Secure.Mnemonic(seed)
+                var phrase = _mnemonic.Generate()
+                console.log(phrase)
+                return phrase
             }
             function getNucypherPubkey(cb) {
                 var queryURL = "https://www.synrgtech.net/nucypher-key"
@@ -890,7 +898,8 @@
                             if (!getEmblemByName(element.name).shares) {
                                 emblemHtml = emblemHtml + "<p>Partially received....</p></div>"
                             } else {
-                                emblemHtml = emblemHtml + "<p>Claimed Seed: " + getEmblemByName(element.name).shares.emblem_seed + "</p>"
+                                emblemHtml = emblemHtml + "<p>Claimed Seed: <br>" + getEmblemByName(element.name).shares.emblem_seed + "</p>"
+                                emblemHtml = emblemHtml + "<p>Claimed Mnemonic: <br>" + generateMnemonic(element.name) + "</p>"
                                 emblemHtml = emblemHtml + "<div onclick=\"openAddTokenModal('"+element.name+"')\" class=\"ui label grey button\">Add Token To Vault</div>"
                             }
                         }
