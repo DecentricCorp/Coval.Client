@@ -27,8 +27,8 @@ spec:
         - name: cert_domains
           value: emblem-alpha.synrgtech.net
         # remove this when it's time to get a real cert
-        - name: LETSENCRYPT_ENDPOINT
-          value: https://acme-v01.api.letsencrypt.org/directory
+        #- name: LETSENCRYPT_ENDPOINT
+        #  value: https://acme-v01.api.letsencrypt.org/directory
         ports:
         - name: http
           containerPort: 80
