@@ -1,0 +1,23 @@
+{
+	"name": "Emblem Alpha Wallet",
+	"description": "Alpha Wallet",
+	"version": "1.0.0",
+	"icon": "key",
+	"url": "https://decentriccorp.github.io/Coval.Client/",
+	"author": "Shannon Code",
+	"email": "shannon@cov.al",
+	"color": "#1873D3",
+	"roles": [],
+	"width": 1024,
+	"height": 768,
+	"resize": true,
+	"mobilemenu": true,
+	"allownotifications": true,
+	"allowreadmeta": true,
+	"allowreadprofile": 1,
+	"allowreadusers": 1,
+	"allowreadapps": 0,
+	"serververify": true,
+	"responsive": true,
+	"origin": []
+}
