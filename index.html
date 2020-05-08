@@ -860,19 +860,22 @@
                     $('.raw-data').html($('.raw-data').html() + JSON.stringify(val, null, 4))
                     var emblemHtml = "<div class='emblem ui styled accordion'>"
                     val.forEach((element, index) => {
-                        
-                        if (!isStored(element.name)) {                            
-                            storeEmblem(element.name, function(){
-                                if (index == val.length -1) {
-                                    getBalance()
+                        if (element.name) {
+                                if (!isStored(element.name)) {                            
+                                    storeEmblem(element.name, function(){
+                                        if (index == val.length -1) {
+                                            getBalance()
+                                        }
+                                    })
+                                } else {
+                                    doHtmlWork(element, function(){
+                                        if (index == val.length -1) {
+                                            $(".emblems").append(emblemHtml)
+                                        }
+                                    })
                                 }
-                            })
                         } else {
-                            doHtmlWork(element, function(){
-                                if (index == val.length -1) {
-                                    $(".emblems").append(emblemHtml)
-                                }
-                            })
+                                console.log("No Name!!!!!")        
                         }
                     })
                     function doHtmlWork(element, cb){
