@@ -19,7 +19,7 @@
     "semantic-ui": "^2.2.14"
   },
   "devDependencies": {
-    "bower": "^1.8.2"
+    "bower": "^1.8.8"
   },
   "repository": {
     "type": "git",
