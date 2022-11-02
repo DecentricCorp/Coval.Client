@@ -16,7 +16,7 @@
     "constants": "0.0.2",
     "coval.js": "git+https://github.com/DecentricCorp/Coval.js.git#client",
     "cryptokitties-contrib": "git+https://github.com/io4/cryptokitties.git",
-    "semantic-ui": "^2.2.14"
+    "semantic-ui": "^2.5.0"
   },
   "devDependencies": {
     "bower": "^1.8.2"
